@@ -22,9 +22,12 @@ let userId = '';
 monday.api(query).then(res => {
     console.log("query_res=", res);
     /* { data: { users: [{id: 12312, name: "Bart Simpson"}, {id: 423423, name: "Homer Simpson"}] } } */
-    let id = res.data.boards[0].items_page.items[1].id
-    let json = res.data.boards[0].items_page.items[1].column_values[0].value
-    let text = res.data.boards[0].items_page.items[1].column_values[0].text
+    let items = res.data.boards.items
+    console.log('items=',items)
+
+    // let id = res.data.boards[0].items_page.items[1].id
+    // let json = res.data.boards[0].items_page.items[1].column_values[0].value
+    let text = res.data.boards[0].items_page.items[2].column_values[0].text
     // json = json.json()
     console.log('id=', id)
     console.log('json=', json)
