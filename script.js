@@ -109,7 +109,10 @@ monday.get("filter")
 
 
 
-
+monday.listen("settings", res => {
+  console.log("settings=",res.data);
+  // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
+});
 
 
 
