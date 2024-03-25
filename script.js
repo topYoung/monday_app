@@ -22,54 +22,63 @@ const headers = {
     'Content-Type': 'application/json'
 };
 
-// 設定GraphQL查詢
-// 這裡的查詢假設你想要抓取所有項目，並根據某個欄位（例如"Status"）來過濾項目
-const query = `
-query {
- boards(ids: 6292532342) {
-    items {
-      id
-      name
-      column_values {
-        id
-        value
-        column {
+
+async function fetchItems(boardId) {
+ const query = `
+ query {
+    boards(ids: [${boardId}]) {
+      items_page {
+        items {
           id
-          title
+          name
+          column_values {
+            id
+            text
+            value
+          }
         }
       }
     }
  }
-}`;
+ `;
 
-// 發送API請求
-fetch(url, {
+ // 假設你已經設定了API的URL和headers
+ const response = await fetch(apiUrl, {
     method: 'POST',
-    headers: headers,
-    body: JSON.stringify({ query })
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    return response.json();
-})
-.then(data => {
-    // 從數據中抓取所有項目
-    const items = data.data.boards[0].items;
-    // 根據某個欄位（例如"Status"）來過濾項目
-    const filteredItems = items.filter(item => {
-        const statusColumn = item.column_values.find(cv => cv.column.title === 'Status');
-        return statusColumn && statusColumn.value === 'In Progress';
-    });
-    // 打印出過濾後的項目
-    filteredItems.forEach(item => {
-        console.log(`項目ID: ${item.id}, 項目名稱: ${item.name}`);
-    });
-})
-.catch(error => {
-    console.error('There has been a problem with your fetch operation:', error);
-});
+    headers: apiHeaders,
+    body: JSON.stringify({ query }),
+ });
+
+ if (!response.ok) {
+    throw new Error('Network response was not ok');
+ }
+
+ const data = await response.json();
+ return data.data.boards[0].items_page.items;
+}
+
+async function filterItems(boardId, filterField, filterValue) {
+ // 抓取項目
+ const items = await fetchItems(boardId);
+
+ // 過濾項目
+ const filteredItems = items.filter(item => {
+    // 找到項目中與篩選條件相對應的欄位值
+    const fieldValue = item.column_values.find(cv => cv.text === filterField)?.value;
+    // 檢查欄位值是否符合篩選條件
+    return fieldValue === filterValue;
+ });
+
+ // 打印出過濾後的項目
+ filteredItems.forEach(item => {
+    console.log(`項目ID: ${item.id}, 項目名稱: ${item.name}`);
+ });
+}
+
+// 使用範例
+filterItems(6292532342, 'Status', 'In Progress');
+
+
 
 
 // monday.api(query).then(res => {
