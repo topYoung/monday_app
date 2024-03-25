@@ -83,7 +83,7 @@ const headers = {
 
 // const callback = res => console.log("filter_res=",res);
 monday.listen('filter', (res)=>{
-    console.log("filter_res=",res
+    console.log("filter_res=",res)
     monday.get("filter")
     .then(res => console.log("get_filter_update=",res))
 });
