@@ -42,19 +42,16 @@ async function fetchItems(boardId) {
  }
  `;
 
- // 假設你已經設定了API的URL和headers
- const response = await fetch(url, {
-    method: 'POST',
-    headers: apiHeaders,
-    body: JSON.stringify({ query }),
- });
+ // 使用monday SDK來執行GraphQL查詢
+ const response = await monday.api(query);
 
- if (!response.ok) {
-    throw new Error('Network response was not ok');
+ // 檢查查詢是否成功
+ if (!response.data) {
+    throw new Error('查詢失敗');
  }
 
- const data = await response.json();
- return data.data.boards[0].items_page.items;
+ // 返回查詢結果中的項目
+ return response.data.boards[0].items_page.items;
 }
 
 async function filterItems(boardId, filterField, filterValue) {
@@ -77,6 +74,61 @@ async function filterItems(boardId, filterField, filterValue) {
 
 // 使用範例
 filterItems(6292532342, 'Status', 'In Progress');
+
+// async function fetchItems(boardId) {
+//  const query = `
+//  query {
+//     boards(ids: [${boardId}]) {
+//       items_page {
+//         items {
+//           id
+//           name
+//           column_values {
+//             id
+//             text
+//             value
+//           }
+//         }
+//       }
+//     }
+//  }
+//  `;
+
+//  // 假設你已經設定了API的URL和headers
+//  const response = await fetch(url, {
+//     method: 'POST',
+//     headers: headers,
+//     body: JSON.stringify({ query }),
+//  });
+
+//  if (!response.ok) {
+//     throw new Error('Network response was not ok');
+//  }
+
+//  const data = await response.json();
+//  return data.data.boards[0].items_page.items;
+// }
+
+// async function filterItems(boardId, filterField, filterValue) {
+//  // 抓取項目
+//  const items = await fetchItems(boardId);
+
+//  // 過濾項目
+//  const filteredItems = items.filter(item => {
+//     // 找到項目中與篩選條件相對應的欄位值
+//     const fieldValue = item.column_values.find(cv => cv.text === filterField)?.value;
+//     // 檢查欄位值是否符合篩選條件
+//     return fieldValue === filterValue;
+//  });
+
+//  // 打印出過濾後的項目
+//  filteredItems.forEach(item => {
+//     console.log(`項目ID: ${item.id}, 項目名稱: ${item.name}`);
+//  });
+// }
+
+// // 使用範例
+// filterItems(6292532342, 'Status', 'In Progress');
 
 
 
