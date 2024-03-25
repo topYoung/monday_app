@@ -22,59 +22,50 @@ const headers = {
     'Content-Type': 'application/json'
 };
 
+let filterID = []
+let itemList = []
 
-// async function fetchItems(boardId) {
-//     const query = `
-//  query {
-//     boards(ids: 6292532342) {
-//       items_page {
-//         items {
-//           id
-//           name
-//           column_values {
-//             id
-//             text
-//             value
-//           }
-//         }
-//       }
-//     }
-//  }
-//  `;
+async function fetchItems(boardId) {
+    const query = `
+ query {
+    boards(ids: 6292532342) {
+      items_page {
+        items {
+          id
+          name
+          column_values {
+            id
+            text
+            value
+          }
+        }
+      }
+    }
+ }
+ `;
 
-//     // 使用monday SDK來執行GraphQL查詢
-//     const response = await monday.api(query);
+    // 使用monday SDK來執行GraphQL查詢
+    const response = await monday.api(query);
 
-//     // 檢查查詢是否成功
-//     if (!response.data) {
-//         throw new Error('查詢失敗');
-//     }
+    // 檢查查詢是否成功
+    if (!response.data) {
+        throw new Error('查詢失敗');
+    }
 
-//     // 返回查詢結果中的項目
-//     return response.data.boards[0].items_page.items;
-// }
+    // 返回查詢結果中的項目
+    return response.data.boards[0].items_page.items;
+}
 
-// async function filterItems(boardId, filterField, filterValue) {
-//     // 抓取項目
-//     const items = await fetchItems(boardId);
-//     console.log("items===", items)
-//     // 過濾項目
-//     const filteredItems = items.filter(item => {
-//         // 找到項目中與篩選條件相對應的欄位值
-//         const fieldValue = item.column_values.find(cv => cv.text === filterField) ? .value;
-//         console.log("fieldValue==", fieldValue)
-//         // 檢查欄位值是否符合篩選條件
-//         return fieldValue === filterValue;
-//     });
+async function filterItems(boardId, filterField, filterValue) {
+    // 抓取項目
+    itemList = await fetchItems(boardId);
+    console.log("itemList===", itemList)
+    // 過濾項目
+   
+}
 
-//     // 打印出過濾後的項目
-//     filteredItems.forEach(item => {
-//         console.log(`項目ID: ${item.id}, 項目名稱: ${item.name}`);
-//     });
-// }
-
-// 使用範例
-// filterItems(6292532342, 'Status', 'In Progress');
+//使用範例
+filterItems(6292532342, 'Status', 'In Progress');
 
 
 // monday.listen(['filter'], (res) => {
@@ -94,11 +85,24 @@ monday.listen('filter', (res)=>{
 
 monday.listen("itemIds", (res) => {
   console.log("data=",res.data );
+  cnst equal = arraysAreEqual(res.data,filterID)
+  if(not equal){
+      filterID = res.data
+      console.log("newFilterId=",filterID)
+  }
+  
   // [12345, 12346, 12347]
 });
 
 monday.get("filter")
   .then(res => console.log("get_filter=",res))
+
+
+
+
+function arraysAreEqual(arr1, arr2) {
+ return new Set(arr1).size === new Set(arr2).size && [...new Set(arr1)].every((value, index) => value === arr2[index]);
+}
 
 
 // monday.listen("itemSelected", function(event) {
