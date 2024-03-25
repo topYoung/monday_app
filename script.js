@@ -77,12 +77,22 @@ const headers = {
 // filterItems(6292532342, 'Status', 'In Progress');
 
 
-monday.listen(['filter'], (res) => {
-    console.log("filter listen", res.data);
-});
+// monday.listen(['filter'], (res) => {
+//     console.log("filter listen", res.data);
+// });
+
+const callback = res => console.log("filter_res=",res);
+monday.listen('filter', callback);
+
 //@ts-ignore
 monday.get("filter").then(res => console.log("filter get", res));
 
+
+
+monday.listen("itemIds", (res) => {
+  console.log("data=",res.data );
+  // [12345, 12346, 12347]
+});
 
 // monday.listen("itemSelected", function(event) {
 //     // 獲取選中的項目
