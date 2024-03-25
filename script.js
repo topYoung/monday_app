@@ -2,15 +2,12 @@
 
 // let query = 'query { boards(ids: 6292532342 limit: 10) { columns{id title} items_page{ items{ name column_values{ id text value }}}}}';
 
-Array.prototype.equals = function(getArray) {
-  if (this.length != getArray.length) return false;
+const getResult = function(a1, a2) {
+  var i = a1.length;
+  if (i != a2.length) return false;
 
-  for (var i = 0; i < getArray.length; i++) {
-    if (this[i] instanceof Array && getArray[i] instanceof Array) {
-      if (!this[i].equals(getArray[i])) return false;
-    } else if (this[i] != getArray[i]) {
-      return false;
-    }
+  while (i--) {
+    if (a1[i] !== a2[i]) return false;
   }
   return true;
 };
@@ -97,7 +94,7 @@ monday.listen('filter', (res)=>{
 
 monday.listen("itemIds", (res) => {
   console.log("data=",res.data );
-  const equal = res.data.equals(filterID)
+  const equal = getResult(res.data,filterID)
   console.log('equal==',equal)
   if(equal == false){
       filterID = res.data
