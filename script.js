@@ -76,6 +76,20 @@ async function filterItems(boardId, filterField, filterValue) {
 // 使用範例
 filterItems(6292532342, 'Status', 'In Progress');
 
+
+monday.listen("itemSelected", function(event) {
+    // 獲取選中的項目
+    const selectedItem = event.payload.item;
+
+    // 這裡可以添加你的邏輯，例如過濾項目或者更新UI
+    console.log("選中的項目ID:", selectedItem.id);
+    console.log("選中的項目名稱:", selectedItem.name);
+
+    // 例如，你可以使用monday SDK來更新項目的欄位值
+    // monday.api(`mutation { update_item (board_id: ${selectedItem.boardId}, item_id: ${selectedItem.id}, column_values: "{\"Status\": \"In Progress\"}") { id } }`);
+});
+
+
 // async function fetchItems(boardId) {
 //  const query = `
 //  query {
