@@ -43,7 +43,7 @@ async function fetchItems(boardId) {
  `;
 
  // 假設你已經設定了API的URL和headers
- const response = await fetch(apiUrl, {
+ const response = await fetch(url, {
     method: 'POST',
     headers: apiHeaders,
     body: JSON.stringify({ query }),
