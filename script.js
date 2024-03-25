@@ -85,8 +85,8 @@ monday.listen('filter', (res)=>{
 
 monday.listen("itemIds", (res) => {
   console.log("data=",res.data );
-  cnst equal = arraysAreEqual(res.data,filterID)
-  if(not equal){
+  const equal = arraysAreEqual(res.data,filterID)
+  if(equal == false){
       filterID = res.data
       console.log("newFilterId=",filterID)
   }
