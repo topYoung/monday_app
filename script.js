@@ -57,11 +57,12 @@ async function fetchItems(boardId) {
 async function filterItems(boardId, filterField, filterValue) {
  // 抓取項目
  const items = await fetchItems(boardId);
-
+ const.log("items===",items)
  // 過濾項目
  const filteredItems = items.filter(item => {
     // 找到項目中與篩選條件相對應的欄位值
     const fieldValue = item.column_values.find(cv => cv.text === filterField)?.value;
+    const.log("fieldValue==",fieldValue)
     // 檢查欄位值是否符合篩選條件
     return fieldValue === filterValue;
  });
