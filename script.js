@@ -94,6 +94,10 @@ monday.listen("itemIds", (res) => {
   // [12345, 12346, 12347]
 });
 
+monday.get("filter")
+  .then(res => console.log("get_filter=",res))
+
+
 // monday.listen("itemSelected", function(event) {
 //     // 獲取選中的項目
 //     const selectedItem = event.payload.item;
