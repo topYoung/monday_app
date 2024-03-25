@@ -2,6 +2,18 @@
 
 // let query = 'query { boards(ids: 6292532342 limit: 10) { columns{id title} items_page{ items{ name column_values{ id text value }}}}}';
 
+Array.prototype.equals = function(getArray) {
+  if (this.length != getArray.length) return false;
+
+  for (var i = 0; i < getArray.length; i++) {
+    if (this[i] instanceof Array && getArray[i] instanceof Array) {
+      if (!this[i].equals(getArray[i])) return false;
+    } else if (this[i] != getArray[i]) {
+      return false;
+    }
+  }
+  return true;
+};
 
 const monday = window.mondaySdk();
 // let boardId = '';
@@ -85,7 +97,7 @@ monday.listen('filter', (res)=>{
 
 monday.listen("itemIds", (res) => {
   console.log("data=",res.data );
-  const equal = arraysAreEqual(res.data,filterID)
+  const equal = res.data.equals(filterID)
   console.log('equal==',equal)
   if(equal == false){
       filterID = res.data
@@ -101,9 +113,7 @@ monday.get("filter")
 
 
 
-function arraysAreEqual(arr1, arr2) {
- return new Set(arr1).size === new Set(arr2).size && [...new Set(arr1)].every((value, index) => value === arr2[index]);
-}
+
 
 
 // monday.listen("itemSelected", function(event) {
