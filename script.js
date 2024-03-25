@@ -81,11 +81,15 @@ const headers = {
 //     console.log("filter listen", res.data);
 // });
 
-const callback = res => console.log("filter_res=",res);
-monday.listen('filter', callback);
+// const callback = res => console.log("filter_res=",res);
+monday.listen('filter', (res)=>{
+    console.log("filter_res=",res
+    monday.get("filter")
+    .then(res => console.log("get_filter_update=",res))
+});
 
 //@ts-ignore
-monday.get("filter").then(res => console.log("filter get", res));
+// monday.get("filter").then(res => console.log("filter get", res));
 
 
 
