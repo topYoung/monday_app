@@ -26,7 +26,7 @@ const headers = {
 async function fetchItems(boardId) {
  const query = `
  query {
-    boards(ids: [${boardId}]) {
+    boards(ids: 6292532342) {
       items_page {
         items {
           id
