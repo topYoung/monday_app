@@ -3,13 +3,13 @@
 // let query = 'query { boards(ids: 6292532342 limit: 10) { columns{id title} items_page{ items{ name column_values{ id text value }}}}}';
 
 const getResult = function(a1, a2) {
-  var i = a1.length;
-  if (i != a2.length) return false;
+    var i = a1.length;
+    if (i != a2.length) return false;
 
-  while (i--) {
-    if (a1[i] !== a2[i]) return false;
-  }
-  return true;
+    while (i--) {
+        if (a1[i] !== a2[i]) return false;
+    }
+    return true;
 };
 
 const monday = window.mondaySdk();
@@ -70,7 +70,7 @@ async function filterItems(boardId, filterField, filterValue) {
     itemList = await fetchItems(boardId);
     console.log("itemList===", itemList)
     // 過濾項目
-   
+
 }
 
 //使用範例
@@ -82,9 +82,9 @@ filterItems(6292532342, 'Status', 'In Progress');
 // });
 
 // const callback = res => console.log("filter_res=",res);
-monday.listen('filter', (res)=>{
-    console.log("filter_res=",res)
-    
+monday.listen('filter', (res) => {
+    console.log("filter_res=", res)
+
 });
 
 //@ts-ignore
@@ -93,28 +93,82 @@ monday.listen('filter', (res)=>{
 
 
 monday.listen("itemIds", (res) => {
-  console.log("data=",res.data );
-  const equal = getResult(res.data,filterID)
-  console.log('equal==',equal)
-  if(equal == false){
-      filterID = res.data
-      console.log("newFilterId=",filterID)
-  }
-  
-  // [12345, 12346, 12347]
+    console.log("data=", res.data);
+    const equal = getResult(res.data, filterID)
+    console.log('equal==', equal)
+    if (equal == false) {
+        filterID = res.data
+        console.log("newFilterId=", filterID)
+    }
+
+    // [12345, 12346, 12347]
 });
 
 monday.get("filter")
-  .then(res => console.log("get_filter=",res))
+    .then(res => console.log("get_filter=", res))
 
 
 
 monday.listen("settings", res => {
-  console.log("settings=",res.data);
-  // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
+    console.log("settings=", res.data);
+    // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
 });
 
 
+
+async function settingItems(boardId) {
+    const query = `
+ query {
+    boards(ids: 6292532342) {
+      items_page {
+        items {
+          id
+          name
+          column_values {
+            id
+            text
+            value
+          }
+        }
+      }
+    }
+ }
+ `;
+
+    // 使用monday SDK來執行GraphQL查詢
+    const response = await monday.api(query);
+
+    // 檢查查詢是否成功
+    if (!response.data) {
+        throw new Error('查詢失敗');
+    }
+
+    // 返回查詢結果中的項目
+    return response.data.boards[0].items_page.items;
+}
+
+async function filterItems(boardId, filterField, filterValue) {
+    // 抓取項目
+    const settingList = await fetchItems(boardId);
+    console.log("settingList===", settingList)
+    // 過濾項目
+
+}
+
+//使用範例
+settingItems(6292532342, 'Status', 'In Progress');
+
+
+//a4 : 72解析度 595/842
+
+function generatePDF() {
+    let doc = new jsPDF();
+    let element = document.getElementById('app');
+    doc.fromHTML(element, 15, 15, {
+        'width': 595,
+    });
+    doc.save('sample.pdf');
+}
 
 // monday.listen("itemSelected", function(event) {
 //     // 獲取選中的項目

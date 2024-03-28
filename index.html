@@ -9,13 +9,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/monday-sdk-js/dist/main.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/monday-sdk-js/dist/main.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>  
     <!-- echo "<script>document.cookie='key=value; SameSite=None; Secure';</script>"; -->
      
 </head>
 
 <body>
     <div id='app'>
+         <button onclick="generatePDF()">Generate PDF</button>
          <h2 id='title' class='not_select'>Title</h2>
          <h3 id='subTitle' class='not_select'>SubTitle</h3>
          <div id='content'>
