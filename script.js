@@ -66,6 +66,7 @@ async function fetchItems(boardId) {
     }
 
     // 返回查詢結果中的項目
+    console.log("alldata=",response.data)
     return response.data.boards[0].items_page.items;
 }
 
