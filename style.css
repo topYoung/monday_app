@@ -30,7 +30,7 @@ body {
 
 
 #setText{
-    position: absolute;
+    position: relative;
     font-size: 14px;
     width: 255px;
     left: 15px;
@@ -56,6 +56,37 @@ body {
     overflow-y: scroll;
     border: 2px solid #797e93;
 }
+.setting_print_title{
+    position: relative;
+    width: 255px;
+    font-size: 15px;
+    left: 15px;
+    color: rgb(33 33 33 / 90%);
+    margin-bottom: 10px;
+
+}
+
+.setting_print_title_input{
+    position: relative;  
+    width: 240px;
+    font-size: 16px;
+    left: 15px;
+    margin-bottom: 10px;
+
+}
+
+input[type=text] {
+  /*width: 100%;*/
+  padding: 4px 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+/*#6e6f8f*/
 
 .item{
     position: relative;
