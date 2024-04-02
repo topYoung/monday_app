@@ -20,7 +20,7 @@ const monday = window.mondaySdk();
 const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjMzNTg4OTE2MCwiYWFpIjoxMSwidWlkIjo1NzQ0NDIwOSwiaWFkIjoiMjAyNC0wMy0yMVQwMjo0MDoyNS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTIyNjMxODUsInJnbiI6InVzZTEifQ.TWvpOEhzwOTH5TeoaFeIbkUJAMSIWBytryEIH4cUrEw';
 
 // 你想要抓取的board ID
-const boardId = '6292532342';
+let boardId 
 
 // 設定API請求的URL
 const url = 'https://api.monday.com/v2';
@@ -34,10 +34,10 @@ const headers = {
 let filterID = []
 let itemList = []
 
-async function fetchItems(boardId) {
+async function fetchItems() {
     const query = `
  query {
-    boards() {
+    boards(ids:[boardId]) {
     columns{
       id
       title
@@ -78,8 +78,7 @@ async function filterItems(boardId, filterField, filterValue) {
 
 }
 
-//使用範例
-filterItems(6292532342, 'Status', 'In Progress');
+
 
 
 // monday.listen(['filter'], (res) => {
@@ -119,7 +118,12 @@ monday.listen("settings", res => {
     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
 });
 
-
+monday.get('context').then(context => {
+  boardId = context.boardId
+  console.log("boardid=",context.boardId);
+  //使用範例
+    filterItems();
+});
 
 // async function settingItems(boardId) {
 //     const query = `
