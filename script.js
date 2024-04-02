@@ -149,14 +149,14 @@ async function settingItems(boardId) {
 
 async function filterItems(boardId, filterField, filterValue) {
     // 抓取項目
-    const settingList = await fetchItems(boardId);
+    const settingList = await settingItems(boardId);
     console.log("settingList===", settingList)
     // 過濾項目
 
 }
 
 //使用範例
-settingItems(6292532342, 'Status', 'In Progress');
+filterItems(6292532342, 'Status', 'In Progress');
 
 
 //a4 : 72解析度 595/842
