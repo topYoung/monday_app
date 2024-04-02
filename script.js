@@ -162,172 +162,30 @@ settingItems(6292532342, 'Status', 'In Progress');
 //a4 : 72解析度 595/842
 
 function generatePDF() {
+    loader.style.visibility = 'visible'
     let doc = new jsPDF();
-    let element = document.getElementById('app');
-    doc.fromHTML(element, 15, 15, {
-        'width': 595,
+    html2canvas(element).then(function(canvas) {
+        var imgData = canvas.toDataURL('image/png');
+        var doc = new jsPDF('p', 'mm', 'a4'); // 使用A4紙張大小
+        var imgWidth = 210; // A4 width in mm
+        var pageHeight = 295; // A4 height in mm
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+        var heightLeft = imgHeight;
+        var position = 0;
+
+        // 添加第一頁
+        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        // 如果內容超過一頁，則添加更多頁面
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            doc.addPage();
+            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+        doc.save('sample.pdf');
     });
-    doc.save('sample.pdf');
+
 }
 
-// monday.listen("itemSelected", function(event) {
-//     // 獲取選中的項目
-//     const selectedItem = event.payload.item;
-
-//     // 這裡可以添加你的邏輯，例如過濾項目或者更新UI
-//     console.log("選中的項目ID:", selectedItem.id);
-//     console.log("選中的項目名稱:", selectedItem.name);
-
-//     // 例如，你可以使用monday SDK來更新項目的欄位值
-//     // monday.api(`mutation { update_item (board_id: ${selectedItem.boardId}, item_id: ${selectedItem.id}, column_values: "{\"Status\": \"In Progress\"}") { id } }`);
-// });
-
-
-// async function fetchItems(boardId) {
-//  const query = `
-//  query {
-//     boards(ids: [${boardId}]) {
-//       items_page {
-//         items {
-//           id
-//           name
-//           column_values {
-//             id
-//             text
-//             value
-//           }
-//         }
-//       }
-//     }
-//  }
-//  `;
-
-//  // 假設你已經設定了API的URL和headers
-//  const response = await fetch(url, {
-//     method: 'POST',
-//     headers: headers,
-//     body: JSON.stringify({ query }),
-//  });
-
-//  if (!response.ok) {
-//     throw new Error('Network response was not ok');
-//  }
-
-//  const data = await response.json();
-//  return data.data.boards[0].items_page.items;
-// }
-
-// async function filterItems(boardId, filterField, filterValue) {
-//  // 抓取項目
-//  const items = await fetchItems(boardId);
-
-//  // 過濾項目
-//  const filteredItems = items.filter(item => {
-//     // 找到項目中與篩選條件相對應的欄位值
-//     const fieldValue = item.column_values.find(cv => cv.text === filterField)?.value;
-//     // 檢查欄位值是否符合篩選條件
-//     return fieldValue === filterValue;
-//  });
-
-//  // 打印出過濾後的項目
-//  filteredItems.forEach(item => {
-//     console.log(`項目ID: ${item.id}, 項目名稱: ${item.name}`);
-//  });
-// }
-
-// // 使用範例
-// filterItems(6292532342, 'Status', 'In Progress');
-
-
-
-
-// monday.api(query).then(res => {
-//     console.log("query_res=", res);
-//     /* { data: { users: [{id: 12312, name: "Bart Simpson"}, {id: 423423, name: "Homer Simpson"}] } } */
-//     let items = res.data.boards.items
-//     console.log('items=',items)
-
-//     // let id = res.data.boards[0].items_page.items[1].id
-//     // let json = res.data.boards[0].items_page.items[1].column_values[0].value
-//     let text = res.data.boards[0].items_page.items[2].column_values[0].text
-//     // json = json.json()
-//     console.log('id=', id)
-//     console.log('json=', json)
-//     console.log('text=', text)
-//     let imgList = text.split(',')
-//     console.log('imgList.len=', imgList.length)
-//     console.log('imgList=', imgList)
-//     if (imgList.length > 0) {
-//         for (let i = 0; i < imgList.length; i++) {
-//             let div = document.createElement('div')
-//             div.id = "img" + i
-//             div.className = 'item'
-//             let img = document.createElement('img')
-//             img.src = imgList[i]
-//             img.className = 'image'
-//             img.onload = function() {
-//                 div.appendChild(img)
-
-//             }
-
-//             content.appendChild(div)
-//         }
-//     }
-// });
-
-// fetch ("https://api.monday.com/v2", {
-//   method: 'post',
-//   headers: {
-//     'Content-Type': 'application/json',
-//     'Authorization' : token
-//    },
-//    body: JSON.stringify({
-//      'query' : query
-//    })
-//   })
-//    .then(res => res.json())
-//    .then(res => {
-//       console.log('res==',res)
-//       let id = res.data.boards[0].items_page.items[1].id
-//       let json = res.data.boards[0].items_page.items[1].column_values[0].value
-//       let text = res.data.boards[0].items_page.items[1].column_values[0].text
-//       // json = json.json()
-//       console.log('id=',id)
-//       console.log('json=',json)
-//       console.log('text=',text)
-//       let imgList = text.split(',')
-//       console.log('imgList.len=',imgList.length)
-//       console.log('imgList=',imgList)
-//       if(imgList.length > 0){
-//         for(let i=0;i<imgList.length;i++){
-//           let div = document.createElement('div')
-//           div.id = "img" + i
-//           div.className = 'item'
-//           let img = document.createElement('img')
-//           img.src = imgList[i]
-//           img.className = 'image'
-//           img.onload = function() {
-//                  div.appendChild(img)   
-
-//           }
-
-//           content.appendChild(div)
-//         }
-//       }
-//     });
-
-// fetch ("https://api.monday.com/v2", {
-//   method: 'post',
-//   headers: {
-//     'Content-Type': 'application/json',
-//     'Authorization' : token,
-//     'API-Version' : '2023-04'
-//    },
-//    body: JSON.stringify({
-//      'query' : 'query{boards (limit:4) {id name} }'
-//    })
-//   });
-//   .then(res => res.json())
-//   .then(result => {
-//     console.log('res==',result)
-//   });
