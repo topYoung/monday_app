@@ -37,8 +37,12 @@ let itemList = []
 async function fetchItems(boardId) {
     const query = `
  query {
-    boards(ids: 6292532342) {
-      items_page {
+    boards() {
+    columns{
+      id
+      title
+    }
+    items_page {
         items {
           id
           name
