@@ -116,47 +116,47 @@ monday.listen("settings", res => {
 
 
 
-async function settingItems(boardId) {
-    const query = `
- query {
-    boards(ids: 6292532342) {
-      items_page {
-        items {
-          id
-          name
-          column_values {
-            id
-            text
-            value
-          }
-        }
-      }
-    }
- }
- `;
+// async function settingItems(boardId) {
+//     const query = `
+//  query {
+//     boards(ids: 6292532342) {
+//       items_page {
+//         items {
+//           id
+//           name
+//           column_values {
+//             id
+//             text
+//             value
+//           }
+//         }
+//       }
+//     }
+//  }
+//  `;
 
-    // 使用monday SDK來執行GraphQL查詢
-    const response = await monday.api(query);
+//     // 使用monday SDK來執行GraphQL查詢
+//     const response = await monday.api(query);
 
-    // 檢查查詢是否成功
-    if (!response.data) {
-        throw new Error('查詢失敗');
-    }
+//     // 檢查查詢是否成功
+//     if (!response.data) {
+//         throw new Error('查詢失敗');
+//     }
 
-    // 返回查詢結果中的項目
-    return response.data.boards[0].items_page.items;
-}
+//     // 返回查詢結果中的項目
+//     return response.data.boards[0].items_page.items;
+// }
 
-async function filterItems(boardId, filterField, filterValue) {
-    // 抓取項目
-    const settingList = await settingItems(boardId);
-    console.log("settingList===", settingList)
-    // 過濾項目
+// async function filterItems(boardId, filterField, filterValue) {
+//     // 抓取項目
+//     const settingList = await settingItems(boardId);
+//     console.log("settingList===", settingList)
+//     // 過濾項目
 
-}
+// }
 
-//使用範例
-filterItems(6292532342, 'Status', 'In Progress');
+// //使用範例
+// filterItems(6292532342, 'Status', 'In Progress');
 
 
 //a4 : 72解析度 595/842
