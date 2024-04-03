@@ -126,6 +126,14 @@ monday.listen('context').then(context => {
     filterItems();
 });
 
+monday.get('context').then(context => {
+    console.log('context2=',context)
+  boardId = context.boardId
+  console.log("boardid=",context.boardId);
+  //使用範例
+    filterItems();
+});
+
 // async function settingItems(boardId) {
 //     const query = `
 //  query {
