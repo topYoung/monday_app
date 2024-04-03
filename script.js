@@ -118,7 +118,8 @@ monday.listen("settings", res => {
     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
 });
 
-monday.get('context').then(context => {
+monday.listen('context').then(context => {
+    console.log('context=',context)
   boardId = context.boardId
   console.log("boardid=",context.boardId);
   //使用範例
