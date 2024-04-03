@@ -37,7 +37,7 @@ let itemList = []
 async function fetchItems() {
     const query = `
  query {
-    boards(ids:[boardId]) {
+    boards(ids:["${boardId}"]) {
     columns{
       id
       title
