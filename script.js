@@ -70,7 +70,7 @@ async function fetchItems() {
     return response.data.boards[0].items_page.items;
 }
 
-async function filterItems(boardId, filterField, filterValue) {
+async function filterItems() {
     // 抓取項目
     itemList = await fetchItems(boardId);
     console.log("itemList===", itemList)
