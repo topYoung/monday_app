@@ -118,13 +118,17 @@ monday.listen("settings", res => {
     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
 });
 
-monday.listen('context').then(context => {
-    console.log('context=',context)
-  boardId = context.boardId
-  console.log("boardid=",context.boardId);
+
+monday.listen("context", res => {
+  console.log('context=',res)
+  boardId = res.boardId
+  console.log("boardid=",res.boardId);
   //使用範例
-    filterItems();
-});
+    filterItems(); 
+  // do Something
+})
+
+
 
 monday.get('context').then(context => {
   console.log('context2=',context)
