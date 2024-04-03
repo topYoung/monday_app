@@ -127,7 +127,7 @@ monday.listen('context').then(context => {
 });
 
 monday.get('context').then(context => {
-    console.log('context2=',context)
+  console.log('context2=',context)
   boardId = context.boardId
   console.log("boardid=",context.boardId);
   //使用範例
