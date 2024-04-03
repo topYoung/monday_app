@@ -121,8 +121,8 @@ monday.listen("settings", res => {
 
 monday.listen("context", res => {
   console.log('context=',res)
-  boardId = res.boardId
-  console.log("boardid=",res.boardId);
+  boardId = res.data.boardId
+  console.log("boardid=",res.data.boardId);
   //使用範例
     filterItems(); 
   // do Something
@@ -132,7 +132,7 @@ monday.listen("context", res => {
 
 monday.get('context').then(context => {
   console.log('context2=',context)
-  boardId = context.boardId
+  boardId = context.data.boardId
   console.log("boardid=",context.boardId);
   //使用範例
     filterItems();
