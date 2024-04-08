@@ -16,20 +16,21 @@ body {
     /*visibility: hidden;*/
 }
 
-#title{
+#title {
     text-align: center;
     width: calc(100% - 270px);
     margin: 0;
     padding-top: 4px;
 }
-#subTitle{
+
+#subTitle {
     text-align: center;
     width: calc(100% - 270px);
     margin: 0;
 }
 
 
-#setText{
+#setText {
     position: relative;
     font-size: 14px;
     width: 255px;
@@ -37,7 +38,8 @@ body {
     color: #9699a6;
 
 }
-#content{
+
+#content {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
@@ -47,7 +49,8 @@ body {
     left: 3%;
     overflow-y: scroll;
 }
-#setting{
+
+#setting {
     position: absolute;
     width: 270px;
     right: 0;
@@ -56,7 +59,8 @@ body {
     overflow-y: scroll;
     border: 2px solid #797e93;
 }
-#print_title{
+
+#print_title {
     position: relative;
     width: 255px;
     font-size: 15px;
@@ -65,7 +69,8 @@ body {
     margin-bottom: 10px;
 
 }
-#print_title2{
+
+#print_title2 {
     position: relative;
     width: 255px;
     font-size: 15px;
@@ -75,16 +80,8 @@ body {
 
 }
 
-#print_title_input{
-    position: relative;  
-    width: 240px;
-    font-size: 16px;
-    left: 15px;
-    margin-bottom: 10px;
-
-}
-#print_title_input2{
-    position: relative;  
+#print_title_input {
+    position: relative;
     width: 240px;
     font-size: 16px;
     left: 15px;
@@ -92,21 +89,52 @@ body {
 
 }
 
+#print_title_input2 {
+    position: relative;
+    width: 240px;
+    font-size: 16px;
+    left: 15px;
+    margin-bottom: 10px;
 
+}
+
+#info {
+    position: relative;
+    width: 240px;
+    font-size: 15px;
+    color: rgb(33 33 33 / 90%);
+    left: 15px;
+}
+
+#all_item {
+    position: relative;
+    width: 240px;
+    font-size: 14px;
+    left: 15px;
+}
+
+#all_item_input {
+    transform: scale(1.2); /* 放大checkbox到120% */
+}
+
+
+label{
+    color: rgb(33 33 33 / 90%);
+}
 input[type=text] {
-  /*width: 100%;*/
-  padding: 4px 8px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
+    /*width: 100%;*/
+    padding: 4px 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
 }
 
 /*#6e6f8f*/
 
-.item{
+.item {
     position: relative;
     width: 48%;
     height: 40vh;
@@ -117,7 +145,7 @@ input[type=text] {
 
 }
 
-.image{
+.image {
     position: absolute;
     height: 90%;
     top: 5%;
@@ -127,7 +155,7 @@ input[type=text] {
 
 }
 
-#pdf_btn{
+#pdf_btn {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -171,4 +199,57 @@ input[type=text] {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+#customTooltip {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: -35px;
+    background-color:#fff ; /* 背景顏色 */
+    color: #333; /* 文字顏色 */
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px; /* 字大小 */
+    white-space: nowrap;
+    pointer-events: none; /* 確保工具提示不會阻擋鼠標事件 */
+    border: 2px solid grey;
+}
+
+
+
+
+.gg-info {
+    box-sizing: border-box;
+    position: absolute;
+    display: block;
+    transform: scale(var(--ggs, 1));
+    width: 16px;
+    height: 16px;
+    border: 1px solid;
+    border-radius: 40px;
+    right: 0;
+    top: 0;
+}
+
+.gg-info::after,
+.gg-info::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 3px;
+    width: 2px;
+    background: currentColor;
+    left: 6px
+}
+
+.gg-info::after {
+    bottom: 2px;
+    height: 7px
+}
+
+.gg-info::before {
+    height: 2px;
+    top: 2px
 }

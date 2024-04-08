@@ -37,7 +37,7 @@ let itemList = []
 async function fetchItems() {
     const query = `
  query {
-    boards(ids:["${boardId}"]) {
+    boards(ids:[boardId]) {
     columns{
       id
       title
@@ -119,14 +119,37 @@ monday.listen("settings", res => {
 });
 
 
-monday.listen("context", res => {
-  console.log('context=',res)
-  boardId = res.data.boardId
-  console.log("boardid=",res.data.boardId);
-  //使用範例
-    filterItems(); 
-  // do Something
-})
+document.addEventListener('DOMContentLoaded', function() {
+    var infoIcon = document.querySelector('.gg-info');
+    var tooltip = document.getElementById('customTooltip');
+
+    infoIcon.addEventListener('mouseover', function(e) {
+        tooltip.style.display = 'block';
+        // tooltip.style.left = e.pageX + 'px';
+        // tooltip.style.top = e.pageY - 30 + 'px'; // 調整工具提示的位置
+        // tooltip.textContent = infoIcon.getAttribute('title');
+    });
+
+    infoIcon.addEventListener('mouseout', function() {
+        tooltip.style.display = 'none';
+    });
+
+
+    var checkbox = document.getElementById('all_item_input');
+
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            console.log('allitem is checked.');
+            // 在這裡添加你需要執行的代碼
+        } else {
+            console.log('allitem is unchecked.');
+            // 在這裡添加你需要執行的代碼
+        }
+    });
+
+
+});
+
 
 
 
