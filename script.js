@@ -72,7 +72,7 @@ async function fetchItems() {
 
 async function filterItems() {
     // 抓取項目
-    itemList = await fetchItems(boardId);
+    itemList = await fetchItems();
     console.log("itemList===", itemList)
 
     // 過濾項目
