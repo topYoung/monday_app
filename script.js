@@ -33,7 +33,7 @@ const headers = {
 
 let filterID = []
 let itemList = []
-
+let allData
 async function fetchItems() {
     const query = `
  query {
@@ -67,6 +67,9 @@ async function fetchItems() {
 
     // 返回查詢結果中的項目
     console.log("alldata=",response.data)
+    allData = response.data
+    createCheckbox()
+
     return response.data.boards[0].items_page.items;
 }
 
@@ -80,7 +83,11 @@ async function filterItems() {
 }
 
 
-
+function createCheckbox(){
+    const tmp = allData.boards[0].columns
+    console.log('tmp==',tmp)
+    console.log('len==',tmp.length)
+}
 
 // monday.listen(['filter'], (res) => {
 //     console.log("filter listen", res.data);
