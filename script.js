@@ -37,7 +37,7 @@ let itemList = []
 async function fetchItems() {
     const query = `
  query {
-    boards(ids:[boardId]) {
+    boards(ids:["${boardId}") {
     columns{
       id
       title
@@ -74,6 +74,7 @@ async function filterItems() {
     // 抓取項目
     itemList = await fetchItems(boardId);
     console.log("itemList===", itemList)
+    
     // 過濾項目
 
 }
@@ -113,10 +114,10 @@ monday.get("filter")
 
 
 
-monday.listen("settings", res => {
-    console.log("settings=", res.data);
-    // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
-});
+// monday.listen("settings", res => {
+//     console.log("settings=", res.data);
+//     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
+// });
 
 document.addEventListener('DOMContentLoaded', function() {
     var infoIcon = document.querySelector('.gg-info');
@@ -154,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
 monday.get('context').then(context => {
   console.log('context2=',context)
   boardId = context.data.boardId
-  console.log("boardid=",context.boardId);
+  console.log("boardid=",res.data.boardId);
   //使用範例
     filterItems();
 });
