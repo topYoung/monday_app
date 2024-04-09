@@ -82,11 +82,27 @@ async function filterItems() {
 
 }
 
-
+let  allCheckbox = []
 function createCheckbox(){
     const tmp = allData.boards[0].columns
     console.log('tmp==',tmp)
     console.log('len==',tmp.length)
+    for(let i=0;i<len;i++){
+        const id = tmp[i].id
+        if(id !="name" && id !="subitems"){
+            let x = document.createElement("INPUT");
+            x.setAttribute("type", "checkbox");
+            x.id = "checkbox_" + i 
+            x.className = 'checkbox_css'
+            allCheckbox.push(x)
+            let newlabel = document.createElement("Label");
+            newlabel.setAttribute("for","checkbox_" + i);
+            newlabel.innerHTML = tmp[i].title;
+            all_item.appendChild(x)
+            all_item.appendChild(newlabel)
+
+        }
+    }
 }
 
 // monday.listen(['filter'], (res) => {

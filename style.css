@@ -113,7 +113,7 @@ body {
     left: 15px;
 }
 
-#all_item_input {
+.checkbox_css {
     transform: scale(1.2); /* 放大checkbox到120% */
 }
 
