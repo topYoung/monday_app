@@ -87,6 +87,7 @@ function createCheckbox(){
     const tmp = allData.boards[0].columns
     console.log('tmp==',tmp)
     console.log('len==',tmp.length)
+    const len = tmp.length
     for(let i=0;i<len;i++){
         const id = tmp[i].id
         if(id !="name" && id !="subitems"){
