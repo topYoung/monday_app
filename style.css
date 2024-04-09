@@ -137,7 +137,7 @@ input[type=text] {
 
 /*#6e6f8f*/
 
-.item {
+.item_img {
     position: relative;
     width: 48%;
     height: 40vh;
@@ -148,6 +148,7 @@ input[type=text] {
 
 }
 
+
 .image {
     position: absolute;
     height: 90%;
@@ -156,6 +157,11 @@ input[type=text] {
     transform: translateX(-50%);
 
 
+}
+
+.item_culumn{
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 #pdf_btn {

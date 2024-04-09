@@ -88,13 +88,28 @@ function createCheckbox(){
     console.log('tmp==',tmp)
     console.log('len==',tmp.length)
     const len = tmp.length
+    let allDiv = document.createElement('div')
+    allDiv.className = "item_column"
+    let n = 0
+    let allInput = document.createElement("INPUT");
+            allInput.setAttribute("type", "checkbox");
+            allInput.id = "checkbox_all" 
+            allInput.className = 'checkbox_css'
+    let allLabel = document.createElement("Label");
+            allLabel.setAttribute("for","checkbox_" + i);
+            allLabel.innerHTML = "全部欄位";
+            allDiv.appendChild(allInput)
+            allDiv.appendChild(allLabel)
+            all_item.appendChild(allDiv)
     for(let i=0;i<len;i++){
         const id = tmp[i].id
         if(id !="name" && id !="subitems"){
+
             let div = document.createElement('div')
+            div.className = "item_column"
             let x = document.createElement("INPUT");
             x.setAttribute("type", "checkbox");
-            x.id = "checkbox_" + i 
+            x.id = "checkbox_" + n 
             x.className = 'checkbox_css'
             allCheckbox.push(x)
             let newlabel = document.createElement("Label");
@@ -103,6 +118,7 @@ function createCheckbox(){
             div.appendChild(x)
             div.appendChild(newlabel)
             all_item.appendChild(div)
+            n++
         }
     }
 }
