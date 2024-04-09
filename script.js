@@ -74,7 +74,7 @@ async function filterItems() {
     // 抓取項目
     itemList = await fetchItems(boardId);
     console.log("itemList===", itemList)
-    
+
     // 過濾項目
 
 }
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
 monday.get('context').then(context => {
   console.log('context2=',context)
   boardId = context.data.boardId
-  console.log("boardid=",res.data.boardId);
+  console.log("boardid=",context.data.boardId);
   //使用範例
     filterItems();
 });
