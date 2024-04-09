@@ -118,7 +118,6 @@ monday.listen("settings", res => {
     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
 });
 
-
 document.addEventListener('DOMContentLoaded', function() {
     var infoIcon = document.querySelector('.gg-info');
     var tooltip = document.getElementById('customTooltip');
@@ -133,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
     infoIcon.addEventListener('mouseout', function() {
         tooltip.style.display = 'none';
     });
-
 
     var checkbox = document.getElementById('all_item_input');
 
