@@ -123,6 +123,7 @@ body {
 
 label{
     color: rgb(33 33 33 / 90%);
+    margin-left: 10px;
 }
 input[type=text] {
     /*width: 100%;*/
