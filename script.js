@@ -96,7 +96,7 @@ function createCheckbox(){
             allInput.id = "checkbox_all" 
             allInput.className = 'checkbox_css'
     let allLabel = document.createElement("Label");
-            allLabel.setAttribute("for","checkbox_" + i);
+            allLabel.setAttribute("for","checkbox_all");
             allLabel.innerHTML = "全部欄位";
             allDiv.appendChild(allInput)
             allDiv.appendChild(allLabel)
