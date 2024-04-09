@@ -91,6 +91,7 @@ function createCheckbox(){
     for(let i=0;i<len;i++){
         const id = tmp[i].id
         if(id !="name" && id !="subitems"){
+            let div = document.createElement('div')
             let x = document.createElement("INPUT");
             x.setAttribute("type", "checkbox");
             x.id = "checkbox_" + i 
@@ -99,9 +100,9 @@ function createCheckbox(){
             let newlabel = document.createElement("Label");
             newlabel.setAttribute("for","checkbox_" + i);
             newlabel.innerHTML = tmp[i].title;
-            all_item.appendChild(x)
-            all_item.appendChild(newlabel)
-
+            div.appendChild(x)
+            div.appendChild(newlabel)
+            all_item.appendChild(div)
         }
     }
 }
