@@ -150,12 +150,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+monday.listen("context", res => {
+  console.log('context=',res)
+  boardId = res.data.boardId
+  console.log("boardid111=",res.data.boardId);
+  //使用範例
+    filterItems(); 
+  // do Something
+})
 
-
-monday.get('context').then(context => {
-  console.log('context2=',context)
-  boardId = context.data.boardId
-  console.log("boardid=",context.data.boardId);
+monday.get('context').then(res => {
+  console.log('context2=',res)
+  boardId = res.data.boardId
+  console.log("boardid=",res.data.boardId);
   //使用範例
     filterItems();
 });
