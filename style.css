@@ -109,8 +109,12 @@ body {
 #all_item {
     position: relative;
     width: 240px;
+    height: 60vh;
     font-size: 14px;
     left: 15px;
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column;
 }
 
 .checkbox_css {
