@@ -137,6 +137,9 @@ function createCheckbox(){
             }
         } else {
             console.log('allitem is unchecked.');
+            for(let j=0;j<allCheckbox.length;j++){
+                allCheckbox[j].checked = false
+            }
             // 在這裡添加你需要執行的代碼
         }
     });
