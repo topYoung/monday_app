@@ -34,6 +34,8 @@ const headers = {
 let filterID = []
 let itemList = []
 let allData
+let columnNum = 0
+let oldColumn = 'none'
 async function fetchItems() {
     const query = `
  query {
@@ -144,8 +146,20 @@ function createCheckbox(){
         }
     });
 
+   
+    
+
 }
 
+ print_title_input.addEventListener('input', () => {
+        // console.log(print_title_input.value); // 在輸入框中輸入文字時，即時輸出該文字
+        title.innerHTML = print_title_input.value
+    });
+
+ print_title_input2.addEventListener('input', () => {
+        // console.log(print_title_input.value); // 在輸入框中輸入文字時，即時輸出該文字
+        subTitle.innerHTML = print_title_input2.value
+    });
 // monday.listen(['filter'], (res) => {
 //     console.log("filter listen", res.data);
 // });
@@ -184,8 +198,8 @@ monday.get("filter")
 // });
 
 document.addEventListener('DOMContentLoaded', function() {
-    var infoIcon = document.querySelector('.gg-info');
-    var tooltip = document.getElementById('customTooltip');
+    let infoIcon = document.querySelector('.gg-info');
+    let tooltip = document.getElementById('customTooltip');
 
     infoIcon.addEventListener('mouseover', function(e) {
         tooltip.style.display = 'block';
@@ -198,7 +212,63 @@ document.addEventListener('DOMContentLoaded', function() {
         tooltip.style.display = 'none';
     });
 
+    column_num1.onclick = function(){
+        
+        if(columnNum != 1){
+            resetColumn()
+            columnNum = 1
+            column_num1.style.backgroundColor = 'lightblue'
+            oldColumn = column_num1
+        }else{
+            column_num1.style.backgroundColor = ''
+            columnNum = 0
+            oldColumn = 'none'
+        }
+        
+    }
 
+    column_num2.onclick = function(){
+        
+        if(columnNum != 2){
+            resetColumn()
+            columnNum = 2
+            column_num2.style.backgroundColor = 'lightblue'
+            oldColumn = column_num2
+        }else{
+            column_num2.style.backgroundColor = ''
+            columnNum = 0
+            oldColumn = 'none'
+        }
+        
+    }
+    column_num3.onclick = function(){
+        
+        if(columnNum != 3){
+            resetColumn()
+            columnNum = 3
+            column_num3.style.backgroundColor = 'lightblue'
+            oldColumn = column_num3
+        }else{
+            column_num3.style.backgroundColor = ''
+            columnNum = 0
+            oldColumn = 'none'
+        }
+        
+    }
+    column_num4.onclick = function(){
+        
+        if(columnNum != 4){
+            resetColumn()
+            columnNum = 4
+            column_num4.style.backgroundColor = 'lightblue'
+            oldColumn = column_num4
+        }else{
+            column_num4.style.backgroundColor = ''
+            columnNum = 0
+            oldColumn = 'none'
+        }
+        
+    }
     // var checkbox = document.getElementById('all_item_input');
 
     // checkbox.addEventListener('change', function() {
@@ -214,6 +284,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+function resetColumn(){
+    if(oldColumn != 'none'){
+        oldColumn.style.backgroundColor = ''
+        // oldColumn = "none"
+        // columnNum = 0
+    }
+}
 
 // monday.listen("context", res => {
 //   console.log('context=',res)
