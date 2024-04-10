@@ -133,7 +133,7 @@ function createCheckbox(){
             // console.log('allitem is checked.');
             // 在這裡添加你需要執行的代碼
             for(let j=0;j<allCheckbox.length;j++){
-                allCheckbox.checked = true
+                allCheckbox[j].checked = true
             }
         } else {
             console.log('allitem is unchecked.');
