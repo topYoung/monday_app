@@ -101,6 +101,9 @@ function createCheckbox(){
             allDiv.appendChild(allInput)
             allDiv.appendChild(allLabel)
             all_item.appendChild(allDiv)
+
+
+
     for(let i=0;i<len;i++){
         const id = tmp[i].id
         if(id !="name" && id !="subitems"){
@@ -118,9 +121,26 @@ function createCheckbox(){
             div.appendChild(x)
             div.appendChild(newlabel)
             all_item.appendChild(div)
+
+
             n++
         }
     }
+
+    allInput.addEventListener('change', function() {
+        if (this.checked) {
+            console.log("this=",this)
+            // console.log('allitem is checked.');
+            // 在這裡添加你需要執行的代碼
+            for(let j=0;j<allCheckbox.length;j++){
+                allCheckbox.checked = true
+            }
+        } else {
+            console.log('allitem is unchecked.');
+            // 在這裡添加你需要執行的代碼
+        }
+    });
+
 }
 
 // monday.listen(['filter'], (res) => {
@@ -175,17 +195,18 @@ document.addEventListener('DOMContentLoaded', function() {
         tooltip.style.display = 'none';
     });
 
-    var checkbox = document.getElementById('all_item_input');
 
-    checkbox.addEventListener('change', function() {
-        if (this.checked) {
-            console.log('allitem is checked.');
-            // 在這裡添加你需要執行的代碼
-        } else {
-            console.log('allitem is unchecked.');
-            // 在這裡添加你需要執行的代碼
-        }
-    });
+    // var checkbox = document.getElementById('all_item_input');
+
+    // checkbox.addEventListener('change', function() {
+    //     if (this.checked) {
+    //         console.log('allitem is checked.');
+    //         // 在這裡添加你需要執行的代碼
+    //     } else {
+    //         console.log('allitem is unchecked.');
+    //         // 在這裡添加你需要執行的代碼
+    //     }
+    // });
 
 
 });
