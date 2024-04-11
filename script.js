@@ -84,7 +84,7 @@ async function filterItems() {
     // 抓取項目
     itemList = await fetchItems();
     console.log("itemList===", itemList)
-
+    createImage()
     // 過濾項目
 
 }
@@ -187,7 +187,7 @@ monday.listen("itemIds", (res) => {
     // if (equal == false) {
         filterID = res.data
         console.log("newFilterId=", filterID)
-        createImage()
+        
     // }
 
     // [12345, 12346, 12347]
