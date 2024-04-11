@@ -223,6 +223,8 @@ function getOne(index){
     one = []
     let tmp = ''
     for(let i=0;i<len;i++){
+        console.log('index=',Number(index))
+        console.log('id==',Number(itemList[i].id))
         if(Number(index) == Number(itemList[i].id)){
             tmp = itemList[i].column_values
             break; 
