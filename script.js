@@ -236,7 +236,7 @@ function getOne(index){
             console.log('file==',file)
             let imgList = file.split(',')
             if(imgList.length > 0){
-                for (let i=0;i<imgList.length,i++) {
+                for (let i=0;i<imgList.length;i++) {
                     const img = imgList[i].split('.')
                     console.log("img=",img)
                     if(img.length > 0){
