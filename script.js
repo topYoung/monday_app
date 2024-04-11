@@ -233,8 +233,8 @@ function getOne(index){
 
     console.log("column_values=",tmp)
     for(let j=0;j<tmp.length;j++){
-        if(tmp.id == "files"){
-            const file = tmp.text
+        if(tmp[j].id == "files"){
+            const file = tmp[j].text
             console.log('file==',file)
             let imgList = file.split(',')
             if(imgList.length > 0){
@@ -248,7 +248,7 @@ function getOne(index){
                     }  
                 }
             }
-            // break
+            break
         }
     }
     return one
