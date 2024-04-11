@@ -248,7 +248,7 @@ function getOne(index){
                     }  
                 }
             }
-            break
+            // break
         }
     }
     return one
