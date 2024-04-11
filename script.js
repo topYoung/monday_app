@@ -3,7 +3,9 @@
 // let query = 'query { boards(ids: 6292532342 limit: 10) { columns{id title} items_page{ items{ name column_values{ id text value }}}}}';
 
 const getResult = function(a1, a2) {
-    var i = a1.length;
+    let  i = a1.length;
+    console.log("i=",i)
+    console.log("a2.length=",a2.length)
     if (i != a2.length) return false;
 
     while (i--) {
@@ -30,11 +32,14 @@ const headers = {
     'Authorization': apiKey,
     'Content-Type': 'application/json'
 };
+let oldBoardId = localStorage.getItem("boardid")
+// console.log('oldBoardId=',oldBoardId)
+// console.log(oldBoardId == null)
 
 let filterID = []
 let itemList = []
 let allData
-let columnNum = 0
+let columnNum = 2
 let oldColumn = 'none'
 async function fetchItems() {
     const query = `
@@ -176,13 +181,14 @@ monday.listen('filter', (res) => {
 
 
 monday.listen("itemIds", (res) => {
-    console.log("data=", res.data);
+    // console.log("data=", res.data);
     const equal = getResult(res.data, filterID)
-    console.log('equal==', equal)
-    if (equal == false) {
+    // console.log('equal==', equal)
+    // if (equal == false) {
         filterID = res.data
         console.log("newFilterId=", filterID)
-    }
+        createImage()
+    // }
 
     // [12345, 12346, 12347]
 });
@@ -197,10 +203,60 @@ monday.get("filter")
 //     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
 // });
 
+function createImage(){
+    const len = filterID.length
+    let allImg = []
+    for(let i=0;i<len;i++){
+        const one = getOne(filterID[i])
+        console.log("one==",one)
+        if(one.lnegth > 0){
+            for(let j=0;j<one.length;j++){
+                allImg.push(one[j])
+            }
+        }
+    }
+    console.log('allImg=',allImg)
+}
+
+function getOne(index){
+    const len = itemList.length
+    one = []
+    let tmp = ''
+    for(let i=0;i<len;i++){
+        if(Number(index) == Number(itemList[i].id)){
+            tmp = itemList[i].column_values
+            break; 
+        }
+    }
+
+    console.log("column_values=",tmp)
+    for(let j=0;j<tmp.length;j++){
+        if(tmp.id == "files"){
+            const file = tmp.text
+            console.log('file==',file)
+            let imgList = file.split(',')
+            if(imgList.length > 0){
+                for (let i=0;i<imgList.length,i++) {
+                    const img = imgList[i].split('.')
+                    console.log("img=",img)
+                    if(img.length > 0){
+                        if(img[img.length-1] == 'jpg' || img[img.length-1] == 'png' || img[img.length-1] == 'jpeg'){
+                            one.push(imgList[i])
+                        }
+                    }  
+                }
+            }
+            break
+        }
+    }
+    return one
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     let infoIcon = document.querySelector('.gg-info');
     let tooltip = document.getElementById('customTooltip');
-
+    oldColumn = column_num2
+    column_num2.style.backgroundColor = 'lightblue'
     infoIcon.addEventListener('mouseover', function(e) {
         tooltip.style.display = 'block';
         // tooltip.style.left = e.pageX + 'px';
