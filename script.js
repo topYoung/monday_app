@@ -209,7 +209,7 @@ function createImage(){
     for(let i=0;i<len;i++){
         const one = getOne(filterID[i])
         console.log("one==",one)
-        if(one.lnegth > 0){
+        if(one.length > 0){
             for(let j=0;j<one.length;j++){
                 allImg.push(one[j])
             }
