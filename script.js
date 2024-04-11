@@ -216,6 +216,34 @@ function createImage(){
         }
     }
     console.log('allImg=',allImg)
+    for(let k =0;k<allImg.length;k++){
+        let div = document.createElement('div')
+        let div2 = document.createElement('div')
+        let img = document.createElement('img')
+
+        div.id = "img_div_" + k
+        img.id = "img_" + k
+       
+
+        if(columnNum == 1){
+            div.className = 'item_img1'
+        }
+        if(columnNum == 2){
+            div.className = 'item_img2'
+        }
+        if(columnNum == 3){
+            div.className = 'item_img3'
+        }
+        if(columnNum == 4){
+            div.className = 'item_img4'
+        }
+        div2.className = 'imgage_box'
+        img.src = allImg[k]
+        img.className = "image"
+        div.appendChild(div2)
+        div2.appendChild(img)
+        content.appendChild(div)
+    }
 }
 
 function getOne(index){
