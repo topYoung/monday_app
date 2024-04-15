@@ -97,7 +97,7 @@ function createCheckbox(){
     const len = tmp.length
     let allDiv = document.createElement('div')
     allDiv.className = "item_column"
-    let n = 0
+    // let n = 0
     let allInput = document.createElement("INPUT");
             allInput.setAttribute("type", "checkbox");
             allInput.id = "checkbox_all" 
@@ -113,13 +113,13 @@ function createCheckbox(){
 
     for(let i=0;i<len;i++){
         const id = tmp[i].id
-        if(id !="name" && id !="subitems"){
+        // if(id !="name" && id !="subitems"){
 
             let div = document.createElement('div')
             div.className = "item_column"
             let x = document.createElement("INPUT");
             x.setAttribute("type", "checkbox");
-            x.id = "checkbox_" + n 
+            x.id = "checkbox_" + i
             x.className = 'checkbox_css'
             allCheckbox.push(x)
             let newlabel = document.createElement("Label");
@@ -130,8 +130,8 @@ function createCheckbox(){
             all_item.appendChild(div)
 
 
-            n++
-        }
+            // n++
+        // }
     }
 
     allInput.addEventListener('change', function() {
@@ -463,7 +463,8 @@ monday.get('context').then(res => {
 //a4 : 72解析度 595/842
 
 function generatePDF() {
-    loader.style.visibility = 'visible'
+    trans.style.visibility = 'visible'
+    const element = document.getElementById('app')
     let doc = new jsPDF();
     html2canvas(element).then(function(canvas) {
         var imgData = canvas.toDataURL('image/png');
@@ -487,6 +488,6 @@ function generatePDF() {
         }
         doc.save('sample.pdf');
     });
-
+    trans.style.visibility = 'hidden'
 }
 
