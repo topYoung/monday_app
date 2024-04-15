@@ -326,8 +326,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (columnNum != 1) {
             oldNum = columnNum
-            resetColumn()
+            
             columnNum = 1
+            resetColumn()
             column_num1.style.backgroundColor = 'lightblue'
             oldColumn = column_num1
 
@@ -343,8 +344,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (columnNum != 2) {
             oldNum = columnNum
-            resetColumn()
+           
             columnNum = 2
+             resetColumn()
             column_num2.style.backgroundColor = 'lightblue'
             oldColumn = column_num2
         } else {
@@ -358,8 +360,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (columnNum != 3) {
             oldNum = columnNum
-            resetColumn()
+
             columnNum = 3
+            resetColumn()
+             
             column_num3.style.backgroundColor = 'lightblue'
             oldColumn = column_num3
         } else {
@@ -373,8 +377,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (columnNum != 4) {
             oldNum = columnNum
-            resetColumn()
+            
             columnNum = 4
+            resetColumn()
             column_num4.style.backgroundColor = 'lightblue'
             oldColumn = column_num4
         } else {
