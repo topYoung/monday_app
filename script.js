@@ -255,9 +255,9 @@ function createImage(){
             const rate = h/w
             const rate1 = h1/w1
             if(rate > rate1){
-                img.stye.height = "100%"
+                img.style.height = "100%"
             }else{
-                img.stye.width = "100%"
+                img.style.width = "100%"
                 // const dh = h1 - 
             }
             // console.log("w=",w)
