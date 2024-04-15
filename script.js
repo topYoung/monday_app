@@ -3,9 +3,9 @@
 // let query = 'query { boards(ids: 6292532342 limit: 10) { columns{id title} items_page{ items{ name column_values{ id text value }}}}}';
 
 const getResult = function(a1, a2) {
-    let  i = a1.length;
-    console.log("i=",i)
-    console.log("a2.length=",a2.length)
+    let i = a1.length;
+    console.log("i=", i)
+    console.log("a2.length=", a2.length)
     if (i != a2.length) return false;
 
     while (i--) {
@@ -22,7 +22,7 @@ const monday = window.mondaySdk();
 const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjMzNTg4OTE2MCwiYWFpIjoxMSwidWlkIjo1NzQ0NDIwOSwiaWFkIjoiMjAyNC0wMy0yMVQwMjo0MDoyNS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTIyNjMxODUsInJnbiI6InVzZTEifQ.TWvpOEhzwOTH5TeoaFeIbkUJAMSIWBytryEIH4cUrEw';
 
 // 你想要抓取的board ID
-let boardId 
+let boardId
 
 // 設定API請求的URL
 const url = 'https://api.monday.com/v2';
@@ -73,7 +73,7 @@ async function fetchItems() {
     }
 
     // 返回查詢結果中的項目
-    console.log("alldata=",response.data)
+    console.log("alldata=", response.data)
     allData = response.data
     createCheckbox()
 
@@ -89,82 +89,83 @@ async function filterItems() {
 
 }
 
-let  allCheckbox = []
-function createCheckbox(){
+let allCheckbox = []
+
+function createCheckbox() {
     const tmp = allData.boards[0].columns
-    console.log('tmp==',tmp)
-    console.log('len==',tmp.length)
+    console.log('tmp==', tmp)
+    console.log('len==', tmp.length)
     const len = tmp.length
     let allDiv = document.createElement('div')
     allDiv.className = "item_column"
     // let n = 0
     let allInput = document.createElement("INPUT");
-            allInput.setAttribute("type", "checkbox");
-            allInput.id = "checkbox_all" 
-            allInput.className = 'checkbox_css'
+    allInput.setAttribute("type", "checkbox");
+    allInput.id = "checkbox_all"
+    allInput.className = 'checkbox_css'
     let allLabel = document.createElement("Label");
-            allLabel.setAttribute("for","checkbox_all");
-            allLabel.innerHTML = "全部欄位";
-            allDiv.appendChild(allInput)
-            allDiv.appendChild(allLabel)
-            all_item.appendChild(allDiv)
+    allLabel.setAttribute("for", "checkbox_all");
+    allLabel.innerHTML = "全部欄位";
+    allDiv.appendChild(allInput)
+    allDiv.appendChild(allLabel)
+    all_item.appendChild(allDiv)
 
 
 
-    for(let i=0;i<len;i++){
+    for (let i = 0; i < len; i++) {
         const id = tmp[i].id
         // if(id !="name" && id !="subitems"){
 
-            let div = document.createElement('div')
-            div.className = "item_column"
-            let x = document.createElement("INPUT");
-            x.setAttribute("type", "checkbox");
-            x.id = "checkbox_" + i
-            x.className = 'checkbox_css'
-            allCheckbox.push(x)
-            let newlabel = document.createElement("Label");
-            newlabel.setAttribute("for","checkbox_" + i);
-            newlabel.innerHTML = tmp[i].title;
-            div.appendChild(x)
-            div.appendChild(newlabel)
-            all_item.appendChild(div)
+        let div = document.createElement('div')
+        div.className = "item_column"
+        let x = document.createElement("INPUT");
+        x.setAttribute("type", "checkbox");
+        x.id = "checkbox_" + i
+        x.className = 'checkbox_css'
+        allCheckbox.push(x)
+        let newlabel = document.createElement("Label");
+        newlabel.setAttribute("for", "checkbox_" + i);
+        newlabel.innerHTML = tmp[i].title;
+        div.appendChild(x)
+        div.appendChild(newlabel)
+        all_item.appendChild(div)
 
 
-            // n++
+        // n++
         // }
     }
 
     allInput.addEventListener('change', function() {
         if (this.checked) {
-            console.log("this=",this)
+            console.log("this=", this)
             // console.log('allitem is checked.');
             // 在這裡添加你需要執行的代碼
-            for(let j=0;j<allCheckbox.length;j++){
+            for (let j = 0; j < allCheckbox.length; j++) {
                 allCheckbox[j].checked = true
             }
         } else {
             console.log('allitem is unchecked.');
-            for(let j=0;j<allCheckbox.length;j++){
+            for (let j = 0; j < allCheckbox.length; j++) {
                 allCheckbox[j].checked = false
             }
             // 在這裡添加你需要執行的代碼
         }
     });
 
-   
-    
+
+
 
 }
 
- print_title_input.addEventListener('input', () => {
-        // console.log(print_title_input.value); // 在輸入框中輸入文字時，即時輸出該文字
-        title.innerHTML = print_title_input.value
-    });
+print_title_input.addEventListener('input', () => {
+    // console.log(print_title_input.value); // 在輸入框中輸入文字時，即時輸出該文字
+    title.innerHTML = print_title_input.value
+});
 
- print_title_input2.addEventListener('input', () => {
-        // console.log(print_title_input.value); // 在輸入框中輸入文字時，即時輸出該文字
-        subTitle.innerHTML = print_title_input2.value
-    });
+print_title_input2.addEventListener('input', () => {
+    // console.log(print_title_input.value); // 在輸入框中輸入文字時，即時輸出該文字
+    subTitle.innerHTML = print_title_input2.value
+});
 // monday.listen(['filter'], (res) => {
 //     console.log("filter listen", res.data);
 // });
@@ -185,9 +186,9 @@ monday.listen("itemIds", (res) => {
     const equal = getResult(res.data, filterID)
     // console.log('equal==', equal)
     // if (equal == false) {
-        filterID = res.data
-        console.log("newFilterId=", filterID)
-        
+    filterID = res.data
+    console.log("newFilterId=", filterID)
+
     // }
 
     // [12345, 12346, 12347]
@@ -203,20 +204,20 @@ monday.get("filter")
 //     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
 // });
 
-function createImage(){
+function createImage() {
     const len = filterID.length
     let allImg = []
-    for(let i=0;i<len;i++){
+    for (let i = 0; i < len; i++) {
         const one = getOne(filterID[i])
-        console.log("one==",one)
-        if(one.length > 0){
-            for(let j=0;j<one.length;j++){
+        console.log("one==", one)
+        if (one.length > 0) {
+            for (let j = 0; j < one.length; j++) {
                 allImg.push(one[j])
             }
         }
     }
-    console.log('allImg=',allImg)
-    for(let k =0;k<allImg.length;k++){
+    console.log('allImg=', allImg)
+    for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
         let div2 = document.createElement('div')
         let div3 = document.createElement('div')
@@ -224,18 +225,18 @@ function createImage(){
 
         div.id = "img_div_" + k
         img.id = "img_" + k
-       
 
-        if(columnNum == 1){
+
+        if (columnNum == 1) {
             div.className = 'item_img1'
         }
-        if(columnNum == 2){
+        if (columnNum == 2) {
             div.className = 'item_img2'
         }
-        if(columnNum == 3){
+        if (columnNum == 3) {
             div.className = 'item_img3'
         }
-        if(columnNum == 4){
+        if (columnNum == 4) {
             div.className = 'item_img4'
         }
         div2.className = 'image_box'
@@ -247,16 +248,16 @@ function createImage(){
         div.appendChild(div3)
         div2.appendChild(img)
         content.appendChild(div)
-        img.onload = function(){
+        img.onload = function() {
             const w = img.offsetWidth
             const h = img.offsetHeight
             const w1 = div2.offsetWidth
             const h1 = div2.offsetHeight
-            const rate = h/w
-            const rate1 = h1/w1
-            if(rate > rate1){
+            const rate = h / w
+            const rate1 = h1 / w1
+            if (rate > rate1) {
                 img.style.height = "100%"
-            }else{
+            } else {
                 img.style.width = "100%"
                 // const dh = h1 - 
             }
@@ -268,34 +269,34 @@ function createImage(){
     }
 }
 
-function getOne(index){
+function getOne(index) {
     const len = itemList.length
     one = []
     let tmp = ''
-    for(let i=0;i<len;i++){
-        console.log('index=',Number(index))
-        console.log('id==',Number(itemList[i].id))
-        if(Number(index) == Number(itemList[i].id)){
+    for (let i = 0; i < len; i++) {
+        console.log('index=', Number(index))
+        console.log('id==', Number(itemList[i].id))
+        if (Number(index) == Number(itemList[i].id)) {
             tmp = itemList[i].column_values
-            break; 
+            break;
         }
     }
 
-    console.log("column_values=",tmp)
-    for(let j=0;j<tmp.length;j++){
-        if(tmp[j].id == "files"){
+    console.log("column_values=", tmp)
+    for (let j = 0; j < tmp.length; j++) {
+        if (tmp[j].id == "files") {
             const file = tmp[j].text
-            console.log('file==',file)
+            console.log('file==', file)
             let imgList = file.split(',')
-            if(imgList.length > 0){
-                for (let i=0;i<imgList.length;i++) {
+            if (imgList.length > 0) {
+                for (let i = 0; i < imgList.length; i++) {
                     const img = imgList[i].split('.')
-                    console.log("img=",img)
-                    if(img.length > 0){
-                        if(img[img.length-1] == 'jpg' || img[img.length-1] == 'png' || img[img.length-1] == 'jpeg'){
+                    console.log("img=", img)
+                    if (img.length > 0) {
+                        if (img[img.length - 1] == 'jpg' || img[img.length - 1] == 'png' || img[img.length - 1] == 'jpeg') {
                             one.push(imgList[i])
                         }
-                    }  
+                    }
                 }
             }
             break
@@ -304,6 +305,7 @@ function getOne(index){
     return one
 }
 
+let oldNum = 0
 document.addEventListener('DOMContentLoaded', function() {
     let infoIcon = document.querySelector('.gg-info');
     let tooltip = document.getElementById('customTooltip');
@@ -320,62 +322,67 @@ document.addEventListener('DOMContentLoaded', function() {
         tooltip.style.display = 'none';
     });
 
-    column_num1.onclick = function(){
-        
-        if(columnNum != 1){
+    column_num1.onclick = function() {
+
+        if (columnNum != 1) {
+            oldNum = columnNum
             resetColumn()
             columnNum = 1
             column_num1.style.backgroundColor = 'lightblue'
             oldColumn = column_num1
-        }else{
+
+        } else {
             column_num1.style.backgroundColor = ''
             columnNum = 0
             oldColumn = 'none'
         }
-        
+
     }
 
-    column_num2.onclick = function(){
-        
-        if(columnNum != 2){
+    column_num2.onclick = function() {
+
+        if (columnNum != 2) {
+            oldNum = columnNum
             resetColumn()
             columnNum = 2
             column_num2.style.backgroundColor = 'lightblue'
             oldColumn = column_num2
-        }else{
+        } else {
             column_num2.style.backgroundColor = ''
             columnNum = 0
             oldColumn = 'none'
         }
-        
+
     }
-    column_num3.onclick = function(){
-        
-        if(columnNum != 3){
+    column_num3.onclick = function() {
+
+        if (columnNum != 3) {
+            oldNum = columnNum
             resetColumn()
             columnNum = 3
             column_num3.style.backgroundColor = 'lightblue'
             oldColumn = column_num3
-        }else{
+        } else {
             column_num3.style.backgroundColor = ''
             columnNum = 0
             oldColumn = 'none'
         }
-        
+
     }
-    column_num4.onclick = function(){
-        
-        if(columnNum != 4){
+    column_num4.onclick = function() {
+
+        if (columnNum != 4) {
+            oldNum = columnNum
             resetColumn()
             columnNum = 4
             column_num4.style.backgroundColor = 'lightblue'
             oldColumn = column_num4
-        }else{
+        } else {
             column_num4.style.backgroundColor = ''
             columnNum = 0
             oldColumn = 'none'
         }
-        
+
     }
     // var checkbox = document.getElementById('all_item_input');
 
@@ -392,9 +399,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-function resetColumn(){
-    if(oldColumn != 'none'){
+function resetColumn() {
+    if (oldColumn != 'none') {
         oldColumn.style.backgroundColor = ''
+
+        for (let k = 0; k < allImg.length; k++) {
+            let div = document.getElementById("img_div_" + k)
+            if(oldNum == 1){
+                div.classList.remove("item_img1")
+            }
+            if(oldNum == 2){
+                div.classList.remove("item_img2")
+            }
+            if(oldNum == 3){
+                div.classList.remove("item_img3")
+            }
+            if(oldNum == 4){
+                div.classList.remove("item_img4")
+            }
+            if(columnNum == 1){
+                div.className = "item_img1"
+                oldNum = 1
+            }
+            if(columnNum == 2){
+                div.className = "item_img2"
+                oldNum = 2
+            }
+            if(columnNum == 3){
+                div.className = "item_img3"
+                oldNum = 3
+            }
+            if(columnNum == 4){
+                div.className = "item_img4"
+                oldNum = 4
+            }
+            
+        }
         // oldColumn = "none"
         // columnNum = 0
     }
@@ -410,10 +450,10 @@ function resetColumn(){
 // })
 
 monday.get('context').then(res => {
-  console.log('context2=',res)
-  boardId = res.data.boardId
-  console.log("boardid=",res.data.boardId);
-  //使用範例
+    console.log('context2=', res)
+    boardId = res.data.boardId
+    console.log("boardid=", res.data.boardId);
+    //使用範例
     filterItems();
 });
 
@@ -490,4 +530,3 @@ function generatePDF() {
     });
     trans.style.visibility = 'hidden'
 }
-
