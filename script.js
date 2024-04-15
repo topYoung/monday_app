@@ -203,10 +203,10 @@ monday.get("filter")
 //     console.log("settings=", res.data);
 //     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
 // });
-
+let allImg = []
 function createImage() {
     const len = filterID.length
-    let allImg = []
+    
     for (let i = 0; i < len; i++) {
         const one = getOne(filterID[i])
         console.log("one==", one)
