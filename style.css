@@ -197,6 +197,7 @@ input[type=text] {
     position: relative;
     width: 96%;
     height: 40vh;
+    
     margin-left: 2%;
     margin-bottom: 0.7vw;
     border: 1px solid black;
@@ -207,6 +208,7 @@ input[type=text] {
     position: relative;
     width: 48%;
     height: 40vh;
+    
     margin-left: 1%;
     margin-bottom: 0.7vw;
     border: 1px solid black;
@@ -218,6 +220,7 @@ input[type=text] {
     position: relative;
     width: 32%;
     height: 40vh;
+
     margin-left: 1.3%;
     margin-bottom: 0.7vw;
     border: 1px solid black;
@@ -243,16 +246,23 @@ input[type=text] {
     width: 70%;
     top: 5px;
     left: 5px;
-    background-color: lightcyan;
+    background-color: cyan;
     /*transform: translateX(-50%);*/
 
 
 }
 
+.image_box_right{
+    position: absolute;
+    height: calc(100% - 10px);
+    width: 30%;
+    top: 5px;
+    right: 0;
+}
 
 .image{
     position: absolute;
-    height: 100%;
+    /*height: 100%;*/
     top: 0;
     left: 50%;
     transform: translateX(-50%);

@@ -219,6 +219,7 @@ function createImage(){
     for(let k =0;k<allImg.length;k++){
         let div = document.createElement('div')
         let div2 = document.createElement('div')
+        let div3 = document.createElement('div')
         let img = document.createElement('img')
 
         div.id = "img_div_" + k
@@ -238,9 +239,21 @@ function createImage(){
             div.className = 'item_img4'
         }
         div2.className = 'image_box'
+        div3.className = 'image_box_right'
         img.src = allImg[k]
         img.className = "image"
+        img.onload = function(){
+            const w = img.offsetWidth
+            const h = img.offsetHeigh
+            const w1 = div2.offsetWidth
+            const h1 = div2.offsetHeigh
+            console.log("w=",w)
+            console.log("w1=",w1)
+            console.log("h=",h)
+            console.log("h1=",h1)
+        }
         div.appendChild(div2)
+        div.appendChild(div3)
         div2.appendChild(img)
         content.appendChild(div)
     }
