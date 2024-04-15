@@ -237,7 +237,7 @@ function createImage(){
         if(columnNum == 4){
             div.className = 'item_img4'
         }
-        div2.className = 'imgage_box'
+        div2.className = 'image_box'
         img.src = allImg[k]
         img.className = "image"
         div.appendChild(div2)
