@@ -249,13 +249,21 @@ function createImage(){
         content.appendChild(div)
         img.onload = function(){
             const w = img.offsetWidth
-            const h = img.offsetHeigh
+            const h = img.offsetHeight
             const w1 = div2.offsetWidth
-            const h1 = div2.offsetHeigh
-            console.log("w=",w)
-            console.log("w1=",w1)
-            console.log("h=",h)
-            console.log("h1=",h1)
+            const h1 = div2.offsetHeight
+            const rate = h/w
+            const rate1 = h1/w1
+            if(rate > rate1){
+                img.stye.height = "100%"
+            }else{
+                img.stye.width = "100%"
+                // const dh = h1 - 
+            }
+            // console.log("w=",w)
+            // console.log("w1=",w1)
+            // console.log("h=",h)
+            // console.log("h1=",h1)
         }
     }
 }

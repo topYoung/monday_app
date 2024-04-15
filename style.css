@@ -265,7 +265,9 @@ input[type=text] {
     /*height: 100%;*/
     top: 0;
     left: 50%;
-    transform: translateX(-50%);
+    top:50%;
+    transform: translate(-50%);
+
 }
 
 .item_column{
