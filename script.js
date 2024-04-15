@@ -305,7 +305,7 @@ function getOne(index) {
     return one
 }
 
-let oldNum = 0
+let oldNum = 2
 document.addEventListener('DOMContentLoaded', function() {
     let infoIcon = document.querySelector('.gg-info');
     let tooltip = document.getElementById('customTooltip');
