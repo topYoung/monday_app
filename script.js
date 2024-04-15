@@ -242,6 +242,11 @@ function createImage(){
         div3.className = 'image_box_right'
         img.src = allImg[k]
         img.className = "image"
+
+        div.appendChild(div2)
+        div.appendChild(div3)
+        div2.appendChild(img)
+        content.appendChild(div)
         img.onload = function(){
             const w = img.offsetWidth
             const h = img.offsetHeigh
@@ -252,10 +257,6 @@ function createImage(){
             console.log("h=",h)
             console.log("h1=",h1)
         }
-        div.appendChild(div2)
-        div.appendChild(div3)
-        div2.appendChild(img)
-        content.appendChild(div)
     }
 }
 
