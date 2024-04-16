@@ -509,18 +509,31 @@ monday.get('context').then(res => {
 //a4 : 72解析度 595/842
 
 function generatePDF() {
-    // trans.style.visibility = 'visible'
+    trans.style.visibility = 'visible'
     var pdf = new jsPDF();
     
-    // 將 HTML 元素轉換為 PDF
-     html2canvas(document.getElementById('all')).then(function(canvas) {
-        var imgData = canvas.toDataURL('image/png');
+    var divs = document.querySelectorAll('#all > div');
 
-        // 將圖片添加到 PDF 中
-        pdf.addImage(imgData, 'PNG', 10, 10, 180, 150); // 調整位置和大小
-        
-        // 將 PDF 下載到本地
-        pdf.save('example.pdf');
+    // 計數器，用於確保所有圖片都轉換完成後再生成 PDF
+    var counter = 0;
+
+    // 對每個子 div 執行操作
+    divs.forEach(function (div, index) {
+        // 將每個子 div 內容轉換為 canvas
+        html2canvas(div).then(function (canvas) {
+            var imgData = canvas.toDataURL('image/png');
+
+            // 添加 canvas 到 PDF 中
+            pdf.addImage(imgData, 'PNG', 10, 10 + index * 150, 180, 150); // 調整位置和大小
+
+            // 確認所有圖片都轉換完成後才生成 PDF
+            counter++;
+            if (counter === divs.length) {
+                // 將 PDF 下載到本地
+                 trans.style.visibility = 'hidden'
+                pdf.save('example.pdf');
+            }
+        });
     });
 
     // async function generatePDF() {
