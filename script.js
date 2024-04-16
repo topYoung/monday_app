@@ -513,11 +513,14 @@ function generatePDF() {
     var pdf = new jsPDF();
     
     // 將 HTML 元素轉換為 PDF
-    pdf.html(document.getElementById('all'), {
-        callback: function (pdf) {
-            // 將 PDF 下載到本地
-            pdf.save('example.pdf');
-        }
+     html2canvas(document.getElementById('all')).then(function(canvas) {
+        var imgData = canvas.toDataURL('image/png');
+
+        // 將圖片添加到 PDF 中
+        pdf.addImage(imgData, 'PNG', 10, 10, 180, 150); // 調整位置和大小
+        
+        // 將 PDF 下載到本地
+        pdf.save('example.pdf');
     });
 
     // async function generatePDF() {
