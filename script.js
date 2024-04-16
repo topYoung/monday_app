@@ -513,12 +513,12 @@ function generatePDF() {
     var pdf = new jsPDF();
     
     var divs = document.querySelectorAll('.image_box');
-
+    let div = document.getElementById('img_div2_0')
     // 計數器，用於確保所有圖片都轉換完成後再生成 PDF
     var counter = 0;
 
     // 對每個子 div 執行操作
-    divs.forEach(function (div, index) {
+    // divs.forEach(function (div, index) {
         // 將每個子 div 內容轉換為 canvas
         html2canvas(div).then(function (canvas) {
             var imgData = canvas.toDataURL('image/png');
@@ -527,14 +527,14 @@ function generatePDF() {
             pdf.addImage(imgData, 'PNG', 10, 10 + index * 150, 180, 150); // 調整位置和大小
 
             // 確認所有圖片都轉換完成後才生成 PDF
-            counter++;
-            if (counter === divs.length) {
+            // counter++;
+            // if (counter === divs.length) {
                 // 將 PDF 下載到本地
                  trans.style.visibility = 'hidden'
                 pdf.save('example.pdf');
-            }
+            // }
         });
-    });
+    // });
 
     // async function generatePDF() {
     //     var doc = new jsPDF();
