@@ -518,10 +518,11 @@ function generatePDF() {
     var imageContainers = document.querySelectorAll('.image_box');
     // console.log('imageContainers')
     imageContainers.forEach(function(container, index) {
-        // console.log("index==",index)
+        console.log("index==",index)
+        console.log("container=",container)
         html2canvas(container).then(function(canvas) {
             var imgData = canvas.toDataURL('image/png');
-            console.log("imgData=",imgData)
+
             var imgHeight = canvas.height * imgWidth / canvas.width;
             var heightLeft = imgHeight;
 
