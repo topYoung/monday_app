@@ -521,6 +521,7 @@ function generatePDF() {
         // console.log("index==",index)
         html2canvas(container).then(function(canvas) {
             var imgData = canvas.toDataURL('image/png');
+            console.log("imgData=",imgData)
             var imgHeight = canvas.height * imgWidth / canvas.width;
             var heightLeft = imgHeight;
 
@@ -539,9 +540,11 @@ function generatePDF() {
                 doc.addPage();
             }
         });
-
+        if(index == imageContainers.length - 1){
+            trans.style.visibility = 'hidden'
+        }
     });
-    trans.style.visibility = 'hidden'
+    
     doc.save('sample.pdf');
     
 
