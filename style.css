@@ -44,9 +44,9 @@ body {
     top: 0;
     width: 100%;
     display: flex;
-    align-items: center;
+    justify-content: space-around;
     flex-direction: column;
-    height: 13.5vh;
+    height: 13vh;
 }
 
 #title_text {
