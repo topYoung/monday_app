@@ -524,7 +524,7 @@ function generatePDF() {
             var imgData = canvas.toDataURL('image/png');
 
             // 添加 canvas 到 PDF 中
-            pdf.addImage(imgData, 'PNG', 10, 10 + index * 150, 180, 150); // 調整位置和大小
+            pdf.addImage(imgData, 'PNG', 10, 150, 180, 150); // 調整位置和大小
 
             // 確認所有圖片都轉換完成後才生成 PDF
             // counter++;
