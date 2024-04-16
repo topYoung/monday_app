@@ -510,7 +510,7 @@ monday.get('context').then(res => {
 function generatePDF() {
     trans.style.visibility = 'visible'
     const element = document.getElementById('all')
-    let doc = new jsPDF();
+    // let doc = new jsPDF();
     html2canvas(element).then(function(canvas) {
         var imgData = canvas.toDataURL('image/png');
         var doc = new jsPDF('p', 'mm', 'a4'); // 使用A4紙張大小
