@@ -541,7 +541,7 @@ function generatePDF() {
 
     doc.save('sample.pdf');
     trans.style.visibility = 'hidden'
-}
+
 // const element = document.getElementById('all')
 
 // html2canvas(element).then(function(canvas) {
