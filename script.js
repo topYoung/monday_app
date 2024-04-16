@@ -517,6 +517,7 @@ function generatePDF() {
 
     var imageContainers = document.querySelectorAll('.image-box');
     imageContainers.forEach(function(container, index) {
+        console.log("index==",index)
         html2canvas(container).then(function(canvas) {
             var imgData = canvas.toDataURL('image/png');
             var imgHeight = canvas.height * imgWidth / canvas.width;
@@ -537,10 +538,11 @@ function generatePDF() {
                 doc.addPage();
             }
         });
-    });
 
-    doc.save('sample.pdf');
+    });
     trans.style.visibility = 'hidden'
+    doc.save('sample.pdf');
+    
 
 // const element = document.getElementById('all')
 
