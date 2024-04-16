@@ -529,7 +529,8 @@ function generatePDF() {
             if (img) {
                 // 獲取圖片 URL
                 var imgUrl = img.src;
-
+                console.log("src=",imgUrl)
+                console.log("endsWith=",imgUrl.toLowerCase().endsWith('.jpg'))
                 // 檢查圖片格式
                 if (imgUrl.toLowerCase().endsWith('.jpg') || imgUrl.toLowerCase().endsWith('.jpeg')) {
                     // 圖片是 JPEG 格式，直接添加到 PDF 中
