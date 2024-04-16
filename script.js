@@ -223,7 +223,7 @@ function createImage() {
         let div2 = document.createElement('div')
         let div3 = document.createElement('div')
         let img = document.createElement('img')
-        img.crossOrigin = "Anonymous";
+        
         div.id = "img_div_" + k
         img.id = "img_" + k
         div2.id = "img_div2_" + k
@@ -527,7 +527,7 @@ function generatePDF() {
             // 獲取子 div 內的圖片 URL
             // 獲取子 div 內的圖片
             var img = div.querySelector('img');
-
+            img.crossOrigin = "Anonymous";
             // 確保圖片存在
             if (img) {
                 // 獲取圖片 URL
