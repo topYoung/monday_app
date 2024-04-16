@@ -515,9 +515,10 @@ function generatePDF() {
     var pageHeight = 295; // A4 height in mm
     var position = 0;
 
-    var imageContainers = document.querySelectorAll('.image-box');
+    var imageContainers = document.querySelectorAll('.image_box');
+    // console.log('imageContainers')
     imageContainers.forEach(function(container, index) {
-        console.log("index==",index)
+        // console.log("index==",index)
         html2canvas(container).then(function(canvas) {
             var imgData = canvas.toDataURL('image/png');
             var imgHeight = canvas.height * imgWidth / canvas.width;
