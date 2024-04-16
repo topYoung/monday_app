@@ -512,7 +512,7 @@ function generatePDF() {
     trans.style.visibility = 'visible'
     var pdf = new jsPDF();
     
-    var divs = document.querySelectorAll('#all > div');
+    var divs = document.querySelectorAll('.image_box');
 
     // 計數器，用於確保所有圖片都轉換完成後再生成 PDF
     var counter = 0;
