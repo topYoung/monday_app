@@ -529,14 +529,24 @@ function generatePDF() {
             if (img) {
                 // 獲取圖片 URL
                 var imgUrl = img.src;
-                console.log("src=",imgUrl)
-                console.log("endsWith=",imgUrl.toLowerCase().endsWith('.jpg'))
+                console.log("src=", imgUrl)
+                console.log("endsWith=", imgUrl.toLowerCase().endsWith('.jpg'))
                 // 檢查圖片格式
-                if (imgUrl.toLowerCase().endsWith('.jpg') || imgUrl.toLowerCase().endsWith('.jpeg')) {
+                if ( imgUrl.toLowerCase().endsWith('.jpeg')) {
                     // 圖片是 JPEG 格式，直接添加到 PDF 中
                     pdf.addImage(imgUrl, 'JPEG', 10, 10 + pdfCounter * 150, 180, 150); // 調整位置和大小
                     pdfCounter++;
                     generatePdf();
+                } else if (imgUrl.toLowerCase().endsWith('.jpg')) {
+                    // 圖片是 PNG 格式，使用 html2canvas 將圖片轉換為 JPEG 格式
+                    html2canvas(img).then(function(canvas) {
+                        var imgUrlData = canvas.toDataURL('image/jpeg');
+
+                        // 添加圖片到 PDF 中
+                        pdf.addImage(imgUrlData, 'JPEG', 10, 10 + pdfCounter * 150, 180, 150); // 調整位置和大小
+                        pdfCounter++;
+                        generatePdf();
+                    });
                 } else if (imgUrl.toLowerCase().endsWith('.png')) {
                     // 圖片是 PNG 格式，使用 html2canvas 將圖片轉換為 JPEG 格式
                     html2canvas(img).then(function(canvas) {
