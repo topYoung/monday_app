@@ -518,23 +518,23 @@ function generatePDF() {
     var counter = 0;
 
     // 對每個子 div 執行操作
-    // divs.forEach(function (div, index) {
+    divs.forEach(function (div, index) {
         // 將每個子 div 內容轉換為 canvas
         html2canvas(div).then(function (canvas) {
-            var imgData = canvas.toDataURL('image/png');
+            var imgUrl = div.querySelector('img').src;
 
-            // 添加 canvas 到 PDF 中
-            pdf.addImage(imgData, 'PNG', 10, 150, 180, 150); // 調整位置和大小
+            // 添加圖片到 PDF 中
+            pdf.addImage(imgUrl, 'JPEG', 10, 10 + index * 150, 180, 150); // 調整位置和大小
 
             // 確認所有圖片都轉換完成後才生成 PDF
             // counter++;
-            // if (counter === divs.length) {
+            if (counter === divs.length) {
                 // 將 PDF 下載到本地
                  trans.style.visibility = 'hidden'
                 pdf.save('example.pdf');
-            // }
+            }
         });
-    // });
+    });
 
     // async function generatePDF() {
     //     var doc = new jsPDF();
