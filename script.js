@@ -527,7 +527,7 @@ function generatePDF() {
             // 獲取子 div 內的圖片 URL
             // 獲取子 div 內的圖片
             var img = div.querySelector('img');
-            img.crossOrigin = "Anonymous";
+            // img.crossOrigin = "Anonymous";
             // 確保圖片存在
             if (img) {
                 // 獲取圖片 URL
