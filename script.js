@@ -509,30 +509,40 @@ monday.get('context').then(res => {
 //a4 : 72解析度 595/842
 
 function generatePDF() {
-    trans.style.visibility = 'visible'
-    async function generatePDF() {
-        var doc = new jsPDF();
-        var imgWidth = 210; // A4 width in mm
-        var pageHeight = 295; // A4 height in mm
-        var position = 0;
-
-        var imageContainers = document.querySelectorAll('.image_box');
-        for (let container of imageContainers) {
-            await html2canvas(container).then(function(canvas) {
-                var imgData = canvas.toDataURL('image/png');
-                var imgHeight = canvas.height * imgWidth / canvas.width;
-                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                position += imgHeight;
-
-                if (position > pageHeight) {
-                    doc.addPage();
-                    position = 0;
-                }
-            });
+    // trans.style.visibility = 'visible'
+    var pdf = new jsPDF();
+    
+    // 將 HTML 元素轉換為 PDF
+    pdf.html(document.getElementById('all'), {
+        callback: function (pdf) {
+            // 將 PDF 下載到本地
+            pdf.save('example.pdf');
         }
-        trans.style.visibility = 'hidden'
-        doc.save('sample.pdf');
-    }
+    });
+
+    // async function generatePDF() {
+    //     var doc = new jsPDF();
+    //     var imgWidth = 210; // A4 width in mm
+    //     var pageHeight = 295; // A4 height in mm
+    //     var position = 0;
+
+    //     var imageContainers = document.querySelectorAll('.image_box');
+    //     for (let container of imageContainers) {
+    //         await html2canvas(container).then(function(canvas) {
+    //             var imgData = canvas.toDataURL('image/png');
+    //             var imgHeight = canvas.height * imgWidth / canvas.width;
+    //             doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    //             position += imgHeight;
+
+    //             if (position > pageHeight) {
+    //                 doc.addPage();
+    //                 position = 0;
+    //             }
+    //         });
+    //     }
+    //     trans.style.visibility = 'hidden'
+    //     doc.save('sample.pdf');
+    // }
 
 
     // const element = document.getElementById('img_div2_0')
