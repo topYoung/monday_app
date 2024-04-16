@@ -226,7 +226,7 @@ function createImage() {
 
         div.id = "img_div_" + k
         img.id = "img_" + k
-
+        div2.id = "img_div2_" + k
 
         if (columnNum == 1) {
             div.className = 'item_img1'
@@ -510,69 +510,69 @@ monday.get('context').then(res => {
 
 function generatePDF() {
     trans.style.visibility = 'visible'
-    var doc = new jsPDF();
-    var imgWidth = 210; // A4 width in mm
-    var pageHeight = 295; // A4 height in mm
-    var position = 0;
+    // var doc = new jsPDF();
+    // var imgWidth = 210; // A4 width in mm
+    // var pageHeight = 295; // A4 height in mm
+    // var position = 0;
 
-    var imageContainers = document.querySelectorAll('.image_box');
-    // console.log('imageContainers')
-    imageContainers.forEach(function(container, index) {
-        console.log("index==",index)
-        console.log("container=",container)
-        html2canvas(container).then(function(canvas) {
-            var imgData = canvas.toDataURL('image/png');
+    // var imageContainers = document.querySelectorAll('.image_box');
+    // // console.log('imageContainers')
+    // imageContainers.forEach(function(container, index) {
+    //     console.log("index==",index)
+    //     console.log("container=",container)
+    //     html2canvas(container).then(function(canvas) {
+    //         var imgData = canvas.toDataURL('image/png');
 
-            var imgHeight = canvas.height * imgWidth / canvas.width;
-            var heightLeft = imgHeight;
+    //         var imgHeight = canvas.height * imgWidth / canvas.width;
+    //         var heightLeft = imgHeight;
 
+    //         doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    //         heightLeft -= pageHeight;
+
+    //         while (heightLeft >= 0) {
+    //             position = heightLeft - imgHeight;
+    //             doc.addPage();
+    //             doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    //             heightLeft -= pageHeight;
+    //         }
+
+    //         // If not the last image, add a new page for the next image
+    //         if (index < imageContainers.length - 1) {
+    //             doc.addPage();
+    //         }
+    //     });
+    //     if(index == imageContainers.length - 1){
+    //         trans.style.visibility = 'hidden'
+    //     }
+    // });
+
+    // doc.save('sample.pdf');
+
+
+    const element = document.getElementById('img_div2_0')
+
+    html2canvas(element).then(function(canvas) {
+        var imgData = canvas.toDataURL('image/png');
+        var doc = new jsPDF('p', 'mm', 'a4'); // 使用A4紙張大小
+        var imgWidth = 210; // A4 width in mm
+        var pageHeight = 295; // A4 height in mm
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+        var heightLeft = imgHeight;
+        var position = 0;
+
+        // 添加第一頁
+        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        // 如果內容超過一頁，則添加更多頁面
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            doc.addPage();
             doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
             heightLeft -= pageHeight;
-
-            while (heightLeft >= 0) {
-                position = heightLeft - imgHeight;
-                doc.addPage();
-                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-            }
-
-            // If not the last image, add a new page for the next image
-            if (index < imageContainers.length - 1) {
-                doc.addPage();
-            }
-        });
-        if(index == imageContainers.length - 1){
-            trans.style.visibility = 'hidden'
         }
+        doc.save('sample.pdf');
+        trans.style.visibility = 'hidden'
     });
-    
-    doc.save('sample.pdf');
-    
-
-// const element = document.getElementById('all')
-
-// html2canvas(element).then(function(canvas) {
-//     var imgData = canvas.toDataURL('image/png');
-//     var doc = new jsPDF('p', 'mm', 'a4'); // 使用A4紙張大小
-//     var imgWidth = 210; // A4 width in mm
-//     var pageHeight = 295; // A4 height in mm
-//     var imgHeight = canvas.height * imgWidth / canvas.width;
-//     var heightLeft = imgHeight;
-//     var position = 0;
-
-//     // 添加第一頁
-//     doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-//     heightLeft -= pageHeight;
-
-//     // 如果內容超過一頁，則添加更多頁面
-//     while (heightLeft >= 0) {
-//         position = heightLeft - imgHeight;
-//         doc.addPage();
-//         doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-//         heightLeft -= pageHeight;
-//     }
-//     doc.save('sample.pdf');
-//     trans.style.visibility = 'hidden'
-// });
 
 }
