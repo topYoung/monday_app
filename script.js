@@ -513,28 +513,32 @@ function generatePDF() {
     var pdf = new jsPDF();
     
     var divs = document.querySelectorAll('.image_box');
-    let div = document.getElementById('img_div2_0')
-    // 計數器，用於確保所有圖片都轉換完成後再生成 PDF
-    var counter = 0;
+    var pdfCounter = 0;
 
-    // 對每個子 div 執行操作
-    divs.forEach(function (div, index) {
-        // 將每個子 div 內容轉換為 canvas
-        html2canvas(div).then(function (canvas) {
+    // 生成 PDF 函數
+    function generatePdf() {
+        // 如果還有子 div 沒有處理，則處理下一個子 div
+        if (pdfCounter < divs.length) {
+            var div = divs[pdfCounter];
+
+            // 獲取子 div 內的圖片 URL
             var imgUrl = div.querySelector('img').src;
 
             // 添加圖片到 PDF 中
-            pdf.addImage(imgUrl, 'JPEG', 10, 10 + index * 150, 180, 150); // 調整位置和大小
+            pdf.addImage(imgUrl, 'JPEG', 10, 10 + pdfCounter * 150, 180, 150); // 調整位置和大小
 
-            // 確認所有圖片都轉換完成後才生成 PDF
-            // counter++;
-            if (counter === divs.length) {
-                // 將 PDF 下載到本地
-                 trans.style.visibility = 'hidden'
-                pdf.save('example.pdf');
-            }
-        });
-    });
+            // 完成添加圖片後，遞增計數器並生成下一張圖片的 PDF
+            pdfCounter++;
+            generatePdf();
+        } else {
+            // 如果所有圖片都添加完成，則將 PDF 下載到本地
+            trans.style.visibility = 'hidden'
+            pdf.save('example.pdf');
+        }
+    }
+
+    // 開始生成 PDF
+    generatePdf();
 
     // async function generatePDF() {
     //     var doc = new jsPDF();
