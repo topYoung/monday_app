@@ -515,9 +515,12 @@ function generatePDF() {
     var divs = document.querySelectorAll('.image_box');
     var pdfCounter = 0;
 
+
     // 生成 PDF 函數
     function generatePdf() {
         // 如果還有子 div 沒有處理，則處理下一個子 div
+        console.log("pdfCounter==",pdfCounter)
+        console.log('divs.length==',divs.length)
         if (pdfCounter < divs.length) {
             var div = divs[pdfCounter];
 
