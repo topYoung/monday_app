@@ -509,7 +509,7 @@ monday.get('context').then(res => {
 
 function generatePDF() {
     trans.style.visibility = 'visible'
-    const element = document.getElementById('app')
+    const element = document.getElementById('all')
     let doc = new jsPDF();
     html2canvas(element).then(function(canvas) {
         var imgData = canvas.toDataURL('image/png');
@@ -532,6 +532,7 @@ function generatePDF() {
             heightLeft -= pageHeight;
         }
         doc.save('sample.pdf');
+        trans.style.visibility = 'hidden'
     });
-    trans.style.visibility = 'hidden'
+    
 }

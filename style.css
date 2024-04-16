@@ -25,22 +25,40 @@ body {
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.4);
-    color: cyan;
+    color: hsla(0,0%,13%,0.9);
     line-height: 100vh;
-    font-size: 22px;
+    font-size: 40px;
     visibility: hidden;
+    z-index: 900;
+    text-align: center;
 }
 
-#title {
+#all{
+  position: absolute;
+  width: calc(100% - 270px);  
+  height: 100vh;
+  left: 0;
+}
+#title{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 15vh;
+}
+
+#title_text {
     text-align: center;
-    width: calc(100% - 270px);
+    width: 100%
     margin: 0;
     padding-top: 10px;
 }
 
 #subTitle {
     text-align: center;
-    width: calc(100% - 270px);
+    width: 100%;
     margin: 0;
 }
 
@@ -58,9 +76,9 @@ body {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
-    width: calc(94% - 270px);
-    height: 83vh;
-    bottom: 5%;
+    width: calc(97% - 270px);  
+    height: 80vh;
+    bottom: 5vh; 
     left: 3%;
     overflow-y: scroll;
 }
