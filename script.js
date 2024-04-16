@@ -204,9 +204,10 @@ monday.get("filter")
 //     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
 // });
 let allImg = []
+
 function createImage() {
     const len = filterID.length
-    
+
     for (let i = 0; i < len; i++) {
         const one = getOne(filterID[i])
         console.log("one==", one)
@@ -326,7 +327,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (columnNum != 1) {
             oldNum = columnNum
-            
+
             columnNum = 1
             resetColumn()
             column_num1.style.backgroundColor = 'lightblue'
@@ -344,9 +345,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (columnNum != 2) {
             oldNum = columnNum
-           
+
             columnNum = 2
-             resetColumn()
+            resetColumn()
             column_num2.style.backgroundColor = 'lightblue'
             oldColumn = column_num2
         } else {
@@ -363,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             columnNum = 3
             resetColumn()
-             
+
             column_num3.style.backgroundColor = 'lightblue'
             oldColumn = column_num3
         } else {
@@ -377,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (columnNum != 4) {
             oldNum = columnNum
-            
+
             columnNum = 4
             resetColumn()
             column_num4.style.backgroundColor = 'lightblue'
@@ -410,35 +411,35 @@ function resetColumn() {
 
         for (let k = 0; k < allImg.length; k++) {
             let div = document.getElementById("img_div_" + k)
-            if(oldNum == 1){
+            if (oldNum == 1) {
                 div.classList.remove("item_img1")
             }
-            if(oldNum == 2){
+            if (oldNum == 2) {
                 div.classList.remove("item_img2")
             }
-            if(oldNum == 3){
+            if (oldNum == 3) {
                 div.classList.remove("item_img3")
             }
-            if(oldNum == 4){
+            if (oldNum == 4) {
                 div.classList.remove("item_img4")
             }
-            if(columnNum == 1){
+            if (columnNum == 1) {
                 div.className = "item_img1"
                 oldNum = 1
             }
-            if(columnNum == 2){
+            if (columnNum == 2) {
                 div.className = "item_img2"
                 oldNum = 2
             }
-            if(columnNum == 3){
+            if (columnNum == 3) {
                 div.className = "item_img3"
                 oldNum = 3
             }
-            if(columnNum == 4){
+            if (columnNum == 4) {
                 div.className = "item_img4"
                 oldNum = 4
             }
-            
+
         }
         // oldColumn = "none"
         // columnNum = 0
@@ -509,30 +510,62 @@ monday.get('context').then(res => {
 
 function generatePDF() {
     trans.style.visibility = 'visible'
-    const element = document.getElementById('all')
-    // let doc = new jsPDF();
-    html2canvas(element).then(function(canvas) {
-        var imgData = canvas.toDataURL('image/png');
-        var doc = new jsPDF('p', 'mm', 'a4'); // 使用A4紙張大小
-        var imgWidth = 210; // A4 width in mm
-        var pageHeight = 295; // A4 height in mm
-        var imgHeight = canvas.height * imgWidth / canvas.width;
-        var heightLeft = imgHeight;
-        var position = 0;
+    var doc = new jsPDF();
+    var imgWidth = 210; // A4 width in mm
+    var pageHeight = 295; // A4 height in mm
+    var position = 0;
 
-        // 添加第一頁
-        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+    var imageContainers = document.querySelectorAll('.image-box');
+    imageContainers.forEach(function(container, index) {
+        html2canvas(container).then(function(canvas) {
+            var imgData = canvas.toDataURL('image/png');
+            var imgHeight = canvas.height * imgWidth / canvas.width;
+            var heightLeft = imgHeight;
 
-        // 如果內容超過一頁，則添加更多頁面
-        while (heightLeft >= 0) {
-            position = heightLeft - imgHeight;
-            doc.addPage();
             doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
             heightLeft -= pageHeight;
-        }
-        doc.save('sample.pdf');
-        trans.style.visibility = 'hidden'
+
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                doc.addPage();
+                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+            }
+
+            // If not the last image, add a new page for the next image
+            if (index < imageContainers.length - 1) {
+                doc.addPage();
+            }
+        });
     });
-    
+
+    doc.save('sample.pdf');
+    trans.style.visibility = 'hidden'
+}
+// const element = document.getElementById('all')
+
+// html2canvas(element).then(function(canvas) {
+//     var imgData = canvas.toDataURL('image/png');
+//     var doc = new jsPDF('p', 'mm', 'a4'); // 使用A4紙張大小
+//     var imgWidth = 210; // A4 width in mm
+//     var pageHeight = 295; // A4 height in mm
+//     var imgHeight = canvas.height * imgWidth / canvas.width;
+//     var heightLeft = imgHeight;
+//     var position = 0;
+
+//     // 添加第一頁
+//     doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+//     heightLeft -= pageHeight;
+
+//     // 如果內容超過一頁，則添加更多頁面
+//     while (heightLeft >= 0) {
+//         position = heightLeft - imgHeight;
+//         doc.addPage();
+//         doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+//         heightLeft -= pageHeight;
+//     }
+//     doc.save('sample.pdf');
+//     trans.style.visibility = 'hidden'
+// });
+
 }

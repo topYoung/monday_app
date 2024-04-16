@@ -24,7 +24,7 @@ body {
     position: absolute;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     color: hsla(0,0%,13%,0.9);
     line-height: 100vh;
     font-size: 40px;
@@ -78,10 +78,10 @@ body {
     flex-wrap: wrap;
     width: 97%;  
     top: 15vh;
-    /*height: 80vh;*/
-    /*bottom: 5vh; */
+    height: 80vh;
+    bottom: 5vh; 
     left: 3%;
-    /*overflow-y: scroll;*/
+    overflow-y: scroll;
 }
 
 #setting {
