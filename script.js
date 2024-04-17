@@ -223,7 +223,7 @@ function createImage() {
         let div2 = document.createElement('div')
         let div3 = document.createElement('div')
         let img = document.createElement('img')
-        
+
         div.id = "img_div_" + k
         img.id = "img_" + k
         div2.id = "img_div2_" + k
@@ -510,71 +510,76 @@ monday.get('context').then(res => {
 
 function generatePDF() {
     trans.style.visibility = 'visible'
-    var pdf = new jsPDF();
+    let doc = new jsPDF()
+    const divId = "all"
+    doc.fromHTML(`<html><head></head><body>` + document.getElementById(divId).innerHTML + `</body></html>`);
+    doc.save('sample.pdf');
+    trans.style.visibility = 'hidden'
+    // var pdf = new jsPDF();
 
-    var divs = document.querySelectorAll('.image_box');
-    var pdfCounter = 0;
+    // var divs = document.querySelectorAll('.image_box');
+    // var pdfCounter = 0;
 
 
-    // 生成 PDF 函數
-    function generatePdf() {
-        // 如果還有子 div 沒有處理，則處理下一個子 div
-        console.log("pdfCounter==",pdfCounter)
-        console.log('divs.length==',divs.length)
-        if (pdfCounter < divs.length) {
-            var div = divs[pdfCounter];
+    // // 生成 PDF 函數
+    // function generatePdf() {
+    //     // 如果還有子 div 沒有處理，則處理下一個子 div
+    //     console.log("pdfCounter==",pdfCounter)
+    //     console.log('divs.length==',divs.length)
+    //     if (pdfCounter < divs.length) {
+    //         var div = divs[pdfCounter];
 
-            // 獲取子 div 內的圖片 URL
-            // 獲取子 div 內的圖片
-            var img = div.querySelector('img');
-            // img.crossOrigin = "Anonymous";
-            // 確保圖片存在
-            if (img) {
-                // 獲取圖片 URL
-                var imgUrl = img.src;
-                console.log("src=", imgUrl)
-                console.log("endsWith=", imgUrl.toLowerCase().endsWith('.jpg'))
-                // 檢查圖片格式
-                if ( imgUrl.toLowerCase().endsWith('.jpeg')) {
-                    // 圖片是 JPEG 格式，直接添加到 PDF 中
-                    pdf.addImage(imgUrl, 'JPEG', 10, 10 + pdfCounter * 150, 180, 150); // 調整位置和大小
-                    pdfCounter++;
-                    generatePdf();
-                } else if (imgUrl.toLowerCase().endsWith('.jpg')) {
-                    // 圖片是 PNG 格式，使用 html2canvas 將圖片轉換為 JPEG 格式
-                    html2canvas(img).then(function(canvas) {
-                        var imgUrlData = canvas.toDataURL('image/jpeg');
+    //         // 獲取子 div 內的圖片 URL
+    //         // 獲取子 div 內的圖片
+    //         var img = div.querySelector('img');
+    //         // img.crossOrigin = "Anonymous";
+    //         // 確保圖片存在
+    //         if (img) {
+    //             // 獲取圖片 URL
+    //             var imgUrl = img.src;
+    //             console.log("src=", imgUrl)
+    //             console.log("endsWith=", imgUrl.toLowerCase().endsWith('.jpg'))
+    //             // 檢查圖片格式
+    //             if ( imgUrl.toLowerCase().endsWith('.jpeg')) {
+    //                 // 圖片是 JPEG 格式，直接添加到 PDF 中
+    //                 pdf.addImage(imgUrl, 'JPEG', 10, 10 + pdfCounter * 150, 180, 150); // 調整位置和大小
+    //                 pdfCounter++;
+    //                 generatePdf();
+    //             } else if (imgUrl.toLowerCase().endsWith('.jpg')) {
+    //                 // 圖片是 PNG 格式，使用 html2canvas 將圖片轉換為 JPEG 格式
+    //                 html2canvas(img).then(function(canvas) {
+    //                     var imgUrlData = canvas.toDataURL('image/jpeg');
 
-                        // 添加圖片到 PDF 中
-                        pdf.addImage(imgUrlData, 'JPEG', 10, 10 + pdfCounter * 150, 180, 150); // 調整位置和大小
-                        pdfCounter++;
-                        generatePdf();
-                    });
-                } else if (imgUrl.toLowerCase().endsWith('.png')) {
-                    // 圖片是 PNG 格式，使用 html2canvas 將圖片轉換為 JPEG 格式
-                    html2canvas(img).then(function(canvas) {
-                        var imgUrlData = canvas.toDataURL('image/jpeg');
+    //                     // 添加圖片到 PDF 中
+    //                     pdf.addImage(imgUrlData, 'JPEG', 10, 10 + pdfCounter * 150, 180, 150); // 調整位置和大小
+    //                     pdfCounter++;
+    //                     generatePdf();
+    //                 });
+    //             } else if (imgUrl.toLowerCase().endsWith('.png')) {
+    //                 // 圖片是 PNG 格式，使用 html2canvas 將圖片轉換為 JPEG 格式
+    //                 html2canvas(img).then(function(canvas) {
+    //                     var imgUrlData = canvas.toDataURL('image/jpeg');
 
-                        // 添加圖片到 PDF 中
-                        pdf.addImage(imgUrlData, 'JPEG', 10, 10 + pdfCounter * 150, 180, 150); // 調整位置和大小
-                        pdfCounter++;
-                        generatePdf();
-                    });
-                } else {
-                    // 其他格式的圖片，忽略並處理下一張圖片
-                    pdfCounter++;
-                    generatePdf();
-                }
-            }
-        } else {
-            // 如果所有圖片都添加完成，則將 PDF 下載到本地
-            trans.style.visibility = 'hidden'
-            pdf.save('example.pdf');
-        }
-    }
+    //                     // 添加圖片到 PDF 中
+    //                     pdf.addImage(imgUrlData, 'JPEG', 10, 10 + pdfCounter * 150, 180, 150); // 調整位置和大小
+    //                     pdfCounter++;
+    //                     generatePdf();
+    //                 });
+    //             } else {
+    //                 // 其他格式的圖片，忽略並處理下一張圖片
+    //                 pdfCounter++;
+    //                 generatePdf();
+    //             }
+    //         }
+    //     } else {
+    //         // 如果所有圖片都添加完成，則將 PDF 下載到本地
+    //         trans.style.visibility = 'hidden'
+    //         pdf.save('example.pdf');
+    //     }
+    // }
 
-    // 開始生成 PDF
-    generatePdf();
+    // // 開始生成 PDF
+    // generatePdf();
 
     // async function generatePDF() {
     //     var doc = new jsPDF();
