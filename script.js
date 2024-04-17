@@ -558,17 +558,17 @@ function generatePDF() {
 
     // const divId = 'all'
        var newWin=window.open('','列印視窗');
-    newWin.document.open();
-    newWin.document.write('<html>'+
-      '<head>'+
-        '<link rel="stylesheet" href="style.css">'+
-      '</head>'+
-      '<body  onload="window.print()">'+
-        $('#all').html()+
-      '</body>'+
-    '</html>');
-    // newWin.document.close();
-    // setTimeout(function(){newWin.close();},10);
+  newWin.document.open();
+  newWin.document.write('<html>'+
+    '<head>'+
+      '<link rel="stylesheet" href="print.css">'+
+    '</head>'+
+    '<body  onload="window.print()">'+
+      $('#all').html()+
+    '</body>'+
+  '</html>');
+  newWin.document.close();
+  setTimeout(function(){newWin.close();},10);
 
     // // 獲取要轉換的 HTML 元素
     // var node = document.getElementById('all');
