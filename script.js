@@ -522,8 +522,8 @@ function generatePDF() {
       $('#all').html()+
     '</body>'+
   '</html>');
-  newWin.document.close();
-  setTimeout(function(){newWin.close();},10);
+  // newWin.document.close();
+  // setTimeout(function(){newWin.close();},10);
 
     // // 獲取要轉換的 HTML 元素
     // var node = document.getElementById('all');
