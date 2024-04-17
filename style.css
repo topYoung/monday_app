@@ -406,4 +406,10 @@ input[type=text] {
     top: 2px
 }
 
-
+.print-content {
+            width: 210mm; /* A4 紙張的寬度 */
+            height: 297mm; /* A4 紙張的高度 */
+            margin: 0 auto; /* 居中對齊 */
+            padding: 20mm; /* 邊距 */
+        }
+        
