@@ -510,33 +510,52 @@ monday.get('context').then(res => {
 //a4 : 72解析度 595/842
 
 function generatePDF() {
-    var html_content = $('#all').html();
-    $("#download").contents().find("#wrapper").html(html_content);
+    // 獲取要轉換的 HTML 元素
+    var node = document.getElementById('all');
 
-    // 使用html2canvas轉換HTML內容為Canvas
-    html2canvas($('#download').get(0)).then(function(canvas) {
-        var imgData = canvas.toDataURL('image/png');
-        var pdf = new jsPDF('p','pt','a4');
-        pdf.internal.scaleFactor = 2;
-        var imgWidth = 210; // A4 width in mm
-        var imgHeight = canvas.height * imgWidth / canvas.width;
-        pdf.addImage(imgData, 'jpeg', 15, 15, imgWidth, imgHeight);
-        pdf.save('htmltopdf_' + new Date().getTime() + '.pdf');
-    });
+    // 使用 dom-to-image 库將 HTML 元素轉換為圖像
+    domtoimage.toPng(node)
+        .then(function(dataUrl) {
+            // 創建 PDF 實例
+            var pdf = new jsPDF('p', 'mm', 'a4');
 
-  //   const divId = "all"
-  //   let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+            // 添加圖像到 PDF 中
+            pdf.addImage(dataUrl, 'PNG', 0, 0, 210, 297); // 210x297 是 A4 尺寸
 
-  // mywindow.document.write(`<html><head>`);
-  // mywindow.document.write('</head><body >');
-  // mywindow.document.write(document.getElementById(divId).innerHTML);
-  // mywindow.document.write('</body></html>');
+            // 保存 PDF
+            pdf.save('htmltopdf_' + new Date().getTime() + '.pdf');
+        })
+        .catch(function(error) {
+            console.error('圖像轉換錯誤:', error);
+        });
+    // var html_content = $('#all').html();
+    // $("#download").contents().find("#wrapper").html(html_content);
 
-  // mywindow.document.close(); // necessary for IE >= 10
-  // mywindow.focus(); // necessary for IE >= 10*/
+    // // 使用html2canvas轉換HTML內容為Canvas
+    // html2canvas($('#download').get(0)).then(function(canvas) {
+    //     var imgData = canvas.toDataURL('image/png');
+    //     console.log('imgData=',imgData)
+    //     var pdf = new jsPDF('p','pt','a4');
+    //     pdf.internal.scaleFactor = 2;
+    //     var imgWidth = 210; // A4 width in mm
+    //     var imgHeight = canvas.height * imgWidth / canvas.width;
+    //     pdf.addImage(imgData, 'PNG', 15, 15, imgWidth, imgHeight);
+    //     pdf.save('htmltopdf_' + new Date().getTime() + '.pdf');
+    // });
 
-  // mywindow.print();
-  // mywindow.close();
+    //   const divId = "all"
+    //   let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+
+    // mywindow.document.write(`<html><head>`);
+    // mywindow.document.write('</head><body >');
+    // mywindow.document.write(document.getElementById(divId).innerHTML);
+    // mywindow.document.write('</body></html>');
+
+    // mywindow.document.close(); // necessary for IE >= 10
+    // mywindow.focus(); // necessary for IE >= 10*/
+
+    // mywindow.print();
+    // mywindow.close();
 
     // trans.style.visibility = 'visible'
     // let doc = new jsPDF()
