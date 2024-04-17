@@ -516,7 +516,7 @@ function generatePDF() {
             newWin.document.write('<html><head><title>Print</title></head><body>');
             newWin.document.write('<div class="print-content">' + divToPrint.innerHTML + '</div>');
             newWin.document.write('</body></html>');
-            newWin.document.close();
+            // newWin.document.close();
             newWin.print();
      // const divId = 'all'
   //    var newWin=window.open('','列印視窗');
