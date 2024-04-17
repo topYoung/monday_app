@@ -407,24 +407,3 @@ input[type=text] {
 }
 
 
-@media print {
-  * {
-    -webkit-print-color-adjust: exact !important;
-  }
-}
-
-@page {
-  size: A4 portrait;
-  margin-top: 3cm;
-}
-
-@page :first {
-  margin-left: 4cm;
-}
-
-.print-content {
-            width: 210mm; /* A4 紙張的寬度 */
-            height: 297mm; /* A4 紙張的高度 */
-            margin: 0 auto; /* 居中對齊 */
-            padding: 20mm; /* 邊距 */
-        }
