@@ -511,62 +511,62 @@ monday.get('context').then(res => {
 
 function generatePDF() {
 
-    var newWin = window.open('', '列印視窗');
-    newWin.document.open();
+    // var newWin = window.open('', '列印視窗');
+    // newWin.document.open();
 
-    // 獲取要列印的內容
-    var content = $('#all').html();
+    // // 獲取要列印的內容
+    // var content = $('#all').html();
 
-    // 將內容分割成多個部分，每部分最多包含一個分頁符號
-    // 這裡假設每部分的最大長度為 1000 字元，你可以根據實際需求調整這個數字
-    var parts = [];
-    var maxLength = 1000;
-    for (var i = 0; i < content.length; i += maxLength) {
-        parts.push(content.substring(i, i + maxLength));
-    }
+    // // 將內容分割成多個部分，每部分最多包含一個分頁符號
+    // // 這裡假設每部分的最大長度為 1000 字元，你可以根據實際需求調整這個數字
+    // var parts = [];
+    // var maxLength = 1000;
+    // for (var i = 0; i < content.length; i += maxLength) {
+    //     parts.push(content.substring(i, i + maxLength));
+    // }
 
-    // 將內容重新組合，並在每個部分之間插入分頁符號
-    var combinedContent = parts.join('<div style="page-break-after: always;"></div>');
+    // // 將內容重新組合，並在每個部分之間插入分頁符號
+    // var combinedContent = parts.join('<div style="page-break-after: always;"></div>');
 
-    // 寫入新窗口的文檔，並設定 A4 大小的列印內容
-    newWin.document.write('<html>' +
-        '<head>' +
-        '<style>' +
-        '@media print {' +
-        ' @page {' +
-        '    size: A4;' +
-        '    margin: 0;' +
-        ' }' +
-        ' body {' +
-        '    width: 210mm;' +
-        '    height: 297mm;' +
-        '    margin: 0;' +
-        '    padding: 0;' +
-        ' }' +
-        '}' +
-        '</style>' +
-        '<link rel="stylesheet" href="print.css">' +
-        '</head>' +
-        '<body  onload="window.print()">' +
-        combinedContent +
-        '</body>' +
-        '</html>');
+    // // 寫入新窗口的文檔，並設定 A4 大小的列印內容
+    // newWin.document.write('<html>' +
+    //     '<head>' +
+    //     '<style>' +
+    //     '@media print {' +
+    //     ' @page {' +
+    //     '    size: A4;' +
+    //     '    margin: 0;' +
+    //     ' }' +
+    //     ' body {' +
+    //     '    width: 210mm;' +
+    //     '    height: 297mm;' +
+    //     '    margin: 0;' +
+    //     '    padding: 0;' +
+    //     ' }' +
+    //     '}' +
+    //     '</style>' +
+    //     '<link rel="stylesheet" href="print.css">' +
+    //     '</head>' +
+    //     '<body  onload="window.print()">' +
+    //     combinedContent +
+    //     '</body>' +
+    //     '</html>');
 
-    newWin.document.close();
+    // newWin.document.close();
 
 
 
     // const divId = 'all'
-    //    var newWin=window.open('','列印視窗');
-    // newWin.document.open();
-    // newWin.document.write('<html>'+
-    //   '<head>'+
-    //     '<link rel="stylesheet" href="style.css">'+
-    //   '</head>'+
-    //   '<body  onload="window.print()">'+
-    //     $('#all').html()+
-    //   '</body>'+
-    // '</html>');
+       var newWin=window.open('','列印視窗');
+    newWin.document.open();
+    newWin.document.write('<html>'+
+      '<head>'+
+        '<link rel="stylesheet" href="style.css">'+
+      '</head>'+
+      '<body  onload="window.print()">'+
+        $('#all').html()+
+      '</body>'+
+    '</html>');
     // newWin.document.close();
     // setTimeout(function(){newWin.close();},10);
 
