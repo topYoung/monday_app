@@ -224,7 +224,7 @@ function createImage() {
         let div2 = document.createElement('div')
         let div3 = document.createElement('div')
         let img = document.createElement('img')
-        imgElement.crossOrigin = "anonymous";
+        img.crossOrigin = "anonymous";
         div.id = "img_div_" + k
         img.id = "img_" + k
         div2.id = "img_div2_" + k
@@ -245,7 +245,7 @@ function createImage() {
         div3.className = 'image_box_right'
         img.src = allImg[k]
         img.className = "image"
-        
+
         div.appendChild(div2)
         div.appendChild(div3)
         div2.appendChild(img)
