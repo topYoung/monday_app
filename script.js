@@ -243,8 +243,8 @@ function createImage() {
         }
         div2.className = 'image_box'
         div3.className = 'image_box_right'
-        // img.src = allImg[k]
-        img.src = "a1.jpeg"
+        img.src = allImg[k]
+        // img.src = "a1.jpeg"
         img.className = "image"
 
         div.appendChild(div2)
