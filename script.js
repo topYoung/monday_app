@@ -511,56 +511,64 @@ monday.get('context').then(res => {
 
 function generatePDF() {
 
-    // 創建一個包含所有要列印的內容的陣列
-var contentArray = $('#all').children('.page-content');
+    var newWin = window.open('', '列印視窗');
+    newWin.document.open();
 
-// 遞迴函數，用於列印每一頁的內容
-function printPage(index) {
-  if (index >= contentArray.length) {
-    // 如果已經列印完所有頁面，則退出遞迴
-    return;
-  }
+    // 獲取要列印的內容
+    var content = $('#all').html();
 
-  // 創建新的列印視窗
-  var newWin = window.open('', '列印視窗');
-  newWin.document.open();
-  newWin.document.write('<html>'+
-    '<head>'+
-      '<link rel="stylesheet" href="style.css">'+
-    '</head>'+
-    '<body  onload="window.print()">'+
-      // 將當前頁面的內容寫入列印視窗
-      $(contentArray[index]).html()+
-    '</body>'+
-  '</html>');
-  newWin.document.close();
+    // 將內容分割成多個部分，每部分最多包含一個分頁符號
+    // 這裡假設每部分的最大長度為 1000 字元，你可以根據實際需求調整這個數字
+    var parts = [];
+    var maxLength = 1000;
+    for (var i = 0; i < content.length; i += maxLength) {
+        parts.push(content.substring(i, i + maxLength));
+    }
 
-  // 在下一個頁面列印前，等待一小段時間，以確保上一個頁面已列印完
-  setTimeout(function(){
-    // 遞迴列印下一頁
-    printPage(index + 1);
-    // 關閉當前列印視窗
-    newWin.close();
-  }, 1000); // 等待 1 秒後列印下一頁
-}
+    // 將內容重新組合，並在每個部分之間插入分頁符號
+    var combinedContent = parts.join('<div style="page-break-after: always;"></div>');
 
-// 開始列印第一頁
-printPage(0);
+    // 寫入新窗口的文檔，並設定 A4 大小的列印內容
+    newWin.document.write('<html>' +
+        '<head>' +
+        '<style>' +
+        '@media print {' +
+        ' @page {' +
+        '    size: A4;' +
+        '    margin: 0;' +
+        ' }' +
+        ' body {' +
+        '    width: 210mm;' +
+        '    height: 297mm;' +
+        '    margin: 0;' +
+        '    padding: 0;' +
+        ' }' +
+        '}' +
+        '</style>' +
+        '<link rel="stylesheet" href="print.css">' +
+        '</head>' +
+        '<body  onload="window.print()">' +
+        combinedContent +
+        '</body>' +
+        '</html>');
+
+    newWin.document.close();
 
 
-     // const divId = 'all'
-  //    var newWin=window.open('','列印視窗');
-  // newWin.document.open();
-  // newWin.document.write('<html>'+
-  //   '<head>'+
-  //     '<link rel="stylesheet" href="style.css">'+
-  //   '</head>'+
-  //   '<body  onload="window.print()">'+
-  //     $('#all').html()+
-  //   '</body>'+
-  // '</html>');
-  // newWin.document.close();
-  // setTimeout(function(){newWin.close();},10);
+
+    // const divId = 'all'
+    //    var newWin=window.open('','列印視窗');
+    // newWin.document.open();
+    // newWin.document.write('<html>'+
+    //   '<head>'+
+    //     '<link rel="stylesheet" href="style.css">'+
+    //   '</head>'+
+    //   '<body  onload="window.print()">'+
+    //     $('#all').html()+
+    //   '</body>'+
+    // '</html>');
+    // newWin.document.close();
+    // setTimeout(function(){newWin.close();},10);
 
     // // 獲取要轉換的 HTML 元素
     // var node = document.getElementById('all');
