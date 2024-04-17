@@ -224,7 +224,7 @@ function createImage() {
         let div2 = document.createElement('div')
         let div3 = document.createElement('div')
         let img = document.createElement('img')
-        img.crossOrigin = "anonymous";
+        // img.crossOrigin = "anonymous";
         div.id = "img_div_" + k
         img.id = "img_" + k
         div2.id = "img_div2_" + k
@@ -510,24 +510,39 @@ monday.get('context').then(res => {
 //a4 : 72解析度 595/842
 
 function generatePDF() {
-    // 獲取要轉換的 HTML 元素
-    var node = document.getElementById('all');
 
-    // 使用 dom-to-image 库將 HTML 元素轉換為圖像
-    domtoimage.toPng(node)
-        .then(function(dataUrl) {
-            // 創建 PDF 實例
-            var pdf = new jsPDF('p', 'mm', 'a4');
+     // const divId = 'all'
+     var newWin=window.open('','列印視窗');
+  newWin.document.open();
+  newWin.document.write('<html>'+
+    '<head>'+
+      '<link rel="stylesheet" href="style.css">'+
+    '</head>'+
+    '<body class = "room_box" onload="window.print()">'+
+      $('#all').html()+
+    '</body>'+
+  '</html>');
+  // newWin.document.close();
+  // setTimeout(function(){newWin.close();},10);
 
-            // 添加圖像到 PDF 中
-            pdf.addImage(dataUrl, 'PNG', 0, 0, 210, 297); // 210x297 是 A4 尺寸
+    // // 獲取要轉換的 HTML 元素
+    // var node = document.getElementById('all');
 
-            // 保存 PDF
-            pdf.save('htmltopdf_' + new Date().getTime() + '.pdf');
-        })
-        .catch(function(error) {
-            console.error('圖像轉換錯誤:', error);
-        });
+    // // 使用 dom-to-image 库將 HTML 元素轉換為圖像
+    // domtoimage.toPng(node)
+    //     .then(function(dataUrl) {
+    //         // 創建 PDF 實例
+    //         var pdf = new jsPDF('p', 'mm', 'a4');
+
+    //         // 添加圖像到 PDF 中
+    //         pdf.addImage(dataUrl, 'PNG', 0, 0, 210, 297); // 210x297 是 A4 尺寸
+
+    //         // 保存 PDF
+    //         pdf.save('htmltopdf_' + new Date().getTime() + '.pdf');
+    //     })
+    //     .catch(function(error) {
+    //         console.error('圖像轉換錯誤:', error);
+    //     });
     // var html_content = $('#all').html();
     // $("#download").contents().find("#wrapper").html(html_content);
 
