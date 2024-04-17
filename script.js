@@ -514,7 +514,7 @@ function generatePDF() {
             var newWin = window.open('', '_blank');
             newWin.document.open();
             newWin.document.write('<html><head><title>Print</title></head><body>');
-            newWin.document.write('<div class="print-content">' + divToPrint.innerHTML + '</div>');
+            newWin.document.write('<div class="print-content">' + $('#all').html() + '</div>');
             newWin.document.write('</body></html>');
             // newWin.document.close();
             newWin.print();
