@@ -15,6 +15,15 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script> -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="jquery.printelement.min.js"></script>
+    <style>
+    #print_btn {
+        position: absolute;
+        transform: scale(1.2);
+        top: 20px;
+        left: 20px;
+
+    }
+    </style>
 </head>
 
 <body>
@@ -44,6 +53,7 @@
 
     let columnNum = getParameterByName('columnNum');
     let allImg = getParameterByName('iurl')
+    allImg = allImg.spite(',')
     let infoData = getParameterByName('data')
     console.log('columnNum=', columnNum)
     console.log('allImg=', allImg)

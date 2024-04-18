@@ -48,12 +48,7 @@ body {
   
 }
 
-#print_btn{
-    position: absolute;
-    transform: scale(1.2);
-    top: 20px;
-    left: 20px;
-}
+
 
 #title{
     position: absolute;
