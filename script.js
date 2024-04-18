@@ -523,8 +523,9 @@ function generatePDF() {
 
         var newWin = window.open('', '_blank');
         newWin.document.open();
-        newWin.document.write('<html><head><title>Print</title></head><body>');
-
+        newWin.document.write('<html><head><title>Print</title>');
+        newWin.document.write('<link rel="stylesheet" type="text/css" href="styles.css">');
+        newWin.document.write('</head><body>');
         for (var i = 0; i < pages; i++) {
             var pageContent = content.slice(i * pageHeight, (i + 1) * pageHeight);
             newWin.document.write('<div class="page">' + pageContent + '</div>');
