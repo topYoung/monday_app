@@ -538,7 +538,9 @@ function generatePDF() {
      var divToPrint = document.getElementById('content_all');
             var newWin = window.open('', '_blank');
             newWin.document.open();
-            newWin.document.write('<html><head><title>Print</title></head><body onload="window.print()">');
+            newWin.document.write('<html><head><title>Print</title>')
+            newWin.document.write('<link rel="stylesheet" type="text/css" href="style.css">');
+            newWin.document.write('</head><body onload="window.print()">');
             newWin.document.write('<div class="print-content">' + divToPrint.innerHTML + '</div>');
             newWin.document.write('</body></html>');
             newWin.document.close();
