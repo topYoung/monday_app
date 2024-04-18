@@ -535,14 +535,14 @@ function generatePDF() {
     //     // newWin.document.close();
     //      newWin.print();
 
-     var divToPrint = document.getElementById('ccontent_all');
+     var divToPrint = document.getElementById('content_all');
             var newWin = window.open('', '_blank');
             newWin.document.open();
             newWin.document.write('<html><head><title>Print</title></head><body onload="window.print()">');
             newWin.document.write('<div class="print-content">' + divToPrint.innerHTML + '</div>');
             newWin.document.write('</body></html>');
             newWin.document.close();
-            
+
 
     // all.style.height = "100vh"
 
