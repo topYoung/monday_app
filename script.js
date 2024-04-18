@@ -515,25 +515,34 @@ function generatePDF() {
     // window.open(url, '_blank');
     // window.location.href = url
     // all.style.height = "auto"
-    var content = $('#content_all').html();
-        var pageHeight = 842; // A4 紙張的高度，以像素為單位
-        var contentHeight = $('#content_all').height();
-        console.log("contentHeight==",contentHeight)
-        var pages = Math.ceil(contentHeight / pageHeight);
+    // var content = $('#content_all').html();
+    //     var pageHeight = 842; // A4 紙張的高度，以像素為單位
+    //     var contentHeight = $('#content_all').height();
+    //     console.log("contentHeight==",contentHeight)
+    //     var pages = Math.ceil(contentHeight / pageHeight);
 
-        var newWin = window.open('', '_blank');
-        newWin.document.open();
-        newWin.document.write('<html><head><title>Print</title>');
-        newWin.document.write('<link rel="stylesheet" type="text/css" href="style.css">');
-        newWin.document.write('</head><body>');
-        for (var i = 0; i < pages; i++) {
-            var pageContent = content.slice(i * pageHeight, (i + 1) * pageHeight);
-            newWin.document.write('<div class="page">' + pageContent + '</div>');
-        }
+    //     var newWin = window.open('', '_blank');
+    //     newWin.document.open();
+    //     newWin.document.write('<html><head><title>Print</title>');
+    //     newWin.document.write('<link rel="stylesheet" type="text/css" href="style.css">');
+    //     newWin.document.write('</head><body>');
+    //     for (var i = 0; i < pages; i++) {
+    //         var pageContent = content.slice(i * pageHeight, (i + 1) * pageHeight);
+    //         newWin.document.write('<div class="print-content">' + pageContent + '</div>');
+    //     }
 
-        newWin.document.write('</body></html>');
-        // newWin.document.close();
-         newWin.print();
+    //     newWin.document.write('</body></html>');
+    //     // newWin.document.close();
+    //      newWin.print();
+
+     var divToPrint = document.getElementById('ccontent_all');
+            var newWin = window.open('', '_blank');
+            newWin.document.open();
+            newWin.document.write('<html><head><title>Print</title></head><body onload="window.print()">');
+            newWin.document.write('<div class="print-content">' + divToPrint.innerHTML + '</div>');
+            newWin.document.write('</body></html>');
+            newWin.document.close();
+            
 
     // all.style.height = "100vh"
 
