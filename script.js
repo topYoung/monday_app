@@ -514,8 +514,8 @@ function generatePDF() {
     // const url = "print.html?"+"columnNum=" + columnNum + "&iurl=" + allImg + "&data=aaa" 
     // window.open(url, '_blank');
     // window.location.href = url
-    all.style.height = "auto"
-    var content = $('#all').html();
+    // all.style.height = "auto"
+    var content = $('#content').html();
         var pageHeight = 842; // A4 紙張的高度，以像素為單位
         var contentHeight = $('#all').height();
         console.log("contentHeight==",contentHeight)
@@ -535,7 +535,7 @@ function generatePDF() {
         // newWin.document.close();
         // newWin.print();
 
-    all.style.height = "100vh"
+    // all.style.height = "100vh"
 
     // var divToPrint = document.getElementById('all');
     //         var newWin = window.open('', '_blank');

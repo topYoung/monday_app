@@ -38,13 +38,15 @@ body {
   width: calc(100% - 270px);  
   height: 100vh;
   left: 0;
+  overflow-y: scroll;
 }
 
 #print_box{
   position: absolute;
-  width: 90%;
-  left: 5%;  
-  height: 100vh;
+  width: 70%;
+  left: 25%;  
+  /* height: 842px; 
+    overflow: hidden; */
   
 }
 
@@ -421,7 +423,9 @@ input[type=text] {
     size: A4;
     margin: 0;
 }
-
+.page {
+    page-break-after: always;
+}
 
 .print-content {
             width: 210mm; /* A4 紙張的寬度 */
