@@ -306,10 +306,11 @@ input[type=text] {
 
 .image_box_right{
     position: absolute;
-    height: calc(100% - 10px);
+    height: 50vh;
     width: 30%;
     top: 5px;
     right: 0;
+    background-color: red;
 }
 
 .image{
