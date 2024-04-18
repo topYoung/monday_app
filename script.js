@@ -533,7 +533,7 @@ function generatePDF() {
 
         newWin.document.write('</body></html>');
         // newWin.document.close();
-        // newWin.print();
+         newWin.print();
 
     // all.style.height = "100vh"
 
