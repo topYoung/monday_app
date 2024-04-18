@@ -511,8 +511,8 @@ monday.get('context').then(res => {
 //a4 : 72解析度 595/842
 
 function generatePDF() {
-    // const url = "print.html?"+"columnNum=" + columnNum + "&iurl=" + allImg + "&data=aaa" 
-    // window.open(url, '_blank');
+    const url = "print.html?"+"columnNum=" + columnNum + "&iurl=" + allImg + "&data=aaa" 
+    window.open(url, '_blank');
     // window.location.href = url
     // var divToPrint = document.getElementById('all');
     //         var newWin = window.open('', '_blank');
@@ -522,7 +522,7 @@ function generatePDF() {
     //         newWin.document.write('</body></html>');
     //         // newWin.document.close();
     //         newWin.print();
-    $("#all").printElement();
+    // $("#all").printElement();
 
 
      // const divId = 'all'
