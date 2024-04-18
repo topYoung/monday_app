@@ -540,23 +540,24 @@ function generatePDF() {
   // setTimeout(function(){newWin.close();},10);
 
     // // 獲取要轉換的 HTML 元素
-    // var node = document.getElementById('all');
+    var node = document.getElementById('all');
 
-    // // 使用 dom-to-image 库將 HTML 元素轉換為圖像
-    // domtoimage.toPng(node)
-    //     .then(function(dataUrl) {
-    //         // 創建 PDF 實例
-    //         var pdf = new jsPDF('p', 'mm', 'a4');
+    // 使用 dom-to-image 库將 HTML 元素轉換為圖像
+    domtoimage.toPng(node)
+        .then(function(dataUrl) {
+            // 創建 PDF 實例
+            var pdf = new jsPDF('p', 'mm', 'a4');
 
-    //         // 添加圖像到 PDF 中
-    //         pdf.addImage(dataUrl, 'PNG', 0, 0, 210, 297); // 210x297 是 A4 尺寸
+            // 添加圖像到 PDF 中
+            pdf.addImage(dataUrl, 'PNG', 0, 0, 210, 297); // 210x297 是 A4 尺寸
 
-    //         // 保存 PDF
-    //         pdf.save('htmltopdf_' + new Date().getTime() + '.pdf');
-    //     })
-    //     .catch(function(error) {
-    //         console.error('圖像轉換錯誤:', error);
-    //     });
+            // 保存 PDF
+            pdf.save('htmltopdf_' + new Date().getTime() + '.pdf');
+        })
+        .catch(function(error) {
+            console.error('圖像轉換錯誤:', error);
+        });
+        
     // var html_content = $('#all').html();
     // $("#download").contents().find("#wrapper").html(html_content);
 
@@ -683,30 +684,30 @@ function generatePDF() {
     // }
 
 
-    const element = document.getElementById('all')
+    // const element = document.getElementById('all')
 
-    html2canvas(element).then(function(canvas) {
-        var imgData = canvas.toDataURL('image/png');
-        var doc = new jsPDF('p', 'mm', 'a4'); // 使用A4紙張大小
-        var imgWidth = 210; // A4 width in mm
-        var pageHeight = 295; // A4 height in mm
-        var imgHeight = canvas.height * imgWidth / canvas.width;
-        var heightLeft = imgHeight;
-        var position = 0;
+    // html2canvas(element).then(function(canvas) {
+    //     var imgData = canvas.toDataURL('image/png');
+    //     var doc = new jsPDF('p', 'mm', 'a4'); // 使用A4紙張大小
+    //     var imgWidth = 210; // A4 width in mm
+    //     var pageHeight = 295; // A4 height in mm
+    //     var imgHeight = canvas.height * imgWidth / canvas.width;
+    //     var heightLeft = imgHeight;
+    //     var position = 0;
 
-        // 添加第一頁
-        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+    //     // 添加第一頁
+    //     doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    //     heightLeft -= pageHeight;
 
-        // 如果內容超過一頁，則添加更多頁面
-        while (heightLeft >= 0) {
-            position = heightLeft - imgHeight;
-            doc.addPage();
-            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-        }
-        doc.save('sample.pdf');
-        trans.style.visibility = 'hidden'
-    });
+    //     // 如果內容超過一頁，則添加更多頁面
+    //     while (heightLeft >= 0) {
+    //         position = heightLeft - imgHeight;
+    //         doc.addPage();
+    //         doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    //         heightLeft -= pageHeight;
+    //     }
+    //     doc.save('sample.pdf');
+    //     trans.style.visibility = 'hidden'
+    // });
 
 }
