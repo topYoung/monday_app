@@ -430,7 +430,12 @@ function resetColumn() {
                 img.style.width = "100%"
                 // const dh = h1 - 
             }
-
+            const nw = img.offsetWidth
+            const nh = img.offsetHeight
+            const.log('nw=',nw)
+            const.log('w1=',w1)
+            const.log('nh=',nh)
+            const.log('h1=',h1)
 
             if (oldNum == 1) {
                 div.classList.remove("item_img1")
