@@ -43,7 +43,7 @@
     }
 
     let columnNum = getParameterByName('columnNum');
-    let imgUrl = getParameterByName('iurl')
+    let allImg = getParameterByName('iurl')
     let infoData = getParameterByName('data')
     console.log('columnNum=', columnNum)
     console.log('imgUrl=', imgUrl)
@@ -51,10 +51,10 @@
 
 
     let canPrint = false
-    if (imgUrl) {
-        const len = imgUrl.length
+    if (allImg) {
+        const len = allImg.length
         if (len > 0) {
-            for (let k = 0; k < imgUrl.length; k++) {
+            for (let k = 0; k < allImg.length; k++) {
                 let div = document.createElement('div')
                 let div2 = document.createElement('div')
                 let div3 = document.createElement('div')
