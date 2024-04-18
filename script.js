@@ -422,13 +422,15 @@ function resetColumn() {
             const h1 = div2.offsetHeight
             const rate = h / w
             const rate1 = h1 / w1
+            console.log('rate=',rate)
+            console.log('rate1=',rate1)
             if (rate > rate1) {
                 img.style.height = "100%"
             } else {
                 img.style.width = "100%"
                 // const dh = h1 - 
             }
-            
+
 
             if (oldNum == 1) {
                 div.classList.remove("item_img1")
