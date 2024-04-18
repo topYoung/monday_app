@@ -424,18 +424,7 @@ function resetColumn() {
             const rate1 = h1 / w1
             console.log('rate=',rate)
             console.log('rate1=',rate1)
-            if (rate > rate1) {
-                img.style.height = "100%"
-            } else {
-                img.style.width = "100%"
-                // const dh = h1 - 
-            }
-            const nw = img.offsetWidth
-            const nh = img.offsetHeight
-            console.log('nw=',nw)
-            console.log('w1=',w1)
-            console.log('nh=',nh)
-            console.log('h1=',h1)
+            
 
             if (oldNum == 1) {
                 div.classList.remove("item_img1")
@@ -465,6 +454,19 @@ function resetColumn() {
                 div.className = "item_img4"
                 oldNum = 4
             }
+
+            if (rate > rate1) {
+                img.style.height = "100%"
+            } else {
+                img.style.width = "100%"
+                // const dh = h1 - 
+            }
+            const nw = img.offsetWidth
+            const nh = img.offsetHeight
+            console.log('nw=',nw)
+            console.log('w1=',w1)
+            console.log('nh=',nh)
+            console.log('h1=',h1)
 
         }
         // oldColumn = "none"
