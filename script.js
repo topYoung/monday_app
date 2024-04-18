@@ -522,7 +522,7 @@ function generatePDF() {
     //         newWin.document.write('</body></html>');
     //         // newWin.document.close();
     //         newWin.print();
-    $("#all").printElement();
+    // $("#all").printElement();
 
 
      // const divId = 'all'
