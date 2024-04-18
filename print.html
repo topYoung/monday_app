@@ -53,7 +53,7 @@
 
     let columnNum = getParameterByName('columnNum');
     let allImg = getParameterByName('iurl')
-    allImg = allImg.spite(',')
+    allImg = allImg.split(',')
     let infoData = getParameterByName('data')
     console.log('columnNum=', columnNum)
     console.log('allImg=', allImg)
