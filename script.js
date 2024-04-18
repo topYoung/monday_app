@@ -531,8 +531,8 @@ function generatePDF() {
         }
 
         newWin.document.write('</body></html>');
-        newWin.document.close();
-        newWin.print();
+        // newWin.document.close();
+        // newWin.print();
 
 
 
