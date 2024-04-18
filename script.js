@@ -511,14 +511,17 @@ monday.get('context').then(res => {
 //a4 : 72解析度 595/842
 
 function generatePDF() {
-    var divToPrint = document.getElementById('all');
-            var newWin = window.open('', '_blank');
-            newWin.document.open();
-            newWin.document.write('<html><head><title>Print</title></head><body>');
-            newWin.document.write($('#all').html() );
-            newWin.document.write('</body></html>');
-            // newWin.document.close();
-            newWin.print();
+    // var divToPrint = document.getElementById('all');
+    //         var newWin = window.open('', '_blank');
+    //         newWin.document.open();
+    //         newWin.document.write('<html><head><title>Print</title></head><body>');
+    //         newWin.document.write($('#all').html() );
+    //         newWin.document.write('</body></html>');
+    //         // newWin.document.close();
+    //         newWin.print();
+    $("#all").printElement();
+    
+            
      // const divId = 'all'
   //    var newWin=window.open('','列印視窗');
   // newWin.document.open();
