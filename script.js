@@ -514,6 +514,28 @@ function generatePDF() {
     // const url = "print.html?"+"columnNum=" + columnNum + "&iurl=" + allImg + "&data=aaa" 
     // window.open(url, '_blank');
     // window.location.href = url
+
+    var content = $('#all').html();
+        var pageHeight = 842; // A4 紙張的高度，以像素為單位
+        var contentHeight = $('#all').height();
+        console.log("contentHeight==",contentHeight)
+        var pages = Math.ceil(contentHeight / pageHeight);
+
+        var newWin = window.open('', '_blank');
+        newWin.document.open();
+        newWin.document.write('<html><head><title>Print</title></head><body>');
+
+        for (var i = 0; i < pages; i++) {
+            var pageContent = content.slice(i * pageHeight, (i + 1) * pageHeight);
+            newWin.document.write('<div class="page">' + pageContent + '</div>');
+        }
+
+        newWin.document.write('</body></html>');
+        newWin.document.close();
+        newWin.print();
+
+
+
     // var divToPrint = document.getElementById('all');
     //         var newWin = window.open('', '_blank');
     //         newWin.document.open();
@@ -540,24 +562,24 @@ function generatePDF() {
   // setTimeout(function(){newWin.close();},10);
 
     // // 獲取要轉換的 HTML 元素
-    var node = document.getElementById('all');
+    // var node = document.getElementById('all');
 
     // 使用 dom-to-image 库將 HTML 元素轉換為圖像
-    domtoimage.toPng(node)
-        .then(function(dataUrl) {
-            // 創建 PDF 實例
-            var pdf = new jsPDF('p', 'mm', 'a4');
+    // domtoimage.toPng(node)
+    //     .then(function(dataUrl) {
+    //         // 創建 PDF 實例
+    //         var pdf = new jsPDF('p', 'mm', 'a4');
 
-            // 添加圖像到 PDF 中
-            pdf.addImage(dataUrl, 'PNG', 0, 0, 210, 297); // 210x297 是 A4 尺寸
+    //         // 添加圖像到 PDF 中
+    //         pdf.addImage(dataUrl, 'PNG', 0, 0, 210, 297); // 210x297 是 A4 尺寸
 
-            // 保存 PDF
-            pdf.save('htmltopdf_' + new Date().getTime() + '.pdf');
-        })
-        .catch(function(error) {
-            console.error('圖像轉換錯誤:', error);
-        });
-        
+    //         // 保存 PDF
+    //         pdf.save('htmltopdf_' + new Date().getTime() + '.pdf');
+    //     })
+    //     .catch(function(error) {
+    //         console.error('圖像轉換錯誤:', error);
+    //     });
+
     // var html_content = $('#all').html();
     // $("#download").contents().find("#wrapper").html(html_content);
 
