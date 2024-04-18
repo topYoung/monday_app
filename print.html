@@ -114,9 +114,49 @@
                     // console.log("h=",h)
                     // console.log("h1=",h1)
                 }
+                if (k == allImg.length - 1) {
+                    checkLoad()
+                }
             }
         }
 
+    }
+
+    function checkLoad() {
+        const imgID = document.querySelectorAll('img');
+        imgID.forEach((item, index) => {
+            let tmp = []
+            const img = new Image();
+            img.src = item.src;
+
+            img.addEventListener("load", () => {
+
+                i += 1; // 讀取完畢就 + 1
+                // console.log("i==", i);
+                // console.log("id==", item.id);
+                // console.log(item.naturalWidth, item.naturalHeight);
+                if (item.id == "bg") {
+                    orgSize_bg.push(item.naturalWidth)
+                    orgSize_bg.push(item.naturalHeight)
+                }
+                if (item.id == "desk") {
+                    orgSize_desk.push(item.naturalWidth)
+                    orgSize_desk.push(item.naturalHeight)
+                }
+                if (item.id == "picture") {
+                    orgSize_picture.push(item.naturalWidth)
+                    orgSize_picture.push(item.naturalHeight)
+                }
+
+                if (imgID.length === i) { // 當圖片全部讀取完畢就顯示載入完成，這邊可以搭配 Loading 狀態切換畫面
+
+                    console.log('圖片全部載入完成');
+                    //       console.log("orgSize==",orgSize);
+                    // checkSize()
+                    canPrint = true
+                }
+            });
+        })
     }
 
     print_btn.onclick = function() {
