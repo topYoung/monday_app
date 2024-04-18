@@ -416,14 +416,7 @@ function resetColumn() {
             let img = document.getElementById('img_'+k)
             let div2 = document.getElementById('img_div2_' + k)
 
-            const w = img.offsetWidth
-            const h = img.offsetHeight
-            const w1 = div2.offsetWidth
-            const h1 = div2.offsetHeight
-            const rate = h / w
-            const rate1 = h1 / w1
-            console.log('rate=',rate)
-            console.log('rate1=',rate1)
+            
             
 
             if (oldNum == 1) {
@@ -455,6 +448,15 @@ function resetColumn() {
                 oldNum = 4
             }
 
+            const w = img.offsetWidth
+            const h = img.offsetHeight
+            const w1 = div2.offsetWidth
+            const h1 = div2.offsetHeight
+            const rate = h / w
+            const rate1 = h1 / w1
+            console.log('rate=',rate)
+            console.log('rate1=',rate1)
+            
             if (rate > rate1) {
                 img.style.height = "100%"
             } else {
