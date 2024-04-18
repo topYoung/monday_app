@@ -515,9 +515,9 @@ function generatePDF() {
     // window.open(url, '_blank');
     // window.location.href = url
     // all.style.height = "auto"
-    var content = $('#content').html();
+    var content = $('#content_all').html();
         var pageHeight = 842; // A4 紙張的高度，以像素為單位
-        var contentHeight = $('#all').height();
+        var contentHeight = $('#content_all').height();
         console.log("contentHeight==",contentHeight)
         var pages = Math.ceil(contentHeight / pageHeight);
 
