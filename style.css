@@ -39,6 +39,22 @@ body {
   height: 100vh;
   left: 0;
 }
+
+#print_box{
+  position: absolute;
+  width: 90%;
+  left: 5%;  
+  height: 100vh;
+  
+}
+
+#print_btn{
+    position: absolute;
+    transform: scale(1.2);
+    top: 20px;
+    left: 20px;
+}
+
 #title{
     position: absolute;
     top: 0;
@@ -406,10 +422,16 @@ input[type=text] {
     top: 2px
 }
 
+@page {
+    size: A4;
+    margin: 0;
+}
+
+
 .print-content {
             width: 210mm; /* A4 紙張的寬度 */
             height: 297mm; /* A4 紙張的高度 */
             margin: 0 auto; /* 居中對齊 */
             padding: 20mm; /* 邊距 */
         }
-        
+
