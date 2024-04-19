@@ -571,8 +571,11 @@ function generatePDF() {
             newWin.document.open();
             newWin.document.write('<html><head><title>Print</title>')
             newWin.document.write('<link rel="stylesheet" type="text/css" href="style.css">');
-            newWin.document.write('</head><body onload="window.print()">');
+            // newWin.document.write('</head><body onload="window.print()">');
+            newWin.document.write('</head><body>');
+            // newWin.document.write('<html><head><title>Print</title></head><body>');
             newWin.document.write('<div class="print-content">' + divToPrint.innerHTML + '</div>');
+            newWin.document.write('<script src="print.js"></script>');
             newWin.document.write('</body></html>');
             newWin.document.close();
 
