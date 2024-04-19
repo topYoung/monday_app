@@ -19,7 +19,7 @@ function checkLoad() {
         console.log('num=', num)
         const div2 = document.getElementById('img_div2_' + num)
         const w1 = div2.offsetWidth
-        splitconst h1 = div2.offsetHeight
+        const h1 = div2.offsetHeight
         img.addEventListener("load", () => {
             const w = item.offsetWidth
             const h = item.offsetHeight
