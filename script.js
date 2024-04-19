@@ -5,8 +5,8 @@ window.jsPDF = window.jspdf.jsPDF
 
 const getResult = function(a1, a2) {
     let i = a1.length;
-    console.log("i=", i)
-    console.log("a2.length=", a2.length)
+    // console.log("i=", i)
+    // console.log("a2.length=", a2.length)
     if (i != a2.length) return false;
 
     while (i--) {
@@ -454,8 +454,8 @@ function resetColumn() {
             const h1 = div2.offsetHeight
             const rate = h / w
             const rate1 = h1 / w1
-            console.log('rate=',rate)
-            console.log('rate1=',rate1)
+            // console.log('rate=',rate)
+            // console.log('rate1=',rate1)
 
             if (rate > rate1) {
                 img.style.width = "auto"
@@ -466,12 +466,12 @@ function resetColumn() {
                 img.style.width = "96%"
                 // const dh = h1 - 
             }
-            const nw = img.offsetWidth
-            const nh = img.offsetHeight
-            console.log('nw=',nw)
-            console.log('w1=',w1)
-            console.log('nh=',nh)
-            console.log('h1=',h1)
+            // const nw = img.offsetWidth
+            // const nh = img.offsetHeight
+            // console.log('nw=',nw)
+            // console.log('w1=',w1)
+            // console.log('nh=',nh)
+            // console.log('h1=',h1)
 
         }
         // oldColumn = "none"
@@ -491,7 +491,7 @@ function resetColumn() {
 monday.get('context').then(res => {
     console.log('context2=', res)
     boardId = res.data.boardId
-    console.log("boardid=", res.data.boardId);
+    // console.log("boardid=", res.data.boardId);
     //使用範例
     filterItems();
 });
