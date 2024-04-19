@@ -112,28 +112,28 @@ function createCheckbox() {
     all_item.appendChild(allDiv)
 
 
-
+    let n = 0
     for (let i = 0; i < len; i++) {
         const id = tmp[i].id
-        // if(id !="name" && id !="subitems"){
+        if (id != "subitems") {
 
-        let div = document.createElement('div')
-        div.className = "item_column"
-        let x = document.createElement("INPUT");
-        x.setAttribute("type", "checkbox");
-        x.id = "checkbox_" + i
-        x.className = 'checkbox_css'
-        allCheckbox.push(x)
-        let newlabel = document.createElement("Label");
-        newlabel.setAttribute("for", "checkbox_" + i);
-        newlabel.innerHTML = tmp[i].title;
-        div.appendChild(x)
-        div.appendChild(newlabel)
-        all_item.appendChild(div)
+            let div = document.createElement('div')
+            div.className = "item_column"
+            let x = document.createElement("INPUT");
+            x.setAttribute("type", "checkbox");
+            x.id = "checkbox_" + n
+            x.className = 'checkbox_css'
+            allCheckbox.push(x)
+            let newlabel = document.createElement("Label");
+            newlabel.setAttribute("for", "checkbox_" + n);
+            newlabel.innerHTML = tmp[i].title;
+            div.appendChild(x)
+            div.appendChild(newlabel)
+            all_item.appendChild(div)
 
 
-        // n++
-        // }
+            n++
+        }
     }
 
     allInput.addEventListener('change', function() {
@@ -277,19 +277,19 @@ function getOne(index) {
     one = []
     let tmp = ''
     for (let i = 0; i < len; i++) {
-        console.log('index=', Number(index))
-        console.log('id==', Number(itemList[i].id))
+        // console.log('index=', Number(index))
+        // console.log('id==', Number(itemList[i].id))
         if (Number(index) == Number(itemList[i].id)) {
             tmp = itemList[i].column_values
             break;
         }
     }
 
-    console.log("column_values=", tmp)
+    // console.log("column_values=", tmp)
     for (let j = 0; j < tmp.length; j++) {
         if (tmp[j].id == "files") {
             const file = tmp[j].text
-            console.log('file==', file)
+            // console.log('file==', file)
             let imgList = file.split(',')
             if (imgList.length > 0) {
                 for (let i = 0; i < imgList.length; i++) {
@@ -413,11 +413,11 @@ function resetColumn() {
 
         for (let k = 0; k < allImg.length; k++) {
             let div = document.getElementById("img_div_" + k)
-            let img = document.getElementById('img_'+k)
+            let img = document.getElementById('img_' + k)
             let div2 = document.getElementById('img_div2_' + k)
 
-            
-            
+
+
 
             if (oldNum == 1) {
                 div.classList.remove("item_img1")
@@ -566,18 +566,18 @@ function generatePDF() {
     //     // newWin.document.close();
     //      newWin.print();
 
-     var divToPrint = document.getElementById('content_all');
-            var newWin = window.open('', '_blank');
-            newWin.document.open();
-            newWin.document.write('<html><head><title>Print</title>')
-            newWin.document.write('<link rel="stylesheet" type="text/css" href="style.css">');
-            // newWin.document.write('</head><body onload="window.print()">');
-            newWin.document.write('</head><body>');
-            // newWin.document.write('<html><head><title>Print</title></head><body>');
-            newWin.document.write('<div class="print-content">' + divToPrint.innerHTML + '</div>');
-            newWin.document.write('<script src="print.js"></script>');
-            newWin.document.write('</body></html>');
-            newWin.document.close();
+    var divToPrint = document.getElementById('content_all');
+    var newWin = window.open('', '_blank');
+    newWin.document.open();
+    newWin.document.write('<html><head><title>Print</title>')
+    newWin.document.write('<link rel="stylesheet" type="text/css" href="style.css">');
+    // newWin.document.write('</head><body onload="window.print()">');
+    newWin.document.write('</head><body>');
+    // newWin.document.write('<html><head><title>Print</title></head><body>');
+    newWin.document.write('<div class="print-content">' + divToPrint.innerHTML + '</div>');
+    newWin.document.write('<script src="print.js"></script>');
+    newWin.document.write('</body></html>');
+    newWin.document.close();
 
 
     // all.style.height = "100vh"
@@ -593,19 +593,19 @@ function generatePDF() {
     // $("#all").printElement();
 
 
-     // const divId = 'all'
-  //    var newWin=window.open('','列印視窗');
-  // newWin.document.open();
-  // newWin.document.write('<html>'+
-  //   '<head>'+
-  //     '<link rel="stylesheet" href="style.css">'+
-  //   '</head>'+
-  //   '<body  onload="window.print()">'+
-  //     $('#all').html()+
-  //   '</body>'+
-  // '</html>');
-  // newWin.document.close();
-  // setTimeout(function(){newWin.close();},10);
+    // const divId = 'all'
+    //    var newWin=window.open('','列印視窗');
+    // newWin.document.open();
+    // newWin.document.write('<html>'+
+    //   '<head>'+
+    //     '<link rel="stylesheet" href="style.css">'+
+    //   '</head>'+
+    //   '<body  onload="window.print()">'+
+    //     $('#all').html()+
+    //   '</body>'+
+    // '</html>');
+    // newWin.document.close();
+    // setTimeout(function(){newWin.close();},10);
 
     // // 獲取要轉換的 HTML 元素
     // var node = document.getElementById('all');
