@@ -444,6 +444,10 @@ input[type=text] {
 }
 
 @media print {
+    @page {
+        size: A4 landscape; /* 指定 A4 紙張的橫印方向 */
+        margin: 20mm; /* 邊距 */
+    }
     .print-content {
         width: 297mm; /* A4 紙張的寬度 */
         height: 210mm; /* A4 紙張的高度 */
