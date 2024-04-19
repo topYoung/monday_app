@@ -442,3 +442,12 @@ input[type=text] {
             padding: 20mm; /* 邊距 */
         }
 
+@media print {
+    .print-content {
+        width: 210mm; /* A4 紙張的寬度 */
+        height: 297mm; /* A4 紙張的高度 */
+        margin: 10mm; /* 邊距 */
+        padding: 0; /* 內邊距 */
+        box-sizing: border-box; /* 確保 padding 和 border 不會增加元素的寬度和高度 */
+    }
+}
