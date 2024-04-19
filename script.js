@@ -259,9 +259,9 @@ function createImage() {
             const rate = h / w
             const rate1 = h1 / w1
             if (rate > rate1) {
-                img.style.height = "100%"
+                img.style.height = "96%"
             } else {
-                img.style.width = "100%"
+                img.style.width = "96%"
                 // const dh = h1 - 
             }
             // console.log("w=",w)
@@ -456,11 +456,14 @@ function resetColumn() {
             const rate1 = h1 / w1
             console.log('rate=',rate)
             console.log('rate1=',rate1)
-            
+
             if (rate > rate1) {
-                img.style.height = "100%"
+                img.style.width = "auto"
+                img.style.height = "96%"
+
             } else {
-                img.style.width = "100%"
+                img.style.height = "auto"
+                img.style.width = "96%"
                 // const dh = h1 - 
             }
             const nw = img.offsetWidth
