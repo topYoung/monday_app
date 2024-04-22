@@ -260,8 +260,10 @@ function createImage() {
             const rate1 = h1 / w1
             if (rate > rate1) {
                 img.style.height = "96%"
+                img.style.width = h1*0.96/rate + "px"
             } else {
                 img.style.width = "96%"
+                img.style.height = w1*0.96*rate + "px"
                 // const dh = h1 - 
             }
             // console.log("w=",w)
