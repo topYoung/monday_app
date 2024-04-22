@@ -257,10 +257,10 @@ input[type=text] {
 }
 .item_img2 {
     position: relative;
-    width: 46%;
+    width: 44%;
 /*    height: 35vh;*/
     height: 82mm;
-    margin-left: 2%;
+    margin-left: 6%;
     margin-bottom: 0.7vw;
     border: 1px solid black;
     border-radius: 6px;
@@ -456,8 +456,8 @@ input[type=text] {
     .print-content {
         width: 297mm; /* A4 紙張的寬度 */
         height: 210mm; /* A4 紙張的高度 */
-        margin: 0 10mm; /* 邊距 */
-        margin-top: 4mm;
+        margin: 0 ; /* 邊距 */
+        margin-top: 6mm;
         padding: 0 ; /* 內邊距 */
         box-sizing: border-box; /* 確保 padding 和 border 不會增加元素的寬度和高度 */
     }
