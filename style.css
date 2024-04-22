@@ -282,6 +282,8 @@ input[type=text] {
     flex-direction: column;
 /*    height: 13vh;*/
     height: 21mm;
+    text-align: center;
+    margin-top: 10mm;
 }
 
 .title_text {
