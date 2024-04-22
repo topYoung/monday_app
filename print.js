@@ -31,13 +31,13 @@ function checkLoad() {
 
             if (rate > rate1) {
                 item.style.width = "auto"
-                item.style.height = "96%"
-                img.style.width = h1*0.96/rate + "px"
+                item.style.height = "92%"
+                img.style.width = h1*0.92/rate + "px"
 
             } else {
                 item.style.height = "auto"
-                item.style.width = "96%"
-                img.style.height = w1*0.96*rate + "px"
+                item.style.width = "92%"
+                img.style.height = w1*0.92*rate + "px"
                 // const dh = h1 - 
             }
             i += 1; // 讀取完畢就 + 1

@@ -259,7 +259,7 @@ input[type=text] {
     position: relative;
     width: 48%;
 /*    height: 35vh;*/
-    height: 85mm;
+    height: 80mm;
     margin-left: 1%;
     margin-bottom: 0.7vw;
     border: 1px solid black;
@@ -436,12 +436,16 @@ input[type=text] {
     overflow-y: scroll;
 }
 
+.hiddenTitle{
+    display: none;
+}
+
 .print-content {
     position: absolute;
     width: 297mm; /* A4 紙張的寬度 */
     height: 210mm; /* A4 紙張的高度 */
     margin: 0 auto; /* 居中對齊 */
-    padding: 0; /* 邊距 */
+    padding: 0 10mm; /* 邊距 */
 }
 
 @media print {
@@ -452,8 +456,8 @@ input[type=text] {
     .print-content {
         width: 297mm; /* A4 紙張的寬度 */
         height: 210mm; /* A4 紙張的高度 */
-        margin: 10mm; /* 邊距 */
-        padding: 0; /* 內邊距 */
+        margin: 0 10mm; /* 邊距 */
+        padding: 0 ; /* 內邊距 */
         box-sizing: border-box; /* 確保 padding 和 border 不會增加元素的寬度和高度 */
     }
     /*@page {
