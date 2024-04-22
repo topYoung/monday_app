@@ -246,7 +246,22 @@ function createImage() {
         img.src = allImg[k]
         // img.src = "a1.jpeg"
         img.className = "image"
-
+        if(k >= columnNum*2 ){
+            if(k % columnNum*2 == 0){
+                let div4 = document.createElement('div')
+                div4.className = 'title'
+                let h2 = document.createElement('h2')
+                let h3 = document.createElement('h3')
+                h2.className = 'title_text'
+                h3.className = 'subTitle'
+                h2.innerHTML = title_text.innerHTML
+                h3.innerHTML = subTitle.innerHTML
+                div4.appendChild(h2)
+                div4.appendChild(h3)
+                content.appendChild(div4)
+            }
+            
+        }
         div.appendChild(div2)
         div.appendChild(div3)
         div2.appendChild(img)
