@@ -247,7 +247,7 @@ function createImage() {
         // img.src = "a1.jpeg"
         img.className = "image"
         if(k >= columnNum*2 ){
-            if(k % columnNum*2 == 0){
+            if(k % (columnNum*2) == 0){
                 let div4 = document.createElement('div')
                 div4.className = 'title'
                 let h2 = document.createElement('h2')
