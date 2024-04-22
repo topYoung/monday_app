@@ -257,10 +257,11 @@ input[type=text] {
 }
 .item_img2 {
     position: relative;
-    width: 42%;
+    width: 41%;
 /*    height: 35vh;*/
     height: 82mm;
-    margin-left: 6%;
+    margin-left: 1%;
+    left: 9%;
     margin-bottom: 0.7vw;
     border: 1px solid black;
     border-radius: 6px;
