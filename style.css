@@ -457,6 +457,7 @@ input[type=text] {
         width: 297mm; /* A4 紙張的寬度 */
         height: 210mm; /* A4 紙張的高度 */
         margin: 0 10mm; /* 邊距 */
+        margin-top: 4mm;
         padding: 0 ; /* 內邊距 */
         box-sizing: border-box; /* 確保 padding 和 border 不會增加元素的寬度和高度 */
     }
