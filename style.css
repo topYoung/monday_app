@@ -60,7 +60,8 @@ body {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    height: 13vh;
+/*    height: 13vh;*/
+    height: 21mm;
 }
 
 #title_text {
@@ -257,8 +258,8 @@ input[type=text] {
 .item_img2 {
     position: relative;
     width: 48%;
-    height: 35vh;
-    
+/*    height: 35vh;*/
+    height: 85mm;
     margin-left: 1%;
     margin-bottom: 0.7vw;
     border: 1px solid black;
