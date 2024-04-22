@@ -331,7 +331,7 @@ input[type=text] {
     width: 70%;
     top: 5px;
     left: 5px;
-    background-color: cyan;
+    background-color: lightgray;
     display: flex;
     align-items: center;
     /*transform: translateX(-50%);*/
@@ -491,6 +491,8 @@ input[type=text] {
         margin-top: 6mm;
         padding: 0 ; /* 內邊距 */
         box-sizing: border-box; /* 確保 padding 和 border 不會增加元素的寬度和高度 */
+         -webkit-print-color-adjust: exact; /* 兼容性：強制打印背景顏色 */
+        color-adjust: exact; /* 兼容性：強制打印背景顏色 */
     }
     /*@page {
         margin: 0; /* 移除頁面邊界 */
