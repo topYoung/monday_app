@@ -446,7 +446,7 @@ input[type=text] {
 @media print {
     @page {
         size: A4 landscape; /* 指定 A4 紙張的橫印方向 */
-        margin: 20mm; /* 邊距 */
+        margin: 0; /* 邊距 */
     }
     .print-content {
         width: 297mm; /* A4 紙張的寬度 */
@@ -455,4 +455,18 @@ input[type=text] {
         padding: 0; /* 內邊距 */
         box-sizing: border-box; /* 確保 padding 和 border 不會增加元素的寬度和高度 */
     }
+    /*@page {
+        margin: 0; /* 移除頁面邊界 */
+    }*/
+
+    /* 移除頁數 */
+    body {
+        counter-reset: page; /* 重置頁數計數器 */
+    }
+
+    /* 移除頁數的顯示 */
+    .page::after {
+        content: ""; /* 移除頁數的顯示 */
+    }
+
 }
