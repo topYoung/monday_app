@@ -267,6 +267,37 @@ input[type=text] {
     border-radius: 6px;
 
 }
+.hiddenTitle{
+/*    display: none;*/
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+.title{
+    position: relative;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+/*    height: 13vh;*/
+    height: 21mm;
+}
+
+.title_text {
+   
+    width: 100%;
+    margin: 0;
+    /*padding-top: 10px;*/
+}
+
+.subTitle {
+    
+    width: 100%;
+    margin: 0;
+}
+
+
 
 .item_img3 {
     position: relative;
@@ -437,9 +468,6 @@ input[type=text] {
     overflow-y: scroll;
 }
 
-.hiddenTitle{
-    display: none;
-}
 
 .print-content {
     position: absolute;
