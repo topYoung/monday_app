@@ -441,7 +441,7 @@ input[type=text] {
     width: 297mm; /* A4 紙張的寬度 */
     height: 210mm; /* A4 紙張的高度 */
     margin: 0 auto; /* 居中對齊 */
-    padding: 20mm; /* 邊距 */
+    padding: 0; /* 邊距 */
 }
 
 @media print {
