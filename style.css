@@ -331,7 +331,7 @@ input[type=text] {
     width: 70%;
     top: 5px;
     left: 5px;
-    background-color: #f1f1f1;
+    background-color: gainsboro;
     display: flex;
     align-items: center;
     /*transform: translateX(-50%);*/
