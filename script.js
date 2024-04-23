@@ -174,9 +174,13 @@ function setData(){
                 div.className = 'right_text_box'
                 let t1 = document.createElement('p')
                 t1.innerHTML = checkbox.title
+                t1.className = right_text_content
                 let t2 = document.createElement('p')
-
+                t2.className = right_text_content
                 t2.innerHTML = getValue(checkbox.id,column_values)
+                div.appendChild(t1)
+                div.appendChild(t2)
+                itmp.appendChild(div)
             }
         }
     })

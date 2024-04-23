@@ -341,11 +341,27 @@ input[type=text] {
 
 .image_box_right{
     position: absolute;
-    height: fit-content;
+    height: 100%;
     width: 30%;
     top: 5px;
     right: 0;
 }
+.right_text_box{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    left: 0;
+    border-bottom: 2px solid gainsboro;
+}
+
+.right_text_content{
+    position: relative;
+    width: 94%;
+    text-align: left;
+    left: 3%;
+    color: black;
+}
+
 
 .image{
     position: absolute;
