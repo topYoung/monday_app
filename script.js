@@ -177,7 +177,12 @@ function setData(){
                 t1.className = 'right_text_content'
                 let t2 = document.createElement('p')
                 t2.className = 'right_text_content'
-                t2.innerHTML = getValue(checkbox.id,column_values)
+                if(checkbox.id == 'name'){
+                    t2.innerHTML = item.name
+                }else{
+                    t2.innerHTML = getValue(checkbox.id,column_values)
+                }
+                
                 div.appendChild(t1)
                 div.appendChild(t2)
                 item.appendChild(div)

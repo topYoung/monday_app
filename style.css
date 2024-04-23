@@ -345,13 +345,16 @@ input[type=text] {
     width: 30%;
     top: 5px;
     right: 0;
+    overflow-y: scroll;
+    font-size: 12px;
+
 }
 .right_text_box{
     position: relative;
     width: 100%;
     height: fit-content;
     left: 0;
-    border-bottom: 2px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
 }
 
 .right_text_content{
@@ -360,6 +363,7 @@ input[type=text] {
     text-align: left;
     left: 3%;
     color: black;
+    margin: 4px 8px;
 }
 
 
