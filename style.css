@@ -359,11 +359,12 @@ input[type=text] {
 
 .right_text_content{
     position: relative;
-    width: 94%;
+    width: calc(100% - 20px);
     text-align: left;
-    left: 3%;
+    left: 10px;
     color: black;
-    margin: 4px 8px;
+    margin: 0;
+    padding-bottom: 4px;
 }
 
 
