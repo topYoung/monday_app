@@ -224,7 +224,7 @@ function createImage() {
 }
 
 function setImage(){
-    console.log('allImg=', allImg)
+    // console.log('allImg=', allImg)
     for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
         let div2 = document.createElement('div')
@@ -232,7 +232,11 @@ function setImage(){
         let img = document.createElement('img')
         // img.crossOrigin = "anonymous";
         div.id = "img_div_" + k
-        div.name = 
+        div.name = imgData[k].name
+        const column_values = imgData[k].column_values
+        for(let i = 0;i < column_values.length ; i++){
+            
+        }
         img.id = "img_" + k
         div2.id = "img_div2_" + k
 
