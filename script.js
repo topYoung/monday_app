@@ -180,7 +180,7 @@ function setData(){
                 t2.innerHTML = getValue(checkbox.id,column_values)
                 div.appendChild(t1)
                 div.appendChild(t2)
-                itmp.appendChild(div)
+                item.appendChild(div)
             }
         }
     })
