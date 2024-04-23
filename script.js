@@ -170,7 +170,7 @@ function setData(){
             
             let checkbox = allCheckbox[i]
             if(checkbox.id != 'files'){
-                let div = docuent.createElement('div')
+                let div = document.createElement('div')
                 div.className = 'right_text_box'
                 let t1 = document.createElement('p')
                 t1.innerHTML = checkbox.title
