@@ -9,6 +9,10 @@ checkLoad()
 function checkLoad() {
     let i = 0
     const imgID = document.querySelectorAll('img');
+    const title = document.querySelectorAll('.title')
+    title.forEach((item, index) =>{
+        item.style.display = 'flex'
+    })
     imgID.forEach((item, index) => {
         // let tmp = []
         const img = new Image();
