@@ -121,7 +121,8 @@ function createCheckbox() {
             div.className = "item_column"
             let x = document.createElement("INPUT");
             x.setAttribute("type", "checkbox");
-            x.id = "checkbox_" + n
+            x.id = tmp[i].id
+            x.title = tmp[i].title
             x.className = 'checkbox_css'
             allCheckbox.push(x)
             let newlabel = document.createElement("Label");
@@ -143,11 +144,14 @@ function createCheckbox() {
             // 在這裡添加你需要執行的代碼
             for (let j = 0; j < allCheckbox.length; j++) {
                 allCheckbox[j].checked = true
+                clearData()
+                setData('all')
             }
         } else {
             console.log('allitem is unchecked.');
             for (let j = 0; j < allCheckbox.length; j++) {
                 allCheckbox[j].checked = false
+                clearData()
             }
             // 在這裡添加你需要執行的代碼
         }
@@ -156,6 +160,44 @@ function createCheckbox() {
 
 
 
+}
+function setData(){
+    const checkbox = document.querySelectorAll('.image_box_right')
+    checkbox.forEach((item, index) => {
+        const column_values = item.column_values
+
+        for(let i=0;i<allCheckbox.length;i++){
+            
+            let checkbox = allCheckbox[i]
+            if(checkbox.id != 'files'){
+                let div = docuent.createElement('div')
+                div.className = 'right_text_box'
+                let t1 = document.createElement('p')
+                t1.innerHTML = checkbox.title
+                let t2 = document.createElement('p')
+
+                t2.innerHTML = getValue(checkbox.id,column_values)
+            }
+        }
+    })
+}
+
+function getValue(id,values){
+    let txt = ''
+    for(let i=0,i<values.length;i++){
+        if(id == values[i].id){
+            txt = values[i].text
+            break
+        }
+    }
+
+    return txt
+}
+function clearData() {
+    const checkbox = document.querySelectorAll('.image_box_right')
+    checkbox.forEach((item, index) => {
+        item.innerHTML = ''
+    })
 }
 
 print_title_input.addEventListener('input', () => {
@@ -206,6 +248,7 @@ monday.get("filter")
 // });
 let allImg = []
 let imgData = []
+
 function createImage() {
     const len = filterID.length
 
@@ -218,12 +261,12 @@ function createImage() {
             }
         }
     }
-    console.log('data=',imgData)
+    console.log('data=', imgData)
     setImage()
-    
+
 }
 
-function setImage(){
+function setImage() {
     // console.log('allImg=', allImg)
     for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
@@ -232,11 +275,12 @@ function setImage(){
         let img = document.createElement('img')
         // img.crossOrigin = "anonymous";
         div.id = "img_div_" + k
-        div.name = imgData[k].name
-        const column_values = imgData[k].column_values
-        for(let i = 0;i < column_values.length ; i++){
-            
-        }
+        div3.id = "img_div3_" + k
+        div3.name = imgData[k].name
+        div3.column_values = imgData[k].column_values
+        // for(let i = 0;i < column_values.length ; i++){
+
+        // }
         img.id = "img_" + k
         div2.id = "img_div2_" + k
 
@@ -254,6 +298,7 @@ function setImage(){
         }
         div2.className = 'image_box'
         div3.className = 'image_box_right'
+
         img.src = allImg[k]
         // img.src = "a1.jpeg"
         img.className = "image"
@@ -312,7 +357,7 @@ function getOne(index) {
         if (Number(index) == Number(itemList[i].id)) {
             tmp = itemList[i].column_values
             tmp2 = itemList[i]
-            
+
             break;
         }
     }
