@@ -188,7 +188,7 @@ function setData(){
 
 function getValue(id,values){
     let txt = ''
-    for(let i=0,i<values.length;i++){
+    for(let i=0;i<values.length;i++){
         if(id == values[i].id){
             txt = values[i].text
             break
