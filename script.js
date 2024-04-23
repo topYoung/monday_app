@@ -301,12 +301,14 @@ function getOne(index) {
     const len = itemList.length
     one = []
     let tmp = ''
+    let tmp2 = ''
     for (let i = 0; i < len; i++) {
         // console.log('index=', Number(index))
         // console.log('id==', Number(itemList[i].id))
         if (Number(index) == Number(itemList[i].id)) {
             tmp = itemList[i].column_values
-            imgData.push(itemList[i])
+            tmp2 = itemList[i]
+            
             break;
         }
     }
@@ -325,7 +327,7 @@ function getOne(index) {
                     if (img.length > 0) {
                         if (img[img.length - 1] == 'jpg' || img[img.length - 1] == 'png' || img[img.length - 1] == 'jpeg') {
                             one.push(imgList[i])
-                            
+                            imgData.push(tmp2)
                         }
                     }
                 }
