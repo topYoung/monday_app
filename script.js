@@ -299,6 +299,7 @@ function createImage() {
 
 function setImage() {
     // console.log('allImg=', allImg)
+    let n = 0
     for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
         let div2 = document.createElement('div')
@@ -373,6 +374,11 @@ function setImage() {
             // console.log("w1=",w1)
             // console.log("h=",h)
             // console.log("h1=",h1)
+            n++
+            if(n == allImg.length){
+                clearData()
+                setData()
+            }
         }
     }
 }
