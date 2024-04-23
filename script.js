@@ -232,6 +232,7 @@ function setImage(){
         let img = document.createElement('img')
         // img.crossOrigin = "anonymous";
         div.id = "img_div_" + k
+        div.name = 
         img.id = "img_" + k
         div2.id = "img_div2_" + k
 
@@ -305,7 +306,7 @@ function getOne(index) {
         // console.log('id==', Number(itemList[i].id))
         if (Number(index) == Number(itemList[i].id)) {
             tmp = itemList[i].column_values
-
+            imgData.push(itemList[i])
             break;
         }
     }
@@ -324,7 +325,7 @@ function getOne(index) {
                     if (img.length > 0) {
                         if (img[img.length - 1] == 'jpg' || img[img.length - 1] == 'png' || img[img.length - 1] == 'jpeg') {
                             one.push(imgList[i])
-                            imgData.push(index)
+                            
                         }
                     }
                 }
