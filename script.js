@@ -131,7 +131,25 @@ function createCheckbox() {
             div.appendChild(x)
             div.appendChild(newlabel)
             all_item.appendChild(div)
-
+            x.addEventListener('change', function() {
+                if (this.checked) {
+                    console.log("this=", this)
+                    // console.log('allitem is checked.');
+                    // 在這裡添加你需要執行的代碼
+                    
+                        // allCheckbox[j].checked = true
+                        clearData()
+                        setData()
+                    
+                } else {
+                    
+                    
+                        // allCheckbox[j].checked = false
+                        clearData()
+                    
+                    // 在這裡添加你需要執行的代碼
+                }
+            });
 
             n++
         }
@@ -145,7 +163,7 @@ function createCheckbox() {
             for (let j = 0; j < allCheckbox.length; j++) {
                 allCheckbox[j].checked = true
                 clearData()
-                setData('all')
+                setData()
             }
         } else {
             console.log('allitem is unchecked.');
@@ -161,40 +179,43 @@ function createCheckbox() {
 
 
 }
-function setData(){
+
+function setData() {
     const checkbox = document.querySelectorAll('.image_box_right')
     checkbox.forEach((item, index) => {
         const column_values = item.column_values
 
-        for(let i=0;i<allCheckbox.length;i++){
-            
+        for (let i = 0; i < allCheckbox.length; i++) {
+
             let checkbox = allCheckbox[i]
-            if(checkbox.id != 'files'){
-                let div = document.createElement('div')
-                div.className = 'right_text_box'
-                let t1 = document.createElement('p')
-                t1.innerHTML = checkbox.title
-                t1.className = 'right_text_content'
-                let t2 = document.createElement('p')
-                t2.className = 'right_text_content'
-                if(checkbox.id == 'name'){
-                    t2.innerHTML = item.name
-                }else{
-                    t2.innerHTML = getValue(checkbox.id,column_values)
+            if (checkbox.checked == true) {
+                if (checkbox.id != 'files') {
+                    let div = document.createElement('div')
+                    div.className = 'right_text_box'
+                    let t1 = document.createElement('p')
+                    t1.innerHTML = checkbox.title
+                    t1.className = 'right_text_content'
+                    let t2 = document.createElement('p')
+                    t2.className = 'right_text_content'
+                    if (checkbox.id == 'name') {
+                        t2.innerHTML = item.name
+                    } else {
+                        t2.innerHTML = getValue(checkbox.id, column_values)
+                    }
+
+                    div.appendChild(t1)
+                    div.appendChild(t2)
+                    item.appendChild(div)
                 }
-                
-                div.appendChild(t1)
-                div.appendChild(t2)
-                item.appendChild(div)
             }
         }
     })
 }
 
-function getValue(id,values){
+function getValue(id, values) {
     let txt = ''
-    for(let i=0;i<values.length;i++){
-        if(id == values[i].id){
+    for (let i = 0; i < values.length; i++) {
+        if (id == values[i].id) {
             txt = values[i].text
             break
         }
@@ -202,6 +223,7 @@ function getValue(id,values){
 
     return txt
 }
+
 function clearData() {
     const checkbox = document.querySelectorAll('.image_box_right')
     checkbox.forEach((item, index) => {
