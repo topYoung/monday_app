@@ -218,6 +218,11 @@ function createImage() {
             }
         }
     }
+    setImage()
+    
+}
+
+function setImage(){
     console.log('allImg=', allImg)
     for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
@@ -246,9 +251,9 @@ function createImage() {
         img.src = allImg[k]
         // img.src = "a1.jpeg"
         img.className = "image"
-        console.log('Num==',columnNum)
-        if(k >= columnNum*2 ){
-            if(k % (columnNum*2) == 0){
+        // console.log('Num==',columnNum)
+        if (k >= columnNum * 2) {
+            if (k % (columnNum * 2) == 0) {
                 let div4 = document.createElement('div')
                 div4.className = 'title'
                 let h2 = document.createElement('h2')
@@ -261,7 +266,7 @@ function createImage() {
                 div4.appendChild(h3)
                 content.appendChild(div4)
             }
-            
+
         }
         div.appendChild(div2)
         div.appendChild(div3)
@@ -276,10 +281,10 @@ function createImage() {
             const rate1 = h1 / w1
             if (rate > rate1) {
                 img.style.height = "96%"
-                img.style.width = h1*0.96/rate + "px"
+                img.style.width = h1 * 0.96 / rate + "px"
             } else {
                 img.style.width = "96%"
-                img.style.height = w1*0.96*rate + "px"
+                img.style.height = w1 * 0.96 * rate + "px"
                 // const dh = h1 - 
             }
             // console.log("w=",w)
@@ -289,7 +294,6 @@ function createImage() {
         }
     }
 }
-
 function getOne(index) {
     const len = itemList.length
     one = []
@@ -429,69 +433,89 @@ function resetColumn() {
     if (oldColumn != 'none') {
         oldColumn.style.backgroundColor = ''
 
-        for (let k = 0; k < allImg.length; k++) {
-            let div = document.getElementById("img_div_" + k)
-            let img = document.getElementById('img_' + k)
-            let div2 = document.getElementById('img_div2_' + k)
+        content.innerHTML = ''
+        setImage()
+        oldNum = columnNum
+        // for (let k = 0; k < allImg.length; k++) {
+        //     let div = document.getElementById("img_div_" + k)
+        //     let img = document.getElementById('img_' + k)
+        //     let div2 = document.getElementById('img_div2_' + k)
 
 
 
 
-            if (oldNum == 1) {
-                div.classList.remove("item_img1")
-            }
-            if (oldNum == 2) {
-                div.classList.remove("item_img2")
-            }
-            if (oldNum == 3) {
-                div.classList.remove("item_img3")
-            }
-            if (oldNum == 4) {
-                div.classList.remove("item_img4")
-            }
-            if (columnNum == 1) {
-                div.className = "item_img1"
-                oldNum = 1
-            }
-            if (columnNum == 2) {
-                div.className = "item_img2"
-                oldNum = 2
-            }
-            if (columnNum == 3) {
-                div.className = "item_img3"
-                oldNum = 3
-            }
-            if (columnNum == 4) {
-                div.className = "item_img4"
-                oldNum = 4
-            }
+        //     if (oldNum == 1) {
+        //         div.classList.remove("item_img1")
+        //     }
+        //     if (oldNum == 2) {
+        //         div.classList.remove("item_img2")
+        //     }
+        //     if (oldNum == 3) {
+        //         div.classList.remove("item_img3")
+        //     }
+        //     if (oldNum == 4) {
+        //         div.classList.remove("item_img4")
+        //     }
+        //     if (columnNum == 1) {
+        //         div.className = "item_img1"
+        //         oldNum = 1
+        //     }
+        //     if (columnNum == 2) {
+        //         div.className = "item_img2"
+        //         oldNum = 2
+        //     }
+        //     if (columnNum == 3) {
+        //         div.className = "item_img3"
+        //         oldNum = 3
+        //     }
+        //     if (columnNum == 4) {
+        //         div.className = "item_img4"
+        //         oldNum = 4
+        //     }
 
-            const w = img.offsetWidth
-            const h = img.offsetHeight
-            const w1 = div2.offsetWidth
-            const h1 = div2.offsetHeight
-            const rate = h / w
-            const rate1 = h1 / w1
-            // console.log('rate=',rate)
-            // console.log('rate1=',rate1)
+        //     if (k >= columnNum * 2) {
+        //         if (k % (columnNum * 2) == 0) {
+        //             let div4 = document.createElement('div')
+        //             div4.className = 'title'
+        //             let h2 = document.createElement('h2')
+        //             let h3 = document.createElement('h3')
+        //             h2.className = 'title_text'
+        //             h3.className = 'subTitle'
+        //             h2.innerHTML = title_text.innerHTML
+        //             h3.innerHTML = subTitle.innerHTML
+        //             div4.appendChild(h2)
+        //             div4.appendChild(h3)
+        //             content.appendChild(div4)
+        //         }
 
-            if (rate > rate1) {
-                img.style.width = "auto"
-                img.style.height = "96%"
+        //     }
 
-            } else {
-                img.style.height = "auto"
-                img.style.width = "96%"
-                // const dh = h1 - 
-            }
-            // const nw = img.offsetWidth
-            // const nh = img.offsetHeight
-            // console.log('nw=',nw)
-            // console.log('w1=',w1)
-            // console.log('nh=',nh)
-            // console.log('h1=',h1)
+        //     const w = img.offsetWidth
+        //     const h = img.offsetHeight
+        //     const w1 = div2.offsetWidth
+        //     const h1 = div2.offsetHeight
+        //     const rate = h / w
+        //     const rate1 = h1 / w1
+        //     // console.log('rate=',rate)
+        //     // console.log('rate1=',rate1)
 
-        }
+        //     if (rate > rate1) {
+        //         img.style.width = "auto"
+        //         img.style.height = "96%"
+
+        //     } else {
+        //         img.style.height = "auto"
+        //         img.style.width = "96%"
+        //         // const dh = h1 - 
+        //     }
+        //     // const nw = img.offsetWidth
+        //     // const nh = img.offsetHeight
+        //     // console.log('nw=',nw)
+        //     // console.log('w1=',w1)
+        //     // console.log('nh=',nh)
+        //     // console.log('h1=',h1)
+
+        // }
         // oldColumn = "none"
         // columnNum = 0
     }
