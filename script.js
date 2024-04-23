@@ -223,7 +223,7 @@ function createImage() {
 }
 
 function setImage(){
-    // console.log('allImg=', allImg)
+    console.log('allImg=', allImg)
     for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
         let div2 = document.createElement('div')
