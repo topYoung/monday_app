@@ -205,7 +205,7 @@ monday.get("filter")
 //     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
 // });
 let allImg = []
-
+let imgData = []
 function createImage() {
     const len = filterID.length
 
@@ -218,6 +218,7 @@ function createImage() {
             }
         }
     }
+    console.log('data=',imgData)
     setImage()
     
 }
@@ -294,6 +295,7 @@ function setImage(){
         }
     }
 }
+
 function getOne(index) {
     const len = itemList.length
     one = []
@@ -303,6 +305,7 @@ function getOne(index) {
         // console.log('id==', Number(itemList[i].id))
         if (Number(index) == Number(itemList[i].id)) {
             tmp = itemList[i].column_values
+
             break;
         }
     }
@@ -311,6 +314,7 @@ function getOne(index) {
     for (let j = 0; j < tmp.length; j++) {
         if (tmp[j].id == "files") {
             const file = tmp[j].text
+            // let data= []
             // console.log('file==', file)
             let imgList = file.split(',')
             if (imgList.length > 0) {
@@ -320,6 +324,7 @@ function getOne(index) {
                     if (img.length > 0) {
                         if (img[img.length - 1] == 'jpg' || img[img.length - 1] == 'png' || img[img.length - 1] == 'jpeg') {
                             one.push(imgList[i])
+                            imgData.push(index)
                         }
                     }
                 }
