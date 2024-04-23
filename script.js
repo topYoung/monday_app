@@ -94,8 +94,8 @@ let allCheckbox = []
 
 function createCheckbox() {
     const tmp = allData.boards[0].columns
-    console.log('tmp==', tmp)
-    console.log('len==', tmp.length)
+    // console.log('tmp==', tmp)
+    // console.log('len==', tmp.length)
     const len = tmp.length
     let allDiv = document.createElement('div')
     allDiv.className = "item_column"
@@ -211,7 +211,7 @@ function createImage() {
 
     for (let i = 0; i < len; i++) {
         const one = getOne(filterID[i])
-        console.log("one==", one)
+        // console.log("one==", one)
         if (one.length > 0) {
             for (let j = 0; j < one.length; j++) {
                 allImg.push(one[j])
@@ -223,7 +223,7 @@ function createImage() {
 }
 
 function setImage(){
-    console.log('allImg=', allImg)
+    // console.log('allImg=', allImg)
     for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
         let div2 = document.createElement('div')
@@ -316,7 +316,7 @@ function getOne(index) {
             if (imgList.length > 0) {
                 for (let i = 0; i < imgList.length; i++) {
                     const img = imgList[i].split('.')
-                    console.log("img=", img)
+                    // console.log("img=", img)
                     if (img.length > 0) {
                         if (img[img.length - 1] == 'jpg' || img[img.length - 1] == 'png' || img[img.length - 1] == 'jpeg') {
                             one.push(imgList[i])
