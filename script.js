@@ -146,7 +146,7 @@ function createCheckbox() {
                     
                         // allCheckbox[j].checked = false
                         clearData()
-                    
+                        setData()
                     // 在這裡添加你需要執行的代碼
                 }
             });
