@@ -287,6 +287,8 @@ let imgData = []
 
 function createImage() {
     content.innerHTML = ''
+    allImg = []
+    imgData = []
     const len = filterID.length
 
     for (let i = 0; i < len; i++) {
