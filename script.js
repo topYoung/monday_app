@@ -24,7 +24,7 @@ const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjMzNTg4OTE2MCwiYWFpIjoxMSwidWlkIjo
 
 // 你想要抓取的board ID
 let boardId
-
+let first = true
 // 設定API請求的URL
 const url = 'https://api.monday.com/v2';
 
@@ -85,6 +85,7 @@ async function filterItems() {
     // 抓取項目
     itemList = await fetchItems();
     console.log("itemList===", itemList)
+    first = false
     createImage()
     // 過濾項目
 
@@ -261,6 +262,9 @@ monday.listen("itemIds", (res) => {
     // console.log('equal==', equal)
     // if (equal == false) {
     filterID = res.data
+    if(first == false){
+        createImage()
+    }
     console.log("newFilterId=", filterID)
 
     // }
@@ -281,6 +285,7 @@ let allImg = []
 let imgData = []
 
 function createImage() {
+    content.innerHTML = ''
     const len = filterID.length
 
     for (let i = 0; i < len; i++) {
@@ -398,7 +403,6 @@ function getOne(index) {
             break;
         }
     }
-
     // console.log("column_values=", tmp)
     for (let j = 0; j < tmp.length; j++) {
         if (tmp[j].id == "files") {
