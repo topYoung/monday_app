@@ -262,6 +262,7 @@ monday.listen("itemIds", (res) => {
     // console.log('equal==', equal)
     // if (equal == false) {
     filterID = res.data
+    console.log('first==',first)
     if(first == false){
         createImage()
     }
