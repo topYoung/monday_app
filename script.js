@@ -276,8 +276,6 @@ monday.listen("itemIds", (res) => {
 monday.get("filter")
     .then(res => console.log("get_filter=", res))
 
-
-
 // monday.listen("settings", res => {
 //     console.log("settings=", res.data);
 //     // {"fieldName": "fieldValue", "fieldName2": "fieldValue2"...}
