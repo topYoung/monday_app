@@ -8,7 +8,7 @@ checkLoad()
 // }
 
 window.onload = function() {
-    document.body.style.overflowY = "hidden";
+    document.body.style.overflowY = "scroll";
 }
 
 function checkLoad() {
