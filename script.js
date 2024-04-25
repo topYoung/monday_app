@@ -244,7 +244,7 @@ function clearData() {
 
 print_title_input.addEventListener('input', () => {
     // console.log(print_title_input.value); // 在輸入框中輸入文字時，即時輸出該文字
-    title.innerHTML = print_title_input.value
+    title_text.innerHTML = print_title_input.value
 });
 
 print_title_input2.addEventListener('input', () => {
