@@ -6,7 +6,13 @@ checkLoad()
 
 //     }
 // }
+
+window.onload = function() {
+    document.body.style.overflowY = "hidden";
+}
+
 function checkLoad() {
+
     let i = 0
     const imgID = document.querySelectorAll('img');
     const title = document.querySelectorAll('.title')
