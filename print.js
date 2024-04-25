@@ -1,4 +1,4 @@
-// let canPrint = false
+let canPrint = false
 
 // print_btn.onclick = function() {
 checkLoad()
@@ -55,9 +55,16 @@ function checkLoad() {
                 console.log('圖片全部載入完成');
                 //       console.log("orgSize==",orgSize);
                 // checkSize()
-                // canPrint = true
-                window.print()
+                canPrint = true
+                
             }
         });
     })
+}
+
+function goPrint() {
+    if(canPrint == true){
+        window.print()
+    }
+   
 }

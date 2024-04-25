@@ -735,6 +735,7 @@ function generatePDF() {
     newWin.document.write('</head><body>');
     // newWin.document.write('<html><head><title>Print</title></head><body>');
     newWin.document.write('<div class="print-content">' + divToPrint.innerHTML + '</div>');
+    newWin.document.write('<button id="pdf_btn" onclick="goPrint()">列  印</button>')
     newWin.document.write('<script src="print.js"></script>');
     newWin.document.write('</body></html>');
     newWin.document.close();
