@@ -137,17 +137,17 @@ function createCheckbox() {
                     console.log("this=", this)
                     // console.log('allitem is checked.');
                     // 在這裡添加你需要執行的代碼
-                    
-                        // allCheckbox[j].checked = true
-                        clearData()
-                        setData()
-                    
+
+                    // allCheckbox[j].checked = true
+                    clearData()
+                    setData()
+
                 } else {
-                    
-                    
-                        // allCheckbox[j].checked = false
-                        clearData()
-                        setData()
+
+
+                    // allCheckbox[j].checked = false
+                    clearData()
+                    setData()
                     // 在這裡添加你需要執行的代碼
                 }
             });
@@ -190,7 +190,17 @@ function setData() {
 
             let checkbox = allCheckbox[i]
             if (checkbox.checked == true) {
-                if (checkbox.id != 'files') {
+                const id = checkbox.id
+                let txt = ''
+                for (let k = 0; k < id.length; k++) {
+                    if (k < 5) {
+                        txt = txt + id[k]
+                    }
+
+                }
+                console.log("txt=", txt)
+                if (txt != "files") {
+                    // if (checkbox.id != 'files') {
                     let div = document.createElement('div')
                     div.className = 'right_text_box'
                     let t1 = document.createElement('p')
@@ -262,8 +272,8 @@ monday.listen("itemIds", (res) => {
     // console.log('equal==', equal)
     // if (equal == false) {
     filterID = res.data
-    console.log('first==',first)
-    if(first == false){
+    console.log('first==', first)
+    if (first == false) {
         createImage()
     }
     console.log("newFilterId=", filterID)
@@ -381,7 +391,7 @@ function setImage() {
             // console.log("h=",h)
             // console.log("h1=",h1)
             n++
-            if(n == allImg.length){
+            if (n == allImg.length) {
                 clearData()
                 setData()
             }
@@ -406,7 +416,16 @@ function getOne(index) {
     }
     // console.log("column_values=", tmp)
     for (let j = 0; j < tmp.length; j++) {
-        if (tmp[j].id == "files") {
+        const id = tmp[j].id
+        let txt = ''
+        for (let k = 0; k < id.length; k++) {
+            if (k < 5) {
+                txt = txt + id[k]
+            }
+
+        }
+        console.log("txt=", txt)
+        if (txt == "files") {
             const file = tmp[j].text
             // let data= []
             // console.log('file==', file)
