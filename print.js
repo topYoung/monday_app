@@ -66,6 +66,7 @@ function goPrint() {
     if(canPrint == true){
         pdf_btn.style.display = 'none'
         window.print()
+        window.close();
     }
    
 }
