@@ -657,8 +657,8 @@ monday.get('context').then(res => {
 
 
 function setItem(n){
-    let content = all_item(n)
-    for(let i=0;i<all_item.length){
+    let content = filterID(n)
+    for(let i=0;i<filterID.length;i++){
         if(i == n){
             all_item[i] = "none"
         }
