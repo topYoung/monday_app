@@ -1,12 +1,11 @@
 let canPrint = false
-
+loader.style.visibility = 'visible'
 // print_btn.onclick = function() {
 checkLoad()
 //     if(canPrint == true){
 
 //     }
 // }
-
 window.onload = function() {
     document.body.style.overflowY = "scroll";
 }
@@ -57,7 +56,7 @@ function checkLoad() {
 
 
             if (imgID.length === i) { // 當圖片全部讀取完畢就顯示載入完成，這邊可以搭配 Loading 狀態切換畫面
-
+                loader.style.visibility = 'hidden'
                 console.log('圖片全部載入完成');
                 //       console.log("orgSize==",orgSize);
                 // checkSize()

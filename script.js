@@ -544,7 +544,6 @@ document.addEventListener('DOMContentLoaded', function() {
     //     }
     // });
 
-
 });
 
 function resetColumn() {
@@ -656,6 +655,16 @@ monday.get('context').then(res => {
     filterItems();
 });
 
+
+function setItem(n){
+    let content = all_item(n)
+    for(let i=0;i<all_item.length){
+        if(i == n){
+            all_item[i] = "none"
+        }
+    }
+
+}
 // async function settingItems(boardId) {
 //     const query = `
 //  query {
@@ -736,6 +745,7 @@ function generatePDF() {
     // newWin.document.write('<html><head><title>Print</title></head><body>');
     newWin.document.write('<div class="print-content">' + divToPrint.innerHTML + '</div>');
     newWin.document.write('<button id="pdf_btn" onclick="goPrint()">列  印</button>')
+    newWin.document.write('<div id="loader" style="z-index: 900"><img src="loading.svg"></div>')
     newWin.document.write('<script src="print.js"></script>');
     newWin.document.write('</body></html>');
     newWin.document.close();
