@@ -50,6 +50,7 @@ async function fetchItems() {
       id
       title
     }
+    items_count
     items_page(limit: 500) {
         items {
           id
@@ -60,13 +61,14 @@ async function fetchItems() {
             value
           }
         }
-      }
     }
     groups{
       id
       title
       
     }
+    }
+    
  }
  `;
 
