@@ -192,14 +192,20 @@ function setData() {
             if (checkbox.checked == true) {
                 const id = checkbox.id
                 let txt = ''
-                for (let k = 0; k < id.length; k++) {
-                    if (k < 5) {
-                        txt = txt + id[k]
-                    }
+	let txt2 = ''
+        for (let k = 0; k < id.length; k++) {
+            if (k < 5) {
+                txt = txt + id[k]
+            }
+	    if(k < 4){
+		txt2 = txt2 + id[k]
+	    }
 
-                }
-                console.log("txt=", txt)
-                if (txt != "files") {
+
+        }
+        console.log("txt=", txt)
+	console.log("txt2=", txt2)
+        if (txt == "files" || txt2 =='file') {
                     // if (checkbox.id != 'files') {
                     let div = document.createElement('div')
                     div.className = 'right_text_box'
@@ -314,7 +320,7 @@ function createImage() {
 }
 
 function setImage() {
-    // console.log('allImg=', allImg)
+     console.log('allImg=', allImg)
     let n = 0
     for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
@@ -418,14 +424,20 @@ function getOne(index) {
     for (let j = 0; j < tmp.length; j++) {
         const id = tmp[j].id
         let txt = ''
+	let txt2 = ''
         for (let k = 0; k < id.length; k++) {
             if (k < 5) {
                 txt = txt + id[k]
             }
+	    if(k < 4){
+		txt2 = txt2 + id[k]
+	    }
+
 
         }
         console.log("txt=", txt)
-        if (txt == "files") {
+	console.log("txt2=", txt2)
+        if (txt == "files" || txt2 =='file') {
             const file = tmp[j].text
             // let data= []
             // console.log('file==', file)
