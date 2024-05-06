@@ -50,7 +50,7 @@ async function fetchItems() {
       id
       title
     }
-    items_page {
+    items_page(limit: 500) {
         items {
           id
           name
