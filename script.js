@@ -205,7 +205,7 @@ function setData() {
         }
         console.log("txt=", txt)
 	console.log("txt2=", txt2)
-        if (txt == "files" || txt2 =='file') {
+        if (txt != "files" && txt2 !='file') {
                     // if (checkbox.id != 'files') {
                     let div = document.createElement('div')
                     div.className = 'right_text_box'
