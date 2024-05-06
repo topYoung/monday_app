@@ -192,20 +192,20 @@ function setData() {
             if (checkbox.checked == true) {
                 const id = checkbox.id
                 let txt = ''
-	let txt2 = ''
-        for (let k = 0; k < id.length; k++) {
-            if (k < 5) {
-                txt = txt + id[k]
-            }
-	    if(k < 4){
-		txt2 = txt2 + id[k]
-	    }
+                let txt2 = ''
+                for (let k = 0; k < id.length; k++) {
+                    if (k < 5) {
+                        txt = txt + id[k]
+                    }
+                    if (k < 4) {
+                        txt2 = txt2 + id[k]
+                    }
 
 
-        }
-        console.log("txt=", txt)
-	console.log("txt2=", txt2)
-        if (txt != "files" && txt2 !='file') {
+                }
+                console.log("txt=", txt)
+                console.log("txt2=", txt2)
+                if (txt != "files" && txt2 != 'file') {
                     // if (checkbox.id != 'files') {
                     let div = document.createElement('div')
                     div.className = 'right_text_box'
@@ -248,6 +248,28 @@ function clearData() {
     })
 }
 
+function checkData() {
+    const checkbox = document.querySelectorAll('.image_box_right')
+    let empty = true
+    checkbox.forEach((item, index) => {
+        if (item.innerHTML != '') {
+            empty = false
+            break
+        }
+    })
+    const imgbox = document.querySelectorAll('.image_box')
+    imgbox.forEach((item, index) => {
+        if (empty == true) {
+            item.style.left = '50%'
+            item.style.transform = 'translateX(-50%)'
+        } else {
+
+            item.style.left = '5px'
+            item.style.transform = 'translateX(0)'
+
+        }
+    })
+}
 print_title_input.addEventListener('input', () => {
     // console.log(print_title_input.value); // 在輸入框中輸入文字時，即時輸出該文字
     title_text.innerHTML = print_title_input.value
@@ -320,7 +342,7 @@ function createImage() {
 }
 
 function setImage() {
-     console.log('allImg=', allImg)
+    console.log('allImg=', allImg)
     let n = 0
     for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
@@ -424,20 +446,20 @@ function getOne(index) {
     for (let j = 0; j < tmp.length; j++) {
         const id = tmp[j].id
         let txt = ''
-	let txt2 = ''
+        let txt2 = ''
         for (let k = 0; k < id.length; k++) {
             if (k < 5) {
                 txt = txt + id[k]
             }
-	    if(k < 4){
-		txt2 = txt2 + id[k]
-	    }
+            if (k < 4) {
+                txt2 = txt2 + id[k]
+            }
 
 
         }
         console.log("txt=", txt)
-	console.log("txt2=", txt2)
-        if (txt == "files" || txt2 =='file') {
+        console.log("txt2=", txt2)
+        if (txt == "files" || txt2 == 'file') {
             const file = tmp[j].text
             // let data= []
             // console.log('file==', file)
@@ -668,10 +690,10 @@ monday.get('context').then(res => {
 });
 
 
-function setItem(n){
+function setItem(n) {
     let content = filterID(n)
-    for(let i=0;i<filterID.length;i++){
-        if(i == n){
+    for (let i = 0; i < filterID.length; i++) {
+        if (i == n) {
             all_item[i] = "none"
         }
     }
