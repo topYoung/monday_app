@@ -171,6 +171,7 @@ function createCheckbox() {
             for (let j = 0; j < allCheckbox.length; j++) {
                 allCheckbox[j].checked = false
                 clearData()
+                checkData()
             }
             // 在這裡添加你需要執行的代碼
         }
@@ -227,6 +228,7 @@ function setData() {
             }
         }
     })
+    checkData()
 }
 
 function getValue(id, values) {
