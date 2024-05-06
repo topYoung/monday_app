@@ -256,7 +256,7 @@ function checkData() {
     checkbox.forEach((item, index) => {
         if (item.innerHTML != '') {
             empty = false
-            break
+            
         }
     })
     const imgbox = document.querySelectorAll('.image_box')
