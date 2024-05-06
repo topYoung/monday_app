@@ -62,6 +62,11 @@ async function fetchItems() {
         }
       }
     }
+    groups{
+      id
+      title
+      
+    }
  }
  `;
 
