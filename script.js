@@ -99,7 +99,7 @@ async function getNextItem(){
     console.log('cursor==',cursor)
     const query = `
  query {
-    next_items_page (limit: 500, cursor: "${cursor}") {
+    next_items_page (limit: 500, cursor: ["${cursor}"]) {
     cursor
     items {
       id
