@@ -42,6 +42,9 @@ let itemList = []
 let allData
 let columnNum = 2
 let oldColumn = 'none'
+let itemCount = 0
+let cursor = ''
+let limit = 500
 async function fetchItems() {
     const query = `
  query {
@@ -52,6 +55,7 @@ async function fetchItems() {
     }
     items_count
     items_page(limit: 500) {
+        cursor
         items {
           id
           name
@@ -83,17 +87,71 @@ async function fetchItems() {
     // 返回查詢結果中的項目
     console.log("alldata=", response.data)
     allData = response.data
+    itemCount = allData.boards[0].items_count
+    cursor = allData.boards[0].items_page.cursor
+
     createCheckbox()
 
     return response.data.boards[0].items_page.items;
 }
 
+async function getNextItem(){
+    const query = `
+ query {
+    next_items_page (limit: 500, cursor: ""${cursor}"") {
+    cursor
+    items {
+      id
+      name
+      column_values{
+            id
+            text
+            value
+          }
+    }   
+  }
+ `;
+
+    // 使用monday SDK來執行GraphQL查詢
+    const response = await monday.api(query);
+
+    // 檢查查詢是否成功
+    if (!response.data) {
+        throw new Error('查詢失敗');
+    }
+
+    // 返回查詢結果中的項目
+    console.log("alldata_next=", response.data)
+    // allData = response.data
+    itemCount = allData.boards[0].items_count
+    cursor = allData.boards[0].items_page.cursor
+    
+    const tmp = response.data.boards[0].items_page.items
+    for(let i=0;i< tmp.length;i++){
+        itemList.push(tmp[i])
+    }
+    console.log('itemList_next=',itemList)
+    if(itemCount > limit){
+        getNextItem()
+        limit += 500
+    }else{
+        first = false
+        createImage()
+    }
+}
 async function filterItems() {
     // 抓取項目
     itemList = await fetchItems();
     console.log("itemList===", itemList)
-    first = false
-    createImage()
+    if(itemCount > limit){
+        getNextItem()
+        limit += 500
+    }else{
+        first = false
+        createImage()
+    }
+
+    
     // 過濾項目
 
 }
@@ -304,8 +362,8 @@ monday.listen('filter', (res) => {
 
 
 monday.listen("itemIds", (res) => {
-    // console.log("data=", res.data);
-    const equal = getResult(res.data, filterID)
+    console.log("data=", res.data);
+    // const equal = getResult(res.data, filterID)
     // console.log('equal==', equal)
     // if (equal == false) {
     filterID = res.data
@@ -351,7 +409,7 @@ function createImage() {
 }
 
 function setImage() {
-    console.log('allImg=', allImg)
+    console.log('allImg.length=', allImg.length)
     let n = 0
     for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
