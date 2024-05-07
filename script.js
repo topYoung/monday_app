@@ -278,7 +278,12 @@ function setData() {
                     let div = document.createElement('div')
                     div.className = 'right_text_box'
                     let t1 = document.createElement('p')
-                    t1.innerHTML = checkbox.title
+                    if(checkbox.title == "Name" || checkbox.title == "name"){
+                        t1.innerHTML = "項目"
+                    }else{
+                        t1.innerHTML = checkbox.title
+                    }
+                    
                     t1.className = 'right_text_content'
                     let t2 = document.createElement('p')
                     t2.className = 'right_text_content'
@@ -342,11 +347,19 @@ function checkData() {
 print_title_input.addEventListener('input', () => {
     // console.log(print_title_input.value); // 在輸入框中輸入文字時，即時輸出該文字
     title_text.innerHTML = print_title_input.value
+    const title = document.querySelectorAll('.title_text')
+    title.forEach((item, index) => {
+        item.innerHTML = print_title_input.value
+    })
 });
 
 print_title_input2.addEventListener('input', () => {
     // console.log(print_title_input.value); // 在輸入框中輸入文字時，即時輸出該文字
     subTitle.innerHTML = print_title_input2.value
+    const title = document.querySelectorAll('.subTitle')
+    title.forEach((item, index) => {
+        item.innerHTML = print_title_input2.value
+    })
 });
 // monday.listen(['filter'], (res) => {
 //     console.log("filter listen", res.data);
@@ -354,6 +367,7 @@ print_title_input2.addEventListener('input', () => {
 
 // const callback = res => console.log("filter_res=",res);
 monday.listen('filter', (res) => {
+    loader.style.visibility = 'visible'
     console.log("filter_res=", res)
 
 });
@@ -368,7 +382,7 @@ monday.listen("itemIds", (res) => {
     // const equal = getResult(res.data, filterID)
     // console.log('equal==', equal)
     // if (equal == false) {
-    
+
     filterID = res.data
     console.log('first==', first)
     if (first == false) {
@@ -492,6 +506,7 @@ function setImage() {
             if (n == allImg.length) {
                 clearData()
                 setData()
+                loader.style.visibility = 'hidden'
             }
         }
     }
