@@ -96,7 +96,7 @@ async function fetchItems() {
 }
 
 async function getNextItem(){
-    // console.log('cursor==',cursor)
+    console.log('cursor==',cursor)
     const query = `
  query {
     next_items_page (limit: 500, cursor: "${cursor}") {
@@ -125,9 +125,9 @@ async function getNextItem(){
     // 返回查詢結果中的項目
     console.log("alldata_next=", response.data)
     // allData = response.data
-    itemCount = allData.boards[0].items_count
-    cursor = allData.boards[0].items_page.cursor
-    
+    // itemCount = allData.boards[0].items_count
+    // cursor = allData.boards[0].items_page.cursor
+    cursor = response.data.boards[0].items_page.cursor
     const tmp = response.data.boards[0].items_page.items
     for(let i=0;i< tmp.length;i++){
         itemList.push(tmp[i])
