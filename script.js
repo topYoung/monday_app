@@ -271,8 +271,8 @@ function setData() {
 
 
                 }
-                console.log("txt=", txt)
-                console.log("txt2=", txt2)
+                // console.log("txt=", txt)
+                // console.log("txt2=", txt2)
                 if (txt != "files" && txt2 != 'file') {
                     // if (checkbox.id != 'files') {
                     let div = document.createElement('div')
@@ -368,6 +368,7 @@ monday.listen("itemIds", (res) => {
     // const equal = getResult(res.data, filterID)
     // console.log('equal==', equal)
     // if (equal == false) {
+    
     filterID = res.data
     console.log('first==', first)
     if (first == false) {
@@ -526,8 +527,8 @@ function getOne(index) {
 
 
         }
-        console.log("txt=", txt)
-        console.log("txt2=", txt2)
+        // console.log("txt=", txt)
+        // console.log("txt2=", txt2)
         if (txt == "files" || txt2 == 'file') {
             const file = tmp[j].text
             // let data= []
