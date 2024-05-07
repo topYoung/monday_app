@@ -127,8 +127,8 @@ async function getNextItem(){
     // allData = response.data
     // itemCount = allData.boards[0].items_count
     // cursor = allData.boards[0].items_page.cursor
-    cursor = response.data.boards[0].next_items_page.cursor
-    const tmp = response.data.boards[0].next_items_page.items
+    cursor = response.data.next_items_page.cursor
+    const tmp = response.data.next_items_page.items
     for(let i=0;i< tmp.length;i++){
         itemList.push(tmp[i])
     }
