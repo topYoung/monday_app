@@ -195,7 +195,12 @@ function createCheckbox() {
             allCheckbox.push(x)
             let newlabel = document.createElement("Label");
             newlabel.setAttribute("for", "checkbox_" + n);
-            newlabel.innerHTML = tmp[i].title;
+            if(tmp[i].title == 'Name' || tmp[i].title == 'name'){
+                newlabel.innerHTML = '項目';
+            }else{
+                newlabel.innerHTML = tmp[i].title;
+            }
+            
             div.appendChild(x)
             div.appendChild(newlabel)
             all_item.appendChild(div)
@@ -435,13 +440,7 @@ function setImage() {
         // img.crossOrigin = "anonymous";
         div.id = "img_div_" + k
         div3.id = "img_div3_" + k
-        if(imgData[k].name == 'Name' || imgData[k].name == 'name'){
-
-            div3.name = "項目"
-        }else{
-            div3.name = imgData[k].name
-        }
-        
+        div3.name = imgData[k].name
         div3.column_values = imgData[k].column_values
         // for(let i = 0;i < column_values.length ; i++){
 
