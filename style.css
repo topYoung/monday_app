@@ -345,7 +345,7 @@ input[type=text] {
     width: 30%;
     top: 5px;
     right: 0;
-    overflow-y: scroll;
+    overflow: hidden;
     font-size: 12px;
 
 }
@@ -491,6 +491,13 @@ input[type=text] {
     overflow-y: scroll;
 }
 
+.print-content2{
+    position: absolute;
+    width: 210mm; /* A4 紙張的寬度 */
+    height: 297mm; /* A4 紙張的高度 */
+    margin: 0 auto; /* 居中對齊 */
+    padding: 0 10mm; /* 邊距 */
+}
 
 .print-content {
     position: absolute;

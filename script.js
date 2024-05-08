@@ -3,19 +3,19 @@
 // let query = 'query { boards(ids: 6292532342 limit: 10) { columns{id title} items_page{ items{ name column_values{ id text value }}}}}';
 window.jsPDF = window.jspdf.jsPDF
 
-let title1 = localStorage.getItem("title1")
-let title2 = localStorage.getItem('title2')
-console.log('title1==',title1)
-console.log('title2==',title2)
+let title1 ""
+let title2 ""
+// console.log('title1==',title1)
+// console.log('title2==',title2)
 
-if(title1 != null){
-    title_text.innerHTML = title1
-    print_title_input.value = title1
-}
-if(title2 != null){
-    subTitle.innerHTML = title2
-    print_title_input2.value = title2
-}
+// if(title1 != null){
+//     title_text.innerHTML = title1
+//     print_title_input.value = title1
+// }
+// if(title2 != null){
+//     subTitle.innerHTML = title2
+//     print_title_input2.value = title2
+// }
 
 
 const getResult = function(a1, a2) {
@@ -370,7 +370,7 @@ print_title_input.addEventListener('input', () => {
     title.forEach((item, index) => {
         item.innerHTML = print_title_input.value
     })
-    localStorage.setItem("title1", print_title_input.value)
+    localStorage.setItem("title1_"+boardId, print_title_input.value)
 });
 
 print_title_input2.addEventListener('input', () => {
@@ -380,7 +380,7 @@ print_title_input2.addEventListener('input', () => {
     title.forEach((item, index) => {
         item.innerHTML = print_title_input2.value
     })
-    localStorage.setItem("title2", print_title_input2.value)
+    localStorage.setItem("title2_"+boardId, print_title_input2.value)
 });
 // monday.listen(['filter'], (res) => {
 //     console.log("filter listen", res.data);
@@ -443,7 +443,6 @@ function createImage() {
     }
     console.log('data=', imgData)
     setImage()
-
 }
 
 function setImage() {
@@ -793,6 +792,20 @@ function resetColumn() {
 monday.get('context').then(res => {
     console.log('context2=', res)
     boardId = res.data.boardId
+    title1 = localStorage.getItem("title1")
+    title2 = localStorage.getItem('title2')
+    console.log('title1==',title1)
+    console.log('title2==',title2)
+
+    if(title1 != null){
+        title_text.innerHTML = title1
+        print_title_input.value = title1
+    }
+    if(title2 != null){
+        subTitle.innerHTML = title2
+        print_title_input2.value = title2
+    }
+
     // console.log("boardid=", res.data.boardId);
     //使用範例
     filterItems();
