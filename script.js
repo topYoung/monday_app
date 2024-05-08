@@ -269,7 +269,6 @@ function setData() {
                         txt2 = txt2 + id[k]
                     }
 
-
                 }
                 // console.log("txt=", txt)
                 // console.log("txt2=", txt2)
@@ -436,7 +435,13 @@ function setImage() {
         // img.crossOrigin = "anonymous";
         div.id = "img_div_" + k
         div3.id = "img_div3_" + k
-        div3.name = imgData[k].name
+        if(imgData[k].name == 'Name' || imgData[k].name == 'name'){
+
+            div3.name = "項目"
+        }else{
+            div3.name = imgData[k].name
+        }
+        
         div3.column_values = imgData[k].column_values
         // for(let i = 0;i < column_values.length ; i++){
 
