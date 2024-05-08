@@ -3,6 +3,21 @@
 // let query = 'query { boards(ids: 6292532342 limit: 10) { columns{id title} items_page{ items{ name column_values{ id text value }}}}}';
 window.jsPDF = window.jspdf.jsPDF
 
+let title1 = localStorage.getItem("title1")
+let title2 = localStorage.getItem('title2')
+console.log('title1==',title1)
+console.log('title2==',title2)
+
+if(title1 != null){
+    title_text.innerHTML = title1
+    print_title_input.value = title1
+}
+if(title2 != null){
+    subTitle.innerHTML = title2
+    print_title_input2.value = title2
+}
+
+
 const getResult = function(a1, a2) {
     let i = a1.length;
     // console.log("i=", i)
@@ -355,6 +370,7 @@ print_title_input.addEventListener('input', () => {
     title.forEach((item, index) => {
         item.innerHTML = print_title_input.value
     })
+    localStorage.setItem("title1", print_title_input.value)
 });
 
 print_title_input2.addEventListener('input', () => {
@@ -364,6 +380,7 @@ print_title_input2.addEventListener('input', () => {
     title.forEach((item, index) => {
         item.innerHTML = print_title_input2.value
     })
+    localStorage.setItem("title2", print_title_input2.value)
 });
 // monday.listen(['filter'], (res) => {
 //     console.log("filter listen", res.data);
