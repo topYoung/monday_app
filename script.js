@@ -448,6 +448,9 @@ function createImage() {
 
 function setImage() {
     console.log('allImg.length=', allImg.length)
+    if(allImg.length == 0){
+        loader.style.visibility ='hidden'
+    }
     let n = 0
     for (let k = 0; k < allImg.length; k++) {
         let div = document.createElement('div')
