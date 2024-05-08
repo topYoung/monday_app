@@ -792,8 +792,8 @@ function resetColumn() {
 monday.get('context').then(res => {
     console.log('context2=', res)
     boardId = res.data.boardId
-    title1 = localStorage.getItem("title1")
-    title2 = localStorage.getItem('title2')
+    title1 = localStorage.getItem("title1_"+boardId)
+    title2 = localStorage.getItem('title2_'+boardId)
     console.log('title1==',title1)
     console.log('title2==',title2)
 
