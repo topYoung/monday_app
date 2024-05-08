@@ -3,8 +3,8 @@
 // let query = 'query { boards(ids: 6292532342 limit: 10) { columns{id title} items_page{ items{ name column_values{ id text value }}}}}';
 window.jsPDF = window.jspdf.jsPDF
 
-let title1 ""
-let title2 ""
+let title1 = ""
+let title2 = ""
 // console.log('title1==',title1)
 // console.log('title2==',title2)
 
