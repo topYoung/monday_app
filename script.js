@@ -563,7 +563,6 @@ function getOne(index) {
                 txt2 = txt2 + id[k]
             }
 
-
         }
         // console.log("txt=", txt)
         // console.log("txt2=", txt2)
@@ -577,7 +576,7 @@ function getOne(index) {
                     const img = imgList[i].split('.')
                     // console.log("img=", img)
                     if (img.length > 0) {
-                        if (img[img.length - 1] == 'jpg' || img[img.length - 1] == 'png' || img[img.length - 1] == 'jpeg') {
+                        if (img[img.length - 1] == 'jpg' || img[img.length - 1] == 'png' || img[img.length - 1] == 'jpeg' || img[img.length - 1] == 'JPG' || img[img.length - 1] == 'JPEG') {
                             one.push(imgList[i])
                             imgData.push(tmp2)
                         }
@@ -789,6 +788,7 @@ function resetColumn() {
 //   // do Something
 // })
 
+
 monday.get('context').then(res => {
     console.log('context2=', res)
     boardId = res.data.boardId
@@ -810,7 +810,6 @@ monday.get('context').then(res => {
     //使用範例
     filterItems();
 });
-
 
 function setItem(n) {
     let content = filterID(n)
