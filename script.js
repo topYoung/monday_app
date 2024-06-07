@@ -562,7 +562,7 @@ function getOne(index) {
         console.log('tit = ',title.length)
         const len = title.length
         console.log('照=',title[title.length-2])
-        console.log('片=',title[title.length-])
+        console.log('片=',title[title.length-1])
         let txt = ''
         let txt2 = ''
         for (let k = 0; k < id.length; k++) {
