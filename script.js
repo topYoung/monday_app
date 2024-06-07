@@ -110,8 +110,8 @@ async function fetchItems() {
     return response.data.boards[0].items_page.items;
 }
 
-async function getNextItem(){
-    console.log('cursor==',cursor)
+async function getNextItem() {
+    console.log('cursor==', cursor)
     const query = `
  query {
     next_items_page (limit: 500, cursor: "${cursor}") {
@@ -144,14 +144,14 @@ async function getNextItem(){
     // cursor = allData.boards[0].items_page.cursor
     cursor = response.data.next_items_page.cursor
     const tmp = response.data.next_items_page.items
-    for(let i=0;i< tmp.length;i++){
+    for (let i = 0; i < tmp.length; i++) {
         itemList.push(tmp[i])
     }
-    console.log('itemList_next=',itemList)
-    if(itemCount > limit){
+    console.log('itemList_next=', itemList)
+    if (itemCount > limit) {
         getNextItem()
         limit += 500
-    }else{
+    } else {
         first = false
         createImage()
     }
@@ -160,15 +160,15 @@ async function filterItems() {
     // 抓取項目
     itemList = await fetchItems();
     console.log("itemList===", itemList)
-    if(itemCount > limit){
+    if (itemCount > limit) {
         getNextItem()
         limit += 500
-    }else{
+    } else {
         first = false
         createImage()
     }
 
-    
+
     // 過濾項目
 
 }
@@ -210,12 +210,12 @@ function createCheckbox() {
             allCheckbox.push(x)
             let newlabel = document.createElement("Label");
             newlabel.setAttribute("for", "checkbox_" + n);
-            if(tmp[i].title == 'Name' || tmp[i].title == 'name'){
+            if (tmp[i].title == 'Name' || tmp[i].title == 'name') {
                 newlabel.innerHTML = '項目';
-            }else{
+            } else {
                 newlabel.innerHTML = tmp[i].title;
             }
-            
+
             div.appendChild(x)
             div.appendChild(newlabel)
             all_item.appendChild(div)
@@ -279,14 +279,14 @@ function setData() {
             let checkbox = allCheckbox[i]
             if (checkbox.checked == true) {
                 const id = checkbox.id
-                const title = checkbox.title
-                 if(title){
-
-                    console.log('title=',title)
-                    console.log('tit = ',title.length)
-                    const len = title.length
-                    console.log('照=',title[title.length-2])
-                    console.log('片=',title[title.length-1])
+                let tmp3 = allData.boards[0].columns
+                let spID = ''
+                for (let k = 0; k < tmp3.length; k++) {
+                    const ti = tmp3[k].title
+                    if (ti[ti.length - 2] == "照" && ti[ti.length - 1] == '片') {
+                        spID = tmp3[k].id
+                        break;
+                    }
                 }
                 let txt = ''
                 let txt2 = ''
@@ -301,17 +301,17 @@ function setData() {
                 }
                 // console.log("txt=", txt)
                 // console.log("txt2=", txt2)
-                if (txt != "files" && txt2 != 'file') {
+                if (txt != "files" && txt2 != 'file' && spID == "") {
                     // if (checkbox.id != 'files') {
                     let div = document.createElement('div')
                     div.className = 'right_text_box'
                     let t1 = document.createElement('p')
-                    if(checkbox.title == "Name" || checkbox.title == "name"){
+                    if (checkbox.title == "Name" || checkbox.title == "name") {
                         t1.innerHTML = "項目"
-                    }else{
+                    } else {
                         t1.innerHTML = checkbox.title
                     }
-                    
+
                     t1.className = 'right_text_content'
                     let t2 = document.createElement('p')
                     t2.className = 'right_text_content'
@@ -356,7 +356,7 @@ function checkData() {
     checkbox.forEach((item, index) => {
         if (item.innerHTML != '') {
             empty = false
-            
+
         }
     })
     const imgbox = document.querySelectorAll('.image_box')
@@ -379,7 +379,7 @@ print_title_input.addEventListener('input', () => {
     title.forEach((item, index) => {
         item.innerHTML = print_title_input.value
     })
-    localStorage.setItem("title1_"+boardId, print_title_input.value)
+    localStorage.setItem("title1_" + boardId, print_title_input.value)
 });
 
 print_title_input2.addEventListener('input', () => {
@@ -389,7 +389,7 @@ print_title_input2.addEventListener('input', () => {
     title.forEach((item, index) => {
         item.innerHTML = print_title_input2.value
     })
-    localStorage.setItem("title2_"+boardId, print_title_input2.value)
+    localStorage.setItem("title2_" + boardId, print_title_input2.value)
 });
 // monday.listen(['filter'], (res) => {
 //     console.log("filter listen", res.data);
@@ -456,8 +456,8 @@ function createImage() {
 
 function setImage() {
     console.log('allImg.length=', allImg.length)
-    if(allImg.length == 0){
-        loader.style.visibility ='hidden'
+    if (allImg.length == 0) {
+        loader.style.visibility = 'hidden'
     }
     let n = 0
     for (let k = 0; k < allImg.length; k++) {
@@ -551,15 +551,15 @@ function getOne(index) {
     let tmp2 = ''
     let tmp3 = allData.boards[0].columns
     let spID = ''
-    console.log('tmp3=',tmp3)
-    for (let k = 0; k<tmp3.length; k++) {
+    // console.log('tmp3=',tmp3)
+    for (let k = 0; k < tmp3.length; k++) {
         const ti = tmp3[k].title
-        if(ti[ti.length-2] == "照" && ti[ti.length-1] == '片'){
+        if (ti[ti.length - 2] == "照" && ti[ti.length - 1] == '片') {
             spID = tmp3[k].id
             break;
         }
     }
-    console.log('spID=',spID)
+    // console.log('spID=',spID)
     for (let i = 0; i < len; i++) {
         // console.log('index=', Number(index))
         // console.log('id==', Number(itemList[i].id))
@@ -575,18 +575,8 @@ function getOne(index) {
     // console.log("column_values=", tmp)
     for (let j = 0; j < tmp.length; j++) {
         const id = tmp[j].id
-        const title = tmp[j].title
-        // console.log('tmp=',tmp)
-        // console.log('id==',id)
-        if(title){
 
-         console.log('title=',title)
-         console.log('tit = ',title.length)
-        const len = title.length
-        console.log('照=',title[title.length-2])
-        console.log('片=',title[title.length-1])
-        }
-        
+
         let txt = ''
         let txt2 = ''
         for (let k = 0; k < id.length; k++) {
@@ -600,7 +590,7 @@ function getOne(index) {
         }
         // console.log("txt=", txt)
         // console.log("txt2=", txt2)
-        if (txt == "files" || txt2 == 'file' || spID ==id) {
+        if (txt == "files" || txt2 == 'file' || spID == id) {
             const file = tmp[j].text
             // let data= []
             console.log('file==', file)
@@ -826,16 +816,16 @@ function resetColumn() {
 monday.get('context').then(res => {
     console.log('context2=', res)
     boardId = res.data.boardId
-    title1 = localStorage.getItem("title1_"+boardId)
-    title2 = localStorage.getItem('title2_'+boardId)
-    console.log('title1==',title1)
-    console.log('title2==',title2)
+    title1 = localStorage.getItem("title1_" + boardId)
+    title2 = localStorage.getItem('title2_' + boardId)
+    console.log('title1==', title1)
+    console.log('title2==', title2)
 
-    if(title1 != null){
+    if (title1 != null) {
         title_text.innerHTML = title1
         print_title_input.value = title1
     }
-    if(title2 != null){
+    if (title2 != null) {
         subTitle.innerHTML = title2
         print_title_input2.value = title2
     }
