@@ -600,10 +600,10 @@ function getOne(index) {
         }
         // console.log("txt=", txt)
         // console.log("txt2=", txt2)
-        if (txt == "files" || txt2 == 'file' || spID !="") {
+        if (txt == "files" || txt2 == 'file' || spID ==id) {
             const file = tmp[j].text
             // let data= []
-            // console.log('file==', file)
+            console.log('file==', file)
             let imgList = file.split(',')
             if (imgList.length > 0) {
                 for (let i = 0; i < imgList.length; i++) {
