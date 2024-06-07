@@ -549,6 +549,8 @@ function getOne(index) {
     one = []
     let tmp = ''
     let tmp2 = ''
+    let tmp3 = allData.boards[0].columns
+    console.log('tmp3=',tmp3)
     for (let i = 0; i < len; i++) {
         // console.log('index=', Number(index))
         // console.log('id==', Number(itemList[i].id))
