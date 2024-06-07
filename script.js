@@ -281,10 +281,12 @@ function setData() {
                 const id = checkbox.id
                 let tmp3 = allData.boards[0].columns
                 let spID = ''
+                let name = ''
                 for (let k = 0; k < tmp3.length; k++) {
                     const ti = tmp3[k].title
                     if (ti[ti.length - 2] == "照" && ti[ti.length - 1] == '片') {
                         spID = tmp3[k].id
+                        name = "照片"
                         break;
                     }
                 }
@@ -301,7 +303,7 @@ function setData() {
                 }
                 // console.log("txt=", txt)
                 // console.log("txt2=", txt2)
-                if (txt != "files" && txt2 != 'file' && spID == "") {
+                if (txt != "files" && txt2 != 'file' && name != "照片") {
                     // if (checkbox.id != 'files') {
                     let div = document.createElement('div')
                     div.className = 'right_text_box'
