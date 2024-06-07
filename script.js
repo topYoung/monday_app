@@ -550,7 +550,16 @@ function getOne(index) {
     let tmp = ''
     let tmp2 = ''
     let tmp3 = allData.boards[0].columns
+    let spID = ''
     console.log('tmp3=',tmp3)
+    for (let k = 0; k<tmp3.length; k++) {
+        const ti = tmp3[k].title
+        if(ti[ti.length-2] == "照" && ti[ti.length-1] == '片'){
+            spID = tmp3[k].id
+            break;
+        }
+    }
+    console.log('spID=',spID)
     for (let i = 0; i < len; i++) {
         // console.log('index=', Number(index))
         // console.log('id==', Number(itemList[i].id))
@@ -561,8 +570,8 @@ function getOne(index) {
             break;
         }
     }
-    console.log('tmp=',tmp)
-    console.log('tmp2=',tmp2)
+    // console.log('tmp=',tmp)
+    // console.log('tmp2=',tmp2)
     // console.log("column_values=", tmp)
     for (let j = 0; j < tmp.length; j++) {
         const id = tmp[j].id
@@ -591,7 +600,7 @@ function getOne(index) {
         }
         // console.log("txt=", txt)
         // console.log("txt2=", txt2)
-        if (txt == "files" || txt2 == 'file') {
+        if (txt == "files" || txt2 == 'file' || spID !="") {
             const file = tmp[j].text
             // let data= []
             // console.log('file==', file)
