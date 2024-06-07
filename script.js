@@ -279,6 +279,11 @@ function setData() {
             let checkbox = allCheckbox[i]
             if (checkbox.checked == true) {
                 const id = checkbox.id
+                const title = checkbox.title
+                console.log('tit = ',title.length)
+                const len = title.length
+                console.log('照=',title[title.length-2])
+                console.log('片=',title[title.length-1])
                 let txt = ''
                 let txt2 = ''
                 for (let k = 0; k < id.length; k++) {
@@ -553,6 +558,11 @@ function getOne(index) {
     // console.log("column_values=", tmp)
     for (let j = 0; j < tmp.length; j++) {
         const id = tmp[j].id
+        const title = tmp[j].title
+        console.log('tit = ',title.length)
+        const len = title.length
+        console.log('照=',title[title.length-2])
+        console.log('片=',title[title.length-])
         let txt = ''
         let txt2 = ''
         for (let k = 0; k < id.length; k++) {
