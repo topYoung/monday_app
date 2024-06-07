@@ -559,12 +559,14 @@ function getOne(index) {
             break;
         }
     }
+    console.log('tmp=',tmp)
+    console.log('tmp2=',tmp2)
     // console.log("column_values=", tmp)
     for (let j = 0; j < tmp.length; j++) {
         const id = tmp[j].id
         const title = tmp[j].title
-        console.log('tmp=',tmp)
-        console.log('id==',id)
+        // console.log('tmp=',tmp)
+        // console.log('id==',id)
         if(title){
 
          console.log('title=',title)
