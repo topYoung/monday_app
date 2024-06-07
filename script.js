@@ -563,6 +563,8 @@ function getOne(index) {
     for (let j = 0; j < tmp.length; j++) {
         const id = tmp[j].id
         const title = tmp[j].title
+        console.log('tmp=',tmp)
+        console.log('id==',id)
         if(title){
 
          console.log('title=',title)
