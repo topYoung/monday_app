@@ -279,17 +279,19 @@ function setData() {
             let checkbox = allCheckbox[i]
             if (checkbox.checked == true) {
                 const id = checkbox.id
+                const title = checkbox.title
                 let tmp3 = allData.boards[0].columns
-                let spID = ''
-                let name = ''
-                for (let k = 0; k < tmp3.length; k++) {
-                    const ti = tmp3[k].title
-                    if (ti[ti.length - 2] == "照" && ti[ti.length - 1] == '片') {
-                        spID = tmp3[k].id
-                        name = "照片"
-                        break;
+                // let spID = ''
+                // let name = ''
+                let isImg = false
+                // for (let k = 0; k < tmp3.length; k++) {
+                //     const ti = tmp3[k].title
+                    if (title[title.length - 2] == "照" && title[title.length - 1] == '片') {
+                        isImg = true
+                        // break;
                     }
-                }
+                // }
+                console.log("isImg=",isImg)
                 let txt = ''
                 let txt2 = ''
                 for (let k = 0; k < id.length; k++) {
@@ -303,7 +305,7 @@ function setData() {
                 }
                 // console.log("txt=", txt)
                 // console.log("txt2=", txt2)
-                if (txt != "files" && txt2 != 'file' && name != "照片") {
+                if (txt != "files" && txt2 != 'file' && isImg == false) {
                     // if (checkbox.id != 'files') {
                     let div = document.createElement('div')
                     div.className = 'right_text_box'
@@ -595,7 +597,7 @@ function getOne(index) {
         if (txt == "files" || txt2 == 'file' || spID == id) {
             const file = tmp[j].text
             // let data= []
-            console.log('file==', file)
+            // console.log('file==', file)
             let imgList = file.split(',')
             if (imgList.length > 0) {
                 for (let i = 0; i < imgList.length; i++) {
